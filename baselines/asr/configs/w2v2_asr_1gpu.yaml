@@ -1,0 +1,73 @@
+# @package _group_
+
+common:
+  fp16: true
+  log_format: json
+  log_interval: 100
+
+checkpoint:
+  no_epoch_checkpoints: true
+  save_interval: 50
+  save_interval_updates: 1000
+  keep_interval_updates: 1
+  best_checkpoint_metric: wer
+
+distributed_training:
+  ddp_backend: c10d
+  find_unused_parameters: true
+  distributed_world_size: 1
+
+task:
+  _name: audio_finetuning
+  data: ???
+  normalize: false  # must be consistent with pre-training
+  labels: ltr
+
+dataset:
+  num_workers: 0
+  max_tokens: 2800000
+  validate_after_updates: ${model.freeze_finetune_updates}
+  validate_interval: 1000000
+  train_subset: train
+  valid_subset: valid
+
+criterion:
+  _name: ctc
+  zero_infinity: true
+  post_process: letter
+
+optimization:
+  max_update: 80000
+  lr: [2e-5]
+  sentence_avg: true
+  update_freq: [1]
+
+optimizer:
+  _name: adam
+  adam_betas: (0.9,0.98)
+  adam_eps: 1e-08
+
+lr_scheduler:
+  _name: tri_stage
+  phase_ratio: [0.1, 0.0, 0.9]
+  final_lr_scale: 0.05
+
+model:
+  _name: wav2vec_ctc
+  w2v_path: ???
+  apply_mask: true
+  mask_selection: static
+  mask_length: 10
+  mask_other: 0
+  mask_prob: 0.65
+  mask_channel_selection: static
+  mask_channel_length: 64
+  mask_channel_other: 0
+  mask_channel_prob: 0.5
+  layerdrop: 0.1
+  dropout: 0.0
+  activation_dropout: 0.1
+  attention_dropout: 0.0
+  feature_grad_mult: 0.0
+  freeze_finetune_updates: 10000
+

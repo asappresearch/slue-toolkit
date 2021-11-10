@@ -1,0 +1,74 @@
+# @package _group_
+common:
+  fp16: true
+  log_format: json
+  log_interval: 100
+
+checkpoint:
+  no_epoch_checkpoints: true
+  save_interval: 50
+  save_interval_updates: 1000
+  keep_interval_updates: 1
+  best_checkpoint_metric: macro_f1
+  maximize_best_checkpoint_metric: true
+
+distributed_training:
+  ddp_backend: c10d
+  find_unused_parameters: true
+  distributed_world_size: 2
+
+task:
+  _name: slue_audio_classification
+  normalize: true  # must be consistent with pre-training
+  labels: sent
+  data: ???
+  label_dir: ???
+
+dataset:
+  num_workers: 0
+  max_tokens: 2800000
+  validate_after_updates: ${model.freeze_finetune_updates}
+  validate_interval: 1000000
+  train_subset: train
+  valid_subset: valid
+
+criterion:
+  _name: slue_sequence_classification
+
+optimization:
+  max_update: 50000
+  lr: [2e-5]
+  sentence_avg: true
+  update_freq: [1]
+
+optimizer:
+  _name: adam
+  adam_betas: (0.9,0.98)
+  adam_eps: 1e-08
+
+lr_scheduler:
+  _name: tri_stage
+  phase_ratio: [0.1, 0.0, 0.9]
+  final_lr_scale: 0.05
+
+model:
+  _name: wav2vec2_seq_cls
+  pool_method: avg
+  classifier_dropout: 0.2
+  w2v_path: ???
+  w2v_args: null
+  apply_mask: true
+  mask_selection: static
+  mask_length: 10
+  mask_other: 0
+  mask_prob: 0.65
+  mask_channel_selection: static
+  mask_channel_length: 64
+  mask_channel_other: 0
+  mask_channel_prob: 0.5
+  layerdrop: 0.1
+  dropout: 0.0
+  activation_dropout: 0.1
+  attention_dropout: 0.0
+  feature_grad_mult: 0.0
+  freeze_finetune_updates: 2000
