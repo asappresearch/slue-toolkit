@@ -1,8 +1,8 @@
 #!/bin/bash
 
 #1. Download
-aws-okta exec asapp-dev-okta-speech-systems -- aws s3 cp s3://asapp-lang-tech/users/sshon/slue_first_phase/slue-voxceleb_blind.tar.gz datasets/
-aws-okta exec asapp-dev-okta-speech-systems -- aws s3 cp s3://asapp-lang-tech/users/sshon/slue_first_phase/slue-voxpopuli_blind.tar.gz datasets/
+wget https://papers-slue.awsdev.asapp.com/slue-voxceleb_blind.tar.gz -P datasets/
+wget https://papers-slue.awsdev.asapp.com/slue-voxpopuli_blind.tar.gz -P datasets/
 
 #2. Extract
 tar -xzvf datasets/slue-voxceleb_blind.tar.gz -C datasets/
