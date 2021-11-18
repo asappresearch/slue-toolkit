@@ -60,7 +60,7 @@ Sentiment analysis refers to classifying a given speech segment as having negati
     <td>ASR, NER</td>
     <td>CC0</td>
     <td>CC0</td>
-    <td>MIT</td>
+    <td>CC0</td>
   </tr>
   <tr>
     <td>SLUE-VoxCeleb</td>
@@ -69,8 +69,8 @@ Sentiment analysis refers to classifying a given speech segment as having negati
     <td>4,052 (9.0)</td>
     <td>ASR, SA</td>
     <td>CC-BY 4.0</td>
-    <td>MIT</td>
-    <td>MIT</td>
+    <td>CC-BY 4.0</td>
+    <td>CC-BY 4.0</td>
   </tr>
 </tbody>
 </table>
