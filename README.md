@@ -2,10 +2,10 @@
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-red.svg)](#python)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-We introduce [Spoken Language Understanding Evaluation (SLUE)](https://slue-benchmark.com) benchmark. This toolkit provides codes to download and pre-process the SLUE datasets, train the baseline models, and evaluate SLUE tasks. Refer [https://arxiv.org/](https://arxiv.org/) for more details.
+We introduce Spoken Language Understanding Evaluation (SLUE) benchmark. This toolkit provides codes to download and pre-process the SLUE datasets, train the baseline models, and evaluate SLUE tasks. Refer [https://arxiv.org/](https://arxiv.org/) for more details.
 
 ## News
- - Oct. 29: We release the SLUE paper on arXiv along with the slue-toolkit repository. The repository contains data processing and evaluation scripts. We will publish the scripts for trainig the baseline models soon.
+ - Nov. XX: We release the SLUE paper on arXiv along with the slue-toolkit repository. The repository contains data processing and evaluation scripts. We will publish the scripts for trainig the baseline models soon.
 
 ## Installation
 1. git clone this repository and install slue-toolkit (development mode)
