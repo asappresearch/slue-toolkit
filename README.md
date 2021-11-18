@@ -40,15 +40,15 @@ Sentiment analysis refers to classifying a given speech segment as having negati
     <th rowspan="2">Corpus</th>
     <th colspan="3">Size - utts (hours)</th>
     <th rowspan="2">Tasks</th>
-    <th colspan="3">License</th>
+    <th rowspan="2">License</th>
   </tr>
   <tr>
     <th>Fine-tune</th>
     <th>Dev</th>
     <th>Test</th>
-    <th>Audio</th>
+<!--     <th>Audio</th>
     <th>Text</th>
-    <th>Annotation</th>
+    <th>Annotation</th> -->
   </tr>
 </thead>
 <tbody>
@@ -58,9 +58,9 @@ Sentiment analysis refers to classifying a given speech segment as having negati
     <td>1,753 (5.0)</td>
     <td>1,842 (4.9)</td>
     <td>ASR, NER</td>
-    <td>CC0</td>
-    <td>CC0</td>
-    <td>CC0</td>
+   <td>CC0 (check complete license <a href="https://papers-slue.awsdev.asapp.com/slue-voxpopuli_LICENSE">here</a>)</td>
+<!--     <td>CC0</td>
+    <td>CC0</td> -->
   </tr>
   <tr>
     <td>SLUE-VoxCeleb</td>
@@ -68,9 +68,9 @@ Sentiment analysis refers to classifying a given speech segment as having negati
     <td>955 (2.1)</td>
     <td>4,052 (9.0)</td>
     <td>ASR, SA</td>
-    <td>CC-BY 4.0</td>
-    <td>CC-BY 4.0</td>
-    <td>CC-BY 4.0</td>
+    <td>CC-BY 4.0 (check complete license <a href="https://papers-slue.awsdev.asapp.com/slue-voxceleb_LICENSE">here</a>)</td>
+<!--     <td>CC-BY 4.0</td>
+    <td>CC-BY 4.0</td> -->
   </tr>
 </tbody>
 </table>
