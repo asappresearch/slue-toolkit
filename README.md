@@ -133,7 +133,7 @@ More detail baseline experiment described [here](baselines/ner/README.md)
 #### Fine-tuning
 This command fine-tune a wav2vec 2.0 base model on the voxceleb dataset
 ```sh
-bash baselines/sentiment/ft-w2v2-base-senti.sh manifest/slue-voxceleb save/sentiment/w2v2-base
+bash baselines/sentiment/e2e_scripts/ft-w2v2-base-senti.sh manifest/slue-voxceleb save/sentiment/w2v2-base
 ```
 #### Evaluation
 To evaluate the fine-tuned wav2vec 2.0 sentiment model, run following commands or run `baselines/sentiment/e2e_scripts/eval.sh`
