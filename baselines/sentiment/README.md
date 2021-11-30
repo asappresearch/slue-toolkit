@@ -2,7 +2,7 @@
 #### Fine-tuning End-to-end model
 Assuming that the preprocessed manifest files are in `manifest/slue-voxceleb` for SLUE-VoxPopuli. This command fine-tune a wav2vec 2.0 base model using one GPU.
 ```sh
-bash baselines/sentiment/ft-w2v2-base-senti.sh manifest/slue-voxceleb save/sentiment/w2v2-base
+bash baselines/sentiment/e2e_scripts/ft-w2v2-base-senti.sh manifest/slue-voxceleb save/sentiment/w2v2-base
 ```
 #### Evaluation of End-to-end model
 To evaluate the fine-tuned wav2vec 2.0 sentiment model, run following command or run `baselines/sentiment/e2e_scripts/eval.sh`
