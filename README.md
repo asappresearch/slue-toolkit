@@ -146,7 +146,7 @@ More detail baseline experiment described [here](baselines/sentiment/README.md)
 
 ## submission format
 
-in .tsv format, prepare 4 columns as in below example. Please specify none, if the prediction is not exist (for example, Voxpopuli needs `id`, `pred_text`, `pred_ner` columns, so all entities in `pred_sentiment` should be `none`"
+in .tsv format, prepare 4 columns as in below example. Please specify none, if the prediction is not exist (for example, Voxpopuli is for ASR and NER, it needs `id`, `pred_text`, `pred_ner` columns, and all entities in `pred_sentiment` should be `none`"
 
 ````
 id	pred_text	pred_ner	pred_sentiment
