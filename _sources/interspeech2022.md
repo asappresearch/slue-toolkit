@@ -27,7 +27,7 @@ For this special session, we will provide support for several benchmark tasks us
     - [slue-voxceleb](https://papers-slue.awsdev.asapp.com/slue-voxceleb_blind.tar.gz)
     - [slue-voxpopuli](https://papers-slue.awsdev.asapp.com/slue-voxpopuli_blind.tar.gz)
 - SLUE Toolkit: [Github repo](https://github.com/asappresearch/slue-toolkit)
-- SLUE Website: 
+- SLUE Website: [https://asappresearch.github.io/slue-toolkit](https://asappresearch.github.io/slue-toolkit)
 
 The other datasets/benchmark we recommend is (alphabetical order)
 
