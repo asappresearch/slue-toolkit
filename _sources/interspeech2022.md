@@ -49,7 +49,7 @@ Submission URL : (TBA)
 <b>Important dates
 </b></p>
 
-<p style="font: 13px Monaco; margin-left:0em; color:black;">
+<p style="font: 12px Monaco; margin-left:0em; color:black;">
 Paper submission due  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp; : Mar. 21, 2022<br>
 Paper update due &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;: Mar. 28, 2022<br>
 Acceptance notification date &emsp; : Jun. 13, 2022<br>
