@@ -1,0 +1,347 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>“Low-Resource Spoken Language Understanding”</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="SLUE Leaderboard" href="leaderboard.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/slue_logo3.png" class="logo" alt="logo">
+      
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Welcome to SLUE Benchmark
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  SLUE Benchmark
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="slue-tasks.html">
+   SLUE Tasks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="how-to-submit.html">
+   How-to-submit
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="leaderboard.html">
+   SLUE Leaderboard
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://arxiv.org/pdf/2111.10367.pdf">
+   SLUE Paper
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://github.com/asappresearch/slue-toolkit">
+   SLUE Toolkit
+  </a>
+ </li>
+</ul>
+<p class="caption" role="heading">
+ <span class="caption-text">
+  Special Session @ Interspeech 2022
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   “Low-Resource Spoken Language Understanding”
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/interspeech2022.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/asappresearch/slue-toolkit"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/asappresearch/slue-toolkit/issues/new?title=Issue%20on%20page%20%2Finterspeech2022.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <p style="font: 14px monospace; margin-left:0em; color:#eb6e6e;">
+<b>Interspeech 2022 Special Session</b></p>
+<div class="tex2jax_ignore mathjax_ignore section" id="low-resource-spoken-language-understanding">
+<h1>“Low-Resource Spoken Language Understanding”<a class="headerlink" href="#low-resource-spoken-language-understanding" title="Permalink to this headline">¶</a></h1>
+<p>Progress in speech processing has been facilitated by shared datasets and benchmarks. Historically these have focused on automatic speech recognition (ASR), speaker identification, or other lower level tasks. Interest has been growing in higher-level spoken language understanding (SLU) tasks, including using end-to-end models, but there are fewer annotated datasets for such tasks, and the existing datasets tend to be relatively small. At the same time, recent work shows the possibility of pre-training generic representations and then fine-tuning for several tasks using relatively little labeled data.</p>
+<p>In this special session, we would like to foster a discussion and invite researchers in the field of SLU working on tasks such as named entity recognition (NER), sentiment analysis, intent classification, dialogue act tagging, or others, using either audio or ASR transcripts.</p>
+<p>We invite contributions any relevant work in the low-resource SLU problem includes (but are not limited to):</p>
+<ul class="simple">
+<li><p>Training/fine-tuning approach using self/semi-supervised model for SLU tasks</p></li>
+<li><p>Comparison between pipeline and end-to-end SLU systems</p></li>
+<li><p>Self/semi-supervised learning approach focusing on SLU</p></li>
+<li><p>Multi-task/transfer/student-teacher learning focusing on SLU tasks</p></li>
+<li><p>Theoretical or empirical study on low-resource SLU problems</p></li>
+</ul>
+<p style="font: 16px monospace; margin-left:0em; color:#eb6e6e;">
+<b>Resources
+</b></p>
+<p>For this special session, we will provide support for several benchmark tasks using the new Spoken Language Understanding Evaluation (SLUE) benchmark suite (https://arxiv.org/abs/2111.10367). SLUE includes annotation for ASR, NER and sentiment analysis. We also provide a toolkit to pre-process and fine-tune scripts for baseline models. It is not mandatory for submissions to use SLUE, but we offer it as a well-defined experiment setting for low-resource SLU.</p>
+<ul class="simple">
+<li><p>SLUE Dataset: \</p>
+<ul>
+<li><p><a class="reference external" href="https://papers-slue.awsdev.asapp.com/slue-voxceleb_blind.tar.gz">slue-voxceleb</a></p></li>
+<li><p><a class="reference external" href="https://papers-slue.awsdev.asapp.com/slue-voxpopuli_blind.tar.gz">slue-voxpopuli</a></p></li>
+</ul>
+</li>
+<li><p>SLUE Toolkit: <a class="reference external" href="https://github.com/asappresearch/slue-toolkit">Github repo</a></p></li>
+<li><p>SLUE Website:</p></li>
+</ul>
+<p>The other datasets/benchmark we recommend is (alphabetical order)</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://arxiv.org/abs/2108.13048">ASR-GLUE</a></p></li>
+<li><p><a class="reference external" href="https://arxiv.org/pdf/2111.14706.pdf">ESPnet-SLU</a></p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2011.13205">SLURP</a></p></li>
+<li><p><a class="reference external" href="http://superbbenchmark.org">SUPERB</a></p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2104.01604">Timers and Such</a></p></li>
+</ul>
+<p style="font: 16px monospace; margin-left:0em; color:#eb6e6e;">
+<b>Paper submission
+</b></p>
+<p>Papers for Interspeech Special Session have to be submitted following the same schedule and procedure as regular papers of INTERSPEECH 2022. The submitted papers will undergo the same review process by anonymous and independent reviewers.</p>
+<p>Submission URL : (TBA)</p>
+<p style="font: 16px monospace; margin-left:0em; color:#eb6e6e;">
+<b>Important dates
+</b></p>
+<p><strong>Paper submission due  : March 21, 2022</strong><br />
+Paper update due  : March 28, 2022<br />
+Paper notification date : June 08, 2022</p>
+<p style="font: 16px monospace; margin-left:0em;color:#eb6e6e;">
+<b>Organizers
+</b></p>
+<p>Suwon Shon, Felix Wu, Pablo Brusco, Kyu J. Han - ASAPP
+<br>Karen Livescu, Ankita Pasad - TTI at Chicago
+<br>Yoav Artzi - Cornell University
+<br>Katrin Kirchhoff- Amazon
+<br>Samuel R. Bowman - New York University
+<br>Zhou Yu - Columbia University</p>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="leaderboard.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">SLUE Leaderboard</p>
+            </div>
+        </a>
+    </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By SLUE committee<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
