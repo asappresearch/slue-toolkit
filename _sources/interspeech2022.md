@@ -1,5 +1,5 @@
 
-<p style="font: 14px monospace; margin-left:0em; color:#eb6e6e;">
+<p style="font: 14px Monaco; margin-left:0em; color:#eb6e6e;">
 <b>Interspeech 2022 Special Session</b></p>
 
 # "Low-Resource Spoken Language Understanding"
@@ -17,7 +17,7 @@ We invite contributions any relevant work in the low-resource SLU problem includ
 - Theoretical or empirical study on low-resource SLU problems
 
 
-<p style="font: 16px monospace; margin-left:0em; color:#eb6e6e;">
+<p style="font: 16px Monaco; margin-left:0em; color:#eb6e6e;">
 <b>Resources
 </b></p>
 
@@ -37,7 +37,7 @@ The other datasets/benchmarks we recommend are (alphabetical order)
 - [SUPERB](http://superbbenchmark.org)
 - [Timers and Such](https://arxiv.org/abs/2104.01604)
 
-<p style="font: 16px monospace; margin-left:0em; color:#eb6e6e;">
+<p style="font: 16px Monaco; margin-left:0em; color:#eb6e6e;">
 <b>Paper submission
 </b></p>
 
@@ -45,20 +45,28 @@ Papers for Interspeech Special Session have to be submitted following the same s
 
 Submission URL : (TBA)
 
-<p style="font: 16px monospace; margin-left:0em; color:#eb6e6e;">
+<p style="font: 16px Monaco; margin-left:0em; color:#eb6e6e;">
 <b>Important dates
 </b></p>
 
-**Paper submission due  : March 21, 2022**\
-Paper update due  : March 28, 2022\
-Paper notification date : June 08, 2022
+<p style="font: 13px Monaco; margin-left:0em; color:black;">
+Paper submission due  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp; : Mar. 21, 2022<br>
+Paper update due &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;: Mar. 28, 2022<br>
+Acceptance notification date &emsp; : Jun. 13, 2022<br>
+Final paper upload &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: Jun. 23, 2022<br>
+Conference date &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: Sep. 18-22, 2022
+</p>
 
-<p style="font: 16px monospace; margin-left:0em;color:#eb6e6e;">
+<p style="font: 16px Monaco; margin-left:0em;color:#eb6e6e;">
 <b>Organizers
 </b></p>
 
-Suwon Shon, Felix Wu, Pablo Brusco, Kyu J. Han - ASAPP
-<br>Karen Livescu, Ankita Pasad - TTI at Chicago
+Suwon Shon - ASAPP
+<br>Felix Wu - ASAPP
+<br>Pablo Brusco - ASAPP
+<br>Kyu J. Han - ASAPP
+<br>Karen Livescu - TTI at Chicago
+<br>Ankita Pasad - TTI at Chicago
 <br>Yoav Artzi - Cornell University
 <br>Katrin Kirchhoff- Amazon
 <br>Samuel R. Bowman - New York University
