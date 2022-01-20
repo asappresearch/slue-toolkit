@@ -29,7 +29,7 @@ For this special session, we will provide support for several benchmark tasks us
 - SLUE Toolkit: [Github repo](https://github.com/asappresearch/slue-toolkit)
 - SLUE Website: [https://asappresearch.github.io/slue-toolkit](https://asappresearch.github.io/slue-toolkit)
 
-The other datasets/benchmark we recommend is (alphabetical order)
+The other datasets/benchmarks we recommend are (alphabetical order)
 
 - [ASR-GLUE](https://arxiv.org/abs/2108.13048)
 - [ESPnet-SLU](https://arxiv.org/pdf/2111.14706.pdf)
