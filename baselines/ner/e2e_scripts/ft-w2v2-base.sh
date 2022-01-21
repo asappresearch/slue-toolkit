@@ -22,8 +22,8 @@ pretrained_ckpt=`realpath $pretrained_ckpt`
 
 config_dir=baselines/ner/configs
 config=w2v2_ner_1gpu
-train_subset=finetune_raw_e2e_ner
-valid_subset=dev_raw_e2e_ner
+train_subset=fine-tune
+valid_subset=dev
 
 normalize=false
 lr=5e-5
@@ -35,6 +35,7 @@ fairseq-hydra-train \
     hydra.output_subdir=$save \
     common.tensorboard_logdir=$tb_save \
     task.data=$data \
+    task.labels="raw.ltr" \
     dataset.train_subset=$train_subset \
     dataset.valid_subset=$valid_subset \
     distributed_training.distributed_world_size=$ngpu \
