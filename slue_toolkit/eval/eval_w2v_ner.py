@@ -10,7 +10,9 @@ import sys
 sys.path.insert(0, "../")
 
 from slue_toolkit.eval import eval_utils
-from slue_toolkit.generic_utils import read_lst, save_pkl, load_pkl
+from slue_toolkit.generic_utils import (
+    read_lst, save_pkl, spl_char_to_entity, raw_to_combined_tag_map
+)
 
 
 def make_distinct(label_lst):
@@ -32,22 +34,16 @@ def get_gt_pred(score_type, eval_label, eval_set, decoded_data_dir):
     """
     Read the GT and predicted utterances in the entity format [(word1, tag1), (word2, tag2), ...]
     """
-    spl_char_to_entity = load_pkl(
-        os.path.join("slue_toolkit/prepare/files/", "spl_char_to_entity.pkl")
-    )
     entity_end_char = "]"
     entity_to_spl_char = {}
     for spl_char, entity in spl_char_to_entity.items():
         entity_to_spl_char[entity] = spl_char
 
     if eval_label == "combined":
-        label_map_dct = load_pkl(
-            os.path.join("slue_toolkit/prepare/files/", "raw_to_combined_tags.pkl")
-        )
 
     def update_label_lst(lst, phrase, label):
         if eval_label == "combined":
-            label = label_map_dct[label]
+            label = raw_to_combined_tag_map[label]
         if label != "DISCARD":
             if score_type == "label":
                 lst.append((label, "phrase"))

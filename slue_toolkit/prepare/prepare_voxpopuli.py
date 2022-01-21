@@ -7,6 +7,7 @@ import soundfile
 import re
 
 from slue_toolkit.prepare import data_utils
+from slue_toolkit.prepare.create_dict import create_dict
 
 splits = {"fine-tune", "dev", "test"}
 
@@ -71,13 +72,13 @@ def create_manifest(
                 os.makedirs(os.path.join(manifest_dir, sub_dir_name), exist_ok=True)
             for label_type in ["raw", "combined"]:
                 wrd_fn = os.path.join(
-                    manifest_dir, "e2e_ner", f"{split}_{label_type}.wrd"
+                    manifest_dir, "e2e_ner", f"{split}.{label_type}.wrd"
                 )
                 ltr_fn = os.path.join(
-                    manifest_dir, "e2e_ner", f"{split}_{label_type}.ltr"
+                    manifest_dir, "e2e_ner", f"{split}.{label_type}.ltr"
                 )
                 tsv_fn = os.path.join(
-                    manifest_dir, "nlp_ner", f"{split}_{label_type}.tsv"
+                    manifest_dir, "nlp_ner", f"{split}.{label_type}.tsv"
                 )
                 with open(wrd_fn, "w") as f_wrd, open(ltr_fn, "w") as f_ltr, open(
                     tsv_fn, "w"
@@ -94,6 +95,15 @@ def create_manifest(
                         )
                         print(wrd_str, file=f_wrd)
                         print(ltr_str, file=f_ltr)
+        os.symlink(f"../{split}.tsv", os.path.join(manifest_dir, f"e2e_ner/{split}.tsv"))
+
+    for label_type in ["raw", "combined"]:
+        for token_type in ['wrd', 'ltr']:
+            create_dict(
+                os.path.join(manifest_dir, f"e2e_ner/fine-tune.{label_type}.{token_type}"),
+                os.path.join(manifest_dir, f"e2e_ner/dict.{label_type}.{token_type}.txt"),
+            )
+                
 
 
 if __name__ == "__main__":
