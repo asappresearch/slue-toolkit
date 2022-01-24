@@ -13,6 +13,10 @@ id10012_0AXjxNXiEzo_00001	like i said less manicured in a good way i think i thi
 
 ````
 
+## Missing Tasks
+
+If you miss some tasks, for example, if you only want to evaluate the sentiment analysis system, you can submit only the prediction result of the sentiment analysis system (`pred_sentiment`). However, your submission should contain at least one of the SLU tasks other than ASR. Thus, we still accept submission with or without `pred_text` if one of `pred_ner` or `pred_sentiment` exists, but we will not evaluate if you only submit `pred_text`. Additionally, in any case, we will not rank if you miss at least one of the columns, since we cannot calculate the SLUE score.
+
 ## Submission
 
 Send tsv file to sshon@asapp.com.

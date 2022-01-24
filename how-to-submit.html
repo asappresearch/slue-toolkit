@@ -227,6 +227,11 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#missing-tasks">
+   Missing Tasks
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#submission">
    Submission
   </a>
@@ -254,6 +259,10 @@
 
 </pre></div>
 </div>
+</div>
+<div class="section" id="missing-tasks">
+<h2>Missing Tasks<a class="headerlink" href="#missing-tasks" title="Permalink to this headline">¶</a></h2>
+<p>If you miss some tasks, for example, if you only want to evaluate the sentiment analysis system, you can submit only the prediction result of the sentiment analysis system (<code class="docutils literal notranslate"><span class="pre">pred_sentiment</span></code>). However, your submission should contain at least one of the SLU tasks other than ASR. Thus, we still accept submission with or without <code class="docutils literal notranslate"><span class="pre">pred_text</span></code> if one of <code class="docutils literal notranslate"><span class="pre">pred_ner</span></code> or <code class="docutils literal notranslate"><span class="pre">pred_sentiment</span></code> exists, but we will not evaluate if you only submit <code class="docutils literal notranslate"><span class="pre">pred_text</span></code>. Additionally, in any case, we will not rank if you miss at least one of the columns, since we cannot calculate the SLUE score.</p>
 </div>
 <div class="section" id="submission">
 <h2>Submission<a class="headerlink" href="#submission" title="Permalink to this headline">¶</a></h2>
