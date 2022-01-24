@@ -29,12 +29,12 @@ For this special session, we will provide support for several benchmark tasks us
 - SLUE Toolkit: [Github repo](https://github.com/asappresearch/slue-toolkit)
 - SLUE Website: [https://asappresearch.github.io/slue-toolkit](https://asappresearch.github.io/slue-toolkit)
 
-The other datasets/benchmarks we recommend are (alphabetical order)
+Note that there is no limitation on use of datasets/benchmarks for the special session. The other datasets/benchmarks we recommend are (alphabetical order)
 
 - [ASR-GLUE](https://arxiv.org/abs/2108.13048)
 - [ESPnet-SLU](https://arxiv.org/pdf/2111.14706.pdf)
 - [SLURP](https://arxiv.org/abs/2011.13205)
-- [SUPERB](http://superbbenchmark.org)
+- [SUPERB](http://superbbenchmark.org) (limited to SLU-related tasks)
 - [Timers and Such](https://arxiv.org/abs/2104.01604)
 
 <p style="font: 16px Monaco; margin-left:0em; color:#eb6e6e;">

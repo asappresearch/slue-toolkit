@@ -26,11 +26,6 @@ For this benchmark, we provide new annotation of publicly available, natural spe
 
 <br>
 
-## Questions and issues
-
-We will use [issue](https://github.com/asappresearch/slue-toolkit/issues) page at GitHub as our official Q&A boards
-
-
 ## SLUE committees
 
 Suwon Shon - ASAPP
@@ -40,3 +35,11 @@ Suwon Shon - ASAPP
 <br>Karen Livescu - TTI at Chicago
 <br>Ankita Pasad - TTI at Chicago
 <br>Yoav Artzi - Cornell University
+
+## Questions and issues
+
+We will use [issue](https://github.com/asappresearch/slue-toolkit/issues) page at GitHub as our official Q&A boards
+
+## Logo of SLUE
+
+Note that the logo of SLUE is not a snake, but a audio waveform in time-domain drawn with ascii character. We believe this text-drawn waveform represent the SLUE project properly. We use this [generator](https://asciiart.club/) to generate the waveform and sligltly modified.
