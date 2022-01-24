@@ -38,8 +38,8 @@ Suwon Shon - ASAPP
 
 ## Questions and issues
 
-We will use [issue](https://github.com/asappresearch/slue-toolkit/issues) page at GitHub as our official Q&A boards
+We will use GitHub [issue](https://github.com/asappresearch/slue-toolkit/issues) page as our official Q&A boards
 
-## Logo of SLUE
+## Logo of the SLUE
 
 Note that the logo of SLUE is not a snake, but a audio waveform in time-domain drawn with ascii character. We believe this text-drawn waveform represent the SLUE project properly. We use this [generator](https://asciiart.club/) to generate the waveform and sligltly modified.
