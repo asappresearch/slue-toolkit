@@ -69,5 +69,6 @@ Suwon Shon - ASAPP
 <br>Ankita Pasad - TTI at Chicago
 <br>Yoav Artzi - Cornell University
 <br>Katrin Kirchhoff- Amazon
+<br>Kaisheng Yao - Amazon
 <br>Samuel R. Bowman - New York University
 <br>Zhou Yu - Columbia University
