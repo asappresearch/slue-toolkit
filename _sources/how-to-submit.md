@@ -4,7 +4,7 @@ SLUE test set evaluation is not publicly available for a fair evaluation. If you
 
 ## Submission format
 
-in .tsv format, prepare 4 columns as in below example. Please specify none, if the prediction is not exist (for example, Voxpopuli is for ASR and NER, it needs `id`, `pred_text`, `pred_ner` columns, and all entities in `pred_sentiment` should be `none`
+in .tsv format, prepare 4 columns as in the below example. Please specify none, if the prediction does not exist (for example, Voxpopuli is for ASR and NER, it needs `id`, `pred_text`, `pred_ner` columns, and all entities in `pred_sentiment` should be `none`
 
 ````
 id	pred_text	pred_ner	pred_sentiment

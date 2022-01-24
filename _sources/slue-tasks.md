@@ -9,9 +9,9 @@ Sentiment Analysis | F1
 
 ## Datasets
 
-For SLUE, you need [VoxCeleb](https://www.robots.ox.ac.uk/~vgg/data/voxceleb/) and [VoxPopuli](https://github.com/facebookresearch/voxpopuli) dataset. We carefully curated subset of those dataset for fine-tuning and evaluation for SLUE tasks, and we re-distribute the the subsets. Thus, you don't need to download a whole gigantic datasets. In the dataset, we also includes the human annotation and transcription for SLUE tasks. All you need to do is just running the script below and it will download and pre-process the dataset.
+SLUE uses the [VoxCeleb](https://www.robots.ox.ac.uk/~vgg/data/voxceleb/) and [VoxPopuli](https://github.com/facebookresearch/voxpopuli) datasets. We carefully curated subsets of these datasets for fine-tuning and evaluation for SLUE tasks, and we re-distribute the subsets. Thus, you don’t need to download the whole (gigantic) datasets. In the dataset, we also include the human annotation and transcription for SLUE tasks. All you need to do is run the script below and it will download and pre-process the dataset.
 
-Here is brief info about the dataset and detail is in the [paper](https://arxiv.org/pdf/2111.10367.pdf)
+Here is a brief info about the datasets.  Additional details are in the [paper](https://arxiv.org/pdf/2111.10367.pdf).
 
 <table>
 <thead>

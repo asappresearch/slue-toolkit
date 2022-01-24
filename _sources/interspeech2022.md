@@ -1,14 +1,14 @@
 
-<p style="font: 14px Monaco; margin-left:0em; color:#eb6e6e;">
+<p style="font: 16px Monaco; margin-left:0em; color:#eb6e6e;">
 <b>Interspeech 2022 Special Session</b></p>
 
 # "Low-Resource Spoken Language Understanding"
 
-Progress in speech processing has been facilitated by shared datasets and benchmarks. Historically these have focused on automatic speech recognition (ASR), speaker identification, or other lower level tasks. Interest has been growing in higher-level spoken language understanding (SLU) tasks, including using end-to-end models, but there are fewer annotated datasets for such tasks, and the existing datasets tend to be relatively small. At the same time, recent work shows the possibility of pre-training generic representations and then fine-tuning for several tasks using relatively little labeled data.
+Progress in speech processing has been facilitated by shared datasets and benchmarks. Historically these have focused on automatic speech recognition (ASR), speaker identification, or other lower-level tasks. Interest has been growing in higher-level spoken language understanding (SLU) tasks, including using end-to-end models, but there are fewer annotated datasets for such tasks, and the existing datasets tend to be relatively small. At the same time, recent work shows the possibility of pre-training generic representations and then fine-tuning for several tasks using relatively little labeled data.
 
 In this special session, we would like to foster a discussion and invite researchers in the field of SLU working on tasks such as named entity recognition (NER), sentiment analysis, intent classification, dialogue act tagging, or others, using either audio or ASR transcripts.
 
-We invite contributions any relevant work in the low-resource SLU problem includes (but are not limited to):
+We invite contributions for any relevant work in low-resource SLU problems, which include (but are not limited to):
 
 - Training/fine-tuning approach using self/semi-supervised model for SLU tasks
 - Comparison between pipeline and end-to-end SLU systems
