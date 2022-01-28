@@ -38,7 +38,9 @@ Suwon Shon - ASAPP
 
 ## Questions and issues
 
-We will use GitHub [issue](https://github.com/asappresearch/slue-toolkit/issues) page as our official Q&A boards
+For open discussion, we will use GitHub [issue](https://github.com/asappresearch/slue-toolkit/issues) page as our official Q&A boards.
+<br>
+For other general questions, please email us slue-committee "AT" googlegroups.com
 
 ## Logo of the SLUE
 

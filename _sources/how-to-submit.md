@@ -19,4 +19,4 @@ If you miss some tasks, for example, if you only want to evaluate the sentiment 
 
 ## Submission
 
-Send tsv file to sshon@asapp.com.
+Send tsv file to slue-committee "AT" googlegroups.com

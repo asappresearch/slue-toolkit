@@ -72,3 +72,9 @@ Suwon Shon - ASAPP
 <br>Kaisheng Yao - Amazon
 <br>Samuel R. Bowman - New York University
 <br>Zhou Yu - Columbia University
+
+
+<p style="font: 16px Monaco; margin-left:0em;color:#eb6e6e;">
+<b>Contact
+</b></p>
+low-resource-slu "at" googlegroups.com
