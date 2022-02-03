@@ -144,18 +144,5 @@ More detail baseline experiment described [here](baselines/sentiment/README.md)
 
 # How-to-submit for your test set evaluation
 
-## submission format
+See here https://asappresearch.github.io/slue-toolkit/how-to-submit.html
 
-in .tsv format, prepare 4 columns as in below example. Please specify none, if the prediction is not exist (for example, Voxpopuli is for ASR and NER, it needs `id`, `pred_text`, `pred_ner` columns, and all entities in `pred_sentiment` should be `none`"
-
-````
-id	pred_text	pred_ner	pred_sentiment
-id10012_0AXjxNXiEzo_00001	like i said less manicured in a good way i think i think that what you know people	None	Positive
-20150518-0900-PLENARY-15-en_20150518-18:48:27_2	we all agreed at the last session in strasbourg that development is important but we need to remember it now when we are talking about the financial contributions	[['GPE', 'strasbourg']]	None
-20180530-0900-PLENARY-26-en_20180530-20:01:52_0	madam president first of all i would like to thank all the members who have participated in this important debate for their different contributions. None None
-
-````
-
-## submission
-
-Send tsv file to sshon@asapp.com.
