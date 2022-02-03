@@ -150,8 +150,9 @@ in .tsv format, prepare 4 columns as in below example. Please specify none, if t
 
 ````
 id	pred_text	pred_ner	pred_sentiment
-id10012_0AXjxNXiEzo_00001	like i said less manicured in a good way i think i think that what you know people	none	Positive
-20150518-0900-PLENARY-15-en_20150518-18:48:27_2	we all agreed at the last session in strasbourg that development is important but we need to remember it now when we are talking about the financial contributions	[['GPE', 'strasbourg']]	none
+id10012_0AXjxNXiEzo_00001	like i said less manicured in a good way i think i think that what you know people	None	Positive
+20150518-0900-PLENARY-15-en_20150518-18:48:27_2	we all agreed at the last session in strasbourg that development is important but we need to remember it now when we are talking about the financial contributions	[['GPE', 'strasbourg']]	None
+20180530-0900-PLENARY-26-en_20180530-20:01:52_0		madam president first of all i would like to thank all the members who have participated in this important debate for their different contributions. None None
 
 ````
 
