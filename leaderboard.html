@@ -352,82 +352,45 @@
 
 
 
-<span class="n">slice_</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;score_neg&#39;</span><span class="p">,</span><span class="s1">&#39;score_neu&#39;</span><span class="p">,</span><span class="s1">&#39;score_pos&#39;</span><span class="p">]</span>
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;selector&#39;</span><span class="p">:</span> <span class="s1">&#39;th:not(.index_name)&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;props&#39;</span><span class="p">:</span> <span class="s1">&#39;background-color: #000066; color: white;&#39;</span>
+    <span class="s1">&#39;selector&#39;</span><span class="p">:</span> <span class="s1">&#39;th&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;props&#39;</span><span class="p">:</span> <span class="s1">&#39;background-color: white; color: black; width: 100px;font-weight:bold&#39;</span>
 <span class="p">}</span>
 <span class="n">index_names</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;selector&#39;</span><span class="p">:</span> <span class="s1">&#39;.index_name&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;props&#39;</span><span class="p">:</span> <span class="s1">&#39;font-style: italic; color: darkgrey; font-weight:normal;&#39;</span><span class="p">}</span>
+    <span class="s1">&#39;props&#39;</span><span class="p">:</span> <span class="s1">&#39;font-style: italic; color: black; font-weight:bold; width:300px&#39;</span><span class="p">}</span>
 <span class="n">cell_hover</span> <span class="o">=</span> <span class="p">{</span>  <span class="c1"># for row hover use &lt;tr&gt; instead of &lt;td&gt;</span>
     <span class="s1">&#39;selector&#39;</span><span class="p">:</span> <span class="s1">&#39;td:hover&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;props&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="s1">&#39;background-color&#39;</span><span class="p">,</span> <span class="s1">&#39;#ffffb3&#39;</span><span class="p">)]</span>
+    <span class="s1">&#39;props&#39;</span><span class="p">:</span> <span class="p">[(</span><span class="s1">&#39;background-color&#39;</span><span class="p">,</span> <span class="s1">&#39;#ffffb3&#39;</span><span class="p">),(</span><span class="s2">&quot;font-size&quot;</span><span class="p">,</span> <span class="s2">&quot;120%&quot;</span><span class="p">)]</span>
 <span class="p">}</span>
-<span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;submission&#39;</span><span class="p">:</span> <span class="n">submissions</span><span class="p">,</span>\
-        <span class="s1">&#39;SLUE-score&#39;</span><span class="p">:</span><span class="n">slue_scores</span><span class="p">,</span>\
-        <span class="s1">&#39;WER(slue-voxpopuli)&#39;</span><span class="p">:</span> <span class="n">wers_voxpopuli</span><span class="p">,</span>\
-        <span class="s1">&#39;WER(slue-voxceleb)&#39;</span><span class="p">:</span> <span class="n">wers_voxceleb</span><span class="p">,</span>\
-        <span class="s1">&#39;NER F1&#39;</span><span class="p">:</span> <span class="n">ner_f1s</span><span class="p">,</span>\
-        <span class="s1">&#39;Sentiment F1&#39;</span><span class="p">:</span><span class="n">sentiment_macro_f1s</span><span class="p">}</span>
+<span class="n">submission</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;selector&#39;</span><span class="p">:</span> <span class="s1">&#39;td&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;props&#39;</span><span class="p">:</span> <span class="s1">&#39;font-style: italic; color: black; font-weight:normal;&#39;</span><span class="p">}</span>
+<span class="n">caption</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">selector</span><span class="o">=</span><span class="s2">&quot;caption&quot;</span><span class="p">,</span> <span class="n">props</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;caption-side&quot;</span><span class="p">,</span> <span class="s2">&quot;bottom&quot;</span><span class="p">)])</span>
 
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;submission&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">sub</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="k">for</span> <span class="n">sub</span> <span class="ow">in</span> <span class="n">submissions</span><span class="p">],</span>\
+        <span class="s1">&#39;SLUE-score&#39;</span><span class="p">:</span><span class="n">slue_scores</span><span class="p">,</span>\
+        <span class="s1">&#39;WER(p)&#39;</span><span class="p">:</span> <span class="n">wers_voxpopuli</span><span class="p">,</span>\
+        <span class="s1">&#39;WER(c)&#39;</span><span class="p">:</span> <span class="n">wers_voxceleb</span><span class="p">,</span>\
+        <span class="s1">&#39;NER f-1&#39;</span><span class="p">:</span> <span class="n">ner_f1s</span><span class="p">,</span>\
+        <span class="s1">&#39;SA f-1&#39;</span><span class="p">:</span><span class="n">sentiment_macro_f1s</span><span class="p">}</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;submission&#39;</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">style</span><span class="o">.</span>\
     <span class="n">set_table_attributes</span><span class="p">(</span><span class="s1">&#39;style=&quot;font-size: 14px&quot;&#39;</span><span class="p">,)</span><span class="o">.</span>\
-    <span class="n">set_table_styles</span><span class="p">([</span><span class="n">cell_hover</span><span class="p">,</span><span class="n">index_names</span><span class="p">,</span><span class="n">headers</span><span class="p">],</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span>\
-    <span class="nb">format</span><span class="p">(</span><span class="n">precision</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">set_table_styles</span><span class="p">([</span><span class="n">submission</span><span class="p">,</span><span class="n">caption</span><span class="p">,</span><span class="n">cell_hover</span><span class="p">,</span><span class="n">index_names</span><span class="p">,</span><span class="n">headers</span><span class="p">],</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span>\
+    <span class="nb">format</span><span class="p">(</span><span class="n">precision</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span>\
+    <span class="n">set_caption</span><span class="p">(</span><span class="s2">&quot;*WER(p): WER for slue-voxpopuli, WER(c): WER for slue-voxceleb&quot;</span><span class="p">)</span><span class="o">.</span>\
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><style type="text/css">
-#T_316d7_ td:hover {
-  background-color: #ffffb3;
-}
-#T_316d7_ .index_name {
-  font-style: italic;
-  color: darkgrey;
-  font-weight: normal;
-}
-#T_316d7_ th:not(.index_name) {
-  background-color: #000066;
-  color: white;
-}
-</style>
-<table id="T_316d7_" style="font-size: 14px">
-  <thead>
-    <tr>
-      <th class="blank level0" >&nbsp;</th>
-      <th class="col_heading level0 col0" >submission</th>
-      <th class="col_heading level0 col1" >SLUE-score</th>
-      <th class="col_heading level0 col2" >WER(slue-voxpopuli)</th>
-      <th class="col_heading level0 col3" >WER(slue-voxceleb)</th>
-      <th class="col_heading level0 col4" >NER F1</th>
-      <th class="col_heading level0 col5" >Sentiment F1</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th id="T_316d7_level0_row0" class="row_heading level0 row0" >0</th>
-      <td id="T_316d7_row0_col0" class="data row0 col0" >e2e_w2v2-l-ll60k-lm</td>
-      <td id="T_316d7_row0_col1" class="data row0 col1" >68.2</td>
-      <td id="T_316d7_row0_col2" class="data row0 col2" >9.3</td>
-      <td id="T_316d7_row0_col3" class="data row0 col3" >10.9</td>
-      <td id="T_316d7_row0_col4" class="data row0 col4" >64.8</td>
-      <td id="T_316d7_row0_col5" class="data row0 col5" >49.8</td>
-    </tr>
-    <tr>
-      <th id="T_316d7_level0_row1" class="row_heading level0 row1" >1</th>
-      <td id="T_316d7_row1_col0" class="data row1 col0" >pipeline_w2v2-l-ll60k-lm-deberta-l</td>
-      <td id="T_316d7_row1_col1" class="data row1 col1" >75.8</td>
-      <td id="T_316d7_row1_col2" class="data row1 col2" >9.3</td>
-      <td id="T_316d7_row1_col3" class="data row1 col3" >10.9</td>
-      <td id="T_316d7_row1_col4" class="data row1 col4" >71.8</td>
-      <td id="T_316d7_row1_col5" class="data row1 col5" >65.8</td>
-    </tr>
-  </tbody>
-</table>
-</div></div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;/var/folders/c8/4s0lwvmn6t32yrbh0kbnnhrh0000gn/T/ipykernel_39673/372886448.py&quot;</span><span class="gt">, line </span><span class="mi">134</span>
+    
+    <span class="o">^</span>
+<span class="ne">SyntaxError</span>: invalid syntax
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 

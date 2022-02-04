@@ -1,0 +1,166 @@
+Traceback (most recent call last):
+  File "/Users/swshon/exp_scratch/env/.pyenv/versions/3.8.0/envs/slue-toolkit/lib/python3.8/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
+    executenb(
+  File "/Users/swshon/exp_scratch/env/.pyenv/versions/3.8.0/envs/slue-toolkit/lib/python3.8/site-packages/nbclient/client.py", line 1093, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/Users/swshon/exp_scratch/env/.pyenv/versions/3.8.0/envs/slue-toolkit/lib/python3.8/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/Users/swshon/exp_scratch/env/.pyenv/versions/3.8.0/envs/slue-toolkit/lib/python3.8/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "/Users/swshon/exp_scratch/env/.pyenv/versions/3.8.0/lib/python3.8/asyncio/base_events.py", line 608, in run_until_complete
+    return future.result()
+  File "/Users/swshon/exp_scratch/env/.pyenv/versions/3.8.0/envs/slue-toolkit/lib/python3.8/site-packages/nbclient/client.py", line 559, in async_execute
+    await self.async_execute_cell(
+  File "/Users/swshon/exp_scratch/env/.pyenv/versions/3.8.0/envs/slue-toolkit/lib/python3.8/site-packages/nbclient/client.py", line 854, in async_execute_cell
+    self._check_raise_for_error(cell, exec_reply)
+  File "/Users/swshon/exp_scratch/env/.pyenv/versions/3.8.0/envs/slue-toolkit/lib/python3.8/site-packages/nbclient/client.py", line 756, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import editdistance,argparse
+import pandas as pd
+import numpy as np
+from sklearn.metrics import f1_score, precision_score, recall_score
+
+def get_asr_wer(gold_df,submission_df):
+    assert len(gold_df)==len(submission_df), "tsv length mismatch"
+    errs_t = 0
+    lengths_t = 0
+
+    for tgt_words,hyp_words in zip(gold_df.pred_text.to_list(), submission_df.pred_text.to_list()):
+        tgt_words = tgt_words.split()
+        if pd.isna(hyp_words):
+            hyp_words = []
+        else:
+            hyp_words = hyp_words.split()
+        errs = editdistance.eval(hyp_words, tgt_words)
+        length = len(tgt_words)
+        errs_t += errs
+        lengths_t += length
+
+    wer = errs_t * 100.0 / lengths_t
+    return wer
+
+def get_sentiment_f1(gold_df,submission_df):
+    
+    gt = gold_df.pred_sentiment.to_list()
+    pred = submission_df.pred_sentiment.to_list()
+    macro_f1 = f1_score(gt, pred, average="macro") * 100
+    
+    return macro_f1
+
+
+wers = []
+wers_voxpopuli =[]
+wers_voxceleb = []
+sentiment_macro_f1s = []
+ner_f1s = []
+slue_scores = []
+submissions = ["e2e_w2v2-l-ll60k-lm","pipeline_w2v2-l-ll60k-lm-deberta-l"]
+for submission_name in submissions:
+
+
+    gold = pd.read_csv("submissions/gold.tsv",sep="\t")
+    submission = pd.read_csv(f"submissions/{submission_name}.tsv",sep="\t")
+
+    #sort submission based on utterance id
+    new_order = []
+    for utterance_id in gold.id:
+        assert utterance_id in submission.id.to_list(),f"missing id = {utterance_id}"
+        index = submission.index[submission.id == utterance_id]
+        assert len(index)==1, f"too many entities for id = {utterance_id}"
+        new_order.append(index[0])
+    submission = submission.loc[new_order]
+
+    #overall wer (micro)
+    wer = get_asr_wer(gold,submission)
+    wers.append(wer)
+    #voxpopuli wer
+    wer_voxpopuli = get_asr_wer(gold[gold.set_name=="slue-voxpopuli"],submission[gold.set_name=="slue-voxpopuli"])
+    wers_voxpopuli.append(wer_voxpopuli)
+    #voxceleb wer
+    wer_voxceleb = get_asr_wer(gold[gold.set_name=="slue-voxceleb"],submission[gold.set_name=="slue-voxceleb"])
+    wers_voxceleb.append(wer_voxceleb)
+
+    # sentiment analysis f1 score
+    sentiment_macro_f1 = get_sentiment_f1(gold[gold.set_name=="slue-voxceleb"],submission[gold.set_name=="slue-voxceleb"])
+    sentiment_macro_f1s.append(sentiment_macro_f1)
+
+
+    # ner micro f1 score
+    from slue_toolkit.eval import eval_utils
+    from slue_toolkit.eval.eval_w2v_ner import make_distinct
+    eval_utils.get_stats = eval_utils.get_ner_stats #quickpatch
+    
+    gold[gold.set_name=="slue-voxpopuli"],submission[gold.set_name=="slue-voxpopuli"]
+    gold_distinct_label_lst = []
+    for label in gold[gold.set_name=="slue-voxpopuli"].pred_ner.to_list():
+        label_lst = []
+        if eval(label):
+            for lab in eval(label):
+                label_lst.append(tuple(lab))
+
+            gold_distinct_label_lst.append(make_distinct(label_lst))
+        else:
+            gold_distinct_label_lst.append([])
+
+    submission_distinct_label_lst = []
+    for label in submission[gold.set_name=="slue-voxpopuli"].pred_ner.to_list():
+        label_lst = []
+        if eval(label):
+            for lab in eval(label):
+                label_lst.append(tuple(lab))
+
+            submission_distinct_label_lst.append(make_distinct(label_lst))
+        else:
+            submission_distinct_label_lst.append([])
+
+    ner_result = eval_utils.get_ner_scores(gold_distinct_label_lst,submission_distinct_label_lst)
+    ner_f1 = ner_result['overall_micro']['fscore']*100
+    ner_f1s.append(ner_f1)
+    slue_scores.append(((100 - (wer_voxpopuli+wer_voxceleb)/2) +sentiment_macro_f1 + ner_f1)/3)
+
+
+
+headers = {
+    'selector': 'th',
+    'props': 'background-color: white; color: black; width: 100px;font-weight:bold'
+}
+index_names = {
+    'selector': '.index_name',
+    'props': 'font-style: italic; color: black; font-weight:bold; width:300px'}
+cell_hover = {  # for row hover use <tr> instead of <td>
+    'selector': 'td:hover',
+    'props': [('background-color', '#ffffb3'),("font-size", "120%")]
+}
+submission = {
+    'selector': 'td',
+    'props': 'font-style: italic; color: black; font-weight:normal;'}
+caption = dict(selector="caption", props=[("caption-side", "bottom")])
+
+data = {'submission': [sub.upper() for sub in submissions],\
+        'SLUE-score':slue_scores,\
+        'WER(p)': wers_voxpopuli,\
+        'WER(c)': wers_voxceleb,\
+        'NER f-1': ner_f1s,\
+        'SA f-1':sentiment_macro_f1s}
+df = pd.DataFrame(data=data).set_index('submission')
+df.style.\
+    set_table_attributes('style="font-size: 14px"',).\
+    set_table_styles([submission,caption,cell_hover,index_names,headers], overwrite=False).\
+    format(precision=1).\
+    set_caption("*WER(p): WER for slue-voxpopuli, WER(c): WER for slue-voxceleb").\
+
+
+
+
+
+------------------
+
+[0;36m  File [0;32m"/var/folders/c8/4s0lwvmn6t32yrbh0kbnnhrh0000gn/T/ipykernel_39673/372886448.py"[0;36m, line [0;32m134[0m
+[0;31m    [0m
+[0m    ^[0m
+[0;31mSyntaxError[0m[0;31m:[0m invalid syntax
+
+SyntaxError: invalid syntax (372886448.py, line 134)
+
