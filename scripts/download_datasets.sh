@@ -21,6 +21,8 @@ done
 done
 
 #5. copy files
-cp ./manifest/slue-voxpopuli/dev.tsv ./manifest/slue-voxpopuli/e2e_ner/dev_raw.tsv
-cp ./manifest/slue-voxpopuli/fine-tune.tsv ./manifest/slue-voxpopuli/e2e_ner/fine-tune_raw.tsv
-cp ./manifest/slue-voxpopuli/dict.ltr.txt ./manifest/slue-voxpopuli/e2e_ner/dict.ltr.txt
+for session in dev fine-tune; do
+for label in raw combined; do
+    cp ./manifest/slue-voxpopuli/${session}.tsv ./manifest/slue-voxpopuli/e2e_ner/${session}_${label}.tsv
+done
+done
