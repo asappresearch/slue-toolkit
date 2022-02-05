@@ -22,8 +22,11 @@ pretrained_ckpt=`realpath $pretrained_ckpt`
 
 config_dir=baselines/ner/configs
 config=w2v2_ner_1gpu
-train_subset=fine-tune_raw
-valid_subset=dev_raw
+label_type=raw
+train_subset=fine-tune_$label_type
+valid_subset=dev_$label_type
+python slue_toolkit/prepare/create_dict.py manifest/slue-voxpopuli/e2e_ner/fine-tune_$label_type.ltr manifest/slue-voxpopuli/e2e_ner/dict.ltr.txt
+python slue_toolkit/prepare/create_dict.py manifest/slue-voxpopuli/e2e_ner/fine-tune_$label_type.wrd manifest/slue-voxpopuli/e2e_ner/dict.wrd.txt
 
 normalize=true
 lr=1e-5

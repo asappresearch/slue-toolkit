@@ -1,4 +1,4 @@
-import os
+import os,fire
 
 import slue_toolkit.text_ner.ner_deberta_modules as NDM
 from slue_toolkit.generic_utils import read_lst, load_pkl, save_pkl
@@ -9,7 +9,7 @@ def train(
     model_dir,
     model_type,
     label_type="raw",
-    train_subset="finetune",
+    train_subset="fine-tune",
     valid_subset="dev",
 ):
     data_obj = NDM.DataSetup(data_dir, model_type)
@@ -40,10 +40,10 @@ def eval(
 
     data_obj = NDM.DataSetup(data_dir, model_type)
     _ = data_obj.prep_data(
-        "finetune", "raw", get_map_files=True
+        "fine-tune", "raw", get_map_files=True
     )  # prepare tag-id mapping files
     _ = data_obj.prep_data(
-        "finetune", "combined", get_map_files=True
+        "fine-tune", "combined", get_map_files=True
     )  # prepare tag-id mapping files
 
     tag2id = load_pkl(os.path.join(data_dir, "raw_tag2id.pkl"))

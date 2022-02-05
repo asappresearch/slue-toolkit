@@ -1,6 +1,7 @@
-import logging
+import logging,os,re
 logger = logging.getLogger(__name__)
 import numpy as np
+from pathlib import Path
 
 import torch
 from torch.utils.data import DataLoader
@@ -36,7 +37,7 @@ class DataSetup():
 		self.tokenizer = DebertaTokenizerFast.from_pretrained(f'microsoft/{model_type}', add_prefix_space=True, output_loading_info=False)
 
 	def read_data(self, file_path):
-		file_path = Path(os.path.join(self.data_dir, file_path+".tsv"))
+		file_path = Path(os.path.join(self.data_dir, file_path))
 
 		raw_text = file_path.read_text().strip()
 		raw_docs = re.split(r'\n\t?\n', raw_text)
@@ -85,10 +86,10 @@ class DataSetup():
 		return encoded_labels
 
 	def prep_data(self, split_name, label_type="raw", get_map_files=False):
-		texts, tags = self.read_data(f"{split_name}_{label_type}_nlp_ner.tsv")
+		texts, tags = self.read_data(f"{split_name}_{label_type}.tsv")
 
 		tag_id_fn = os.path.join(self.data_dir, f"{label_type}_tag2id.pkl")
-		if not os.path.exist(tag_id_fn):
+		if not os.path.exists(tag_id_fn):
 			# Create encodings
 			unique_tags = set(tag for doc in tags for tag in doc)
 			tag2id = {tag: id for id, tag in enumerate(unique_tags)}
