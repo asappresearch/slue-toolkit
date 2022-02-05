@@ -22,8 +22,8 @@ pretrained_ckpt=`realpath $pretrained_ckpt`
 
 config_dir=baselines/ner/configs
 config=w2v2_ner_1gpu
-train_subset=finetune_raw_e2e_ner
-valid_subset=dev_raw_e2e_ner
+train_subset=fine-tune_raw
+valid_subset=dev_raw
 
 normalize=true
 lr=1e-5
