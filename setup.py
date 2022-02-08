@@ -23,6 +23,7 @@ setup(
         "fire",
         "editdistance",
         "soundfile",
+        "transformers",
     ],
     entry_points={},
     include_package_data=True,
