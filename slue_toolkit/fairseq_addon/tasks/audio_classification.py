@@ -37,8 +37,7 @@ class AudioClassificationTask(AudioPretrainingTask):
     cfg: AudioClassificationConfig
 
     def __init__(
-        self,
-        cfg: AudioClassificationConfig,
+        self, cfg: AudioClassificationConfig,
     ):
         super().__init__(cfg)
         self.blank_symbol = "<s>"
@@ -76,10 +75,7 @@ class AudioClassificationTask(AudioPretrainingTask):
             f"({len(self.datasets[split])}) do not match"
         )
 
-        self.datasets[split] = AddLabelDataset(
-            self.datasets[split],
-            labels,
-        )
+        self.datasets[split] = AddLabelDataset(self.datasets[split], labels,)
 
     @property
     def label2id(self):
