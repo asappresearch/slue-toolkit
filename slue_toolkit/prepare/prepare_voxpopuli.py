@@ -30,7 +30,7 @@ def create_split(
 
 
 def create_manifest(
-    data_dir="datasets/slue-voxpopuli",
+    data_dir="dataset/slue-voxpopuli",
     manifest_dir="manifest/slue-voxpopuli",
     is_blind=True,
 ):

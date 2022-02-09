@@ -106,7 +106,7 @@ def create_split(
 
 
 def create_manifest(
-    data_dir="datasets/slue-voxceleb",
+    data_dir="dataset/slue-voxceleb",
     manifest_dir="manifest/slue-voxceleb",
     is_blind=True,
 ):

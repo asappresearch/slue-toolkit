@@ -1,6 +1,6 @@
 # general
 .DS_Store
-datasets/
+dataset/
 manifest/
 save/
 slue_toolkit.egg-info/

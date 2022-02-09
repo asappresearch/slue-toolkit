@@ -1,12 +1,12 @@
 #!/bin/bash
 
 #1. Download
-wget https://papers-slue.awsdev.asapp.com/slue-voxceleb_blind.tar.gz -P datasets/
-wget https://papers-slue.awsdev.asapp.com/slue-voxpopuli_blind.tar.gz -P datasets/
+wget https://papers-slue.awsdev.asapp.com/slue-voxceleb_blind.tar.gz -P dataset/
+wget https://papers-slue.awsdev.asapp.com/slue-voxpopuli_blind.tar.gz -P dataset/
 
 #2. Extract
-tar -xzvf datasets/slue-voxceleb_blind.tar.gz -C datasets/
-tar -xzvf datasets/slue-voxpopuli_blind.tar.gz -C datasets/
+tar -xzvf dataset/slue-voxceleb_blind.tar.gz -C dataset/
+tar -xzvf dataset/slue-voxpopuli_blind.tar.gz -C dataset/
 
 #3. preprocess
 
