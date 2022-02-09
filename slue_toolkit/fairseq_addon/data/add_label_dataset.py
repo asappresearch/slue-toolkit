@@ -11,9 +11,7 @@ from fairseq.data import BaseWrapperDataset, data_utils
 
 class AddLabelDataset(BaseWrapperDataset):
     def __init__(
-        self,
-        dataset,
-        labels,
+        self, dataset, labels,
     ):
         super().__init__(dataset)
         self.labels = labels

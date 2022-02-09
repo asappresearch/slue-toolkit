@@ -11,7 +11,10 @@ sys.path.insert(0, "../")
 
 from slue_toolkit.eval import eval_utils
 from slue_toolkit.generic_utils import (
-    read_lst, save_pkl, spl_char_to_entity, raw_to_combined_tag_map
+    read_lst,
+    save_pkl,
+    spl_char_to_entity,
+    raw_to_combined_tag_map,
 )
 
 
@@ -38,8 +41,6 @@ def get_gt_pred(score_type, eval_label, eval_set, decoded_data_dir):
     entity_to_spl_char = {}
     for spl_char, entity in spl_char_to_entity.items():
         entity_to_spl_char[entity] = spl_char
-
-    if eval_label == "combined":
 
     def update_label_lst(lst, phrase, label):
         if eval_label == "combined":

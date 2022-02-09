@@ -24,7 +24,7 @@ def get_ner_scores(all_gt, all_predictions):
         all_gt: [(GPE, "eu", 0), (DATE, "today", 0), (GPE, "eu", 1)]
     """
     metrics = {}
-    stats = get_stats(all_gt, all_predictions)
+    stats = get_ner_stats(all_gt, all_predictions)
     num_correct, num_gt, num_pred = 0, 0, 0
     prec_lst, recall_lst, fscore_lst = [], [], []
     for tag_name, tag_stats in stats.items():

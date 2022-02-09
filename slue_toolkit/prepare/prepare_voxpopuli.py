@@ -54,7 +54,7 @@ def create_manifest(
                 ).frames
                 print(f"{uid}.ogg\t{frames}", file=f)
 
-        if not (split == "test") and is_blind:
+        if split != "test" or not is_blind:
             with open(os.path.join(manifest_dir, f"{split}.wrd"), "w") as f:
                 for text in df["normalized_text"].array:
                     text = re.sub(r"[\.;?!]", "", text)
@@ -95,15 +95,23 @@ def create_manifest(
                         )
                         print(wrd_str, file=f_wrd)
                         print(ltr_str, file=f_ltr)
-        os.symlink(f"../{split}.tsv", os.path.join(manifest_dir, f"e2e_ner/{split}.tsv"))
+        try:
+            os.symlink(
+                f"../{split}.tsv", os.path.join(manifest_dir, f"e2e_ner/{split}.tsv")
+            )
+        except:
+            pass
 
     for label_type in ["raw", "combined"]:
-        for token_type in ['wrd', 'ltr']:
+        for token_type in ["wrd", "ltr"]:
             create_dict(
-                os.path.join(manifest_dir, f"e2e_ner/fine-tune.{label_type}.{token_type}"),
-                os.path.join(manifest_dir, f"e2e_ner/dict.{label_type}.{token_type}.txt"),
+                os.path.join(
+                    manifest_dir, f"e2e_ner/fine-tune.{label_type}.{token_type}"
+                ),
+                os.path.join(
+                    manifest_dir, f"e2e_ner/dict.{label_type}.{token_type}.txt"
+                ),
             )
-                
 
 
 if __name__ == "__main__":
