@@ -8,4 +8,5 @@ python slue_toolkit/text_ner/ner_deberta.py eval \
 --model_type $model_type \
 --eval_asr False \
 --eval_subset $eval_set \
---eval_label $eval_label
+--eval_label $eval_label \
+--save_results True

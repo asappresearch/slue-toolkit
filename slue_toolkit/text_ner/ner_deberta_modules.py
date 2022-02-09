@@ -288,7 +288,7 @@ class Eval:
 		"""
         self.data_dir = data_dir
         self.model_dir = model_dir
-        best_model_ckpt_dir = os.path.join(self.model_dir, "best-checkpoint")
+        best_model_ckpt_dir = os.path.join(self.model_dir)
         self.model = DebertaForTokenClassification.from_pretrained(
             best_model_ckpt_dir, output_loading_info=False
         )
@@ -434,7 +434,7 @@ class Eval:
             return raw_to_combined_id
         elif tag_names:
             tag_map_dct = {"O": "O"}
-            for key, value in combined_tag_dct.items():
+            for key, value in raw_to_combined_tag_map.items():
                 for item in value:
                     for pfx in ["B-", "I-"]:
                         if key != "DISCARD":

@@ -35,8 +35,8 @@ def eval(
     log_dir = os.path.join(model_dir, "metrics")
     if save_results:
         ner_results_dir = os.path.join(log_dir, "error_analysis")
+        os.makedirs(ner_results_dir, exist_ok=True)
     os.makedirs(log_dir, exist_ok=True)
-    os.makedirs(ner_results_dir, exist_ok=True)
 
     data_obj = NDM.DataSetup(data_dir, model_type)
     _ = data_obj.prep_data(
@@ -50,14 +50,16 @@ def eval(
     if "combined" in eval_label:
         tag_lst = read_lst(os.path.join(data_dir, "combined_tag_lst_ordered"))
 
-    val_texts, val_tags, _, _, _, _ = data_obj.prep_data(eval_subset, tag2id=tag2id)
+    val_texts, val_tags, _, _, _ = data_obj.prep_data(eval_subset)
     if eval_asr:
         asr_val_texts, _, _, _, asr_val_dataset = data_obj.prep_data(
             f"{eval_subset}-{asr_model_type}-asr-{lm}", tag2id
         )
     else:
         asr_val_texts, asr_val_dataset = None, None
-    eval_obj = NDM.Eval(model_dir, model_type, label_list, eval_label, eval_asr)
+
+    label_list = read_lst(os.path.join(data_dir, f"{eval_label}_tag_lst_ordered"))
+    eval_obj = NDM.Eval(data_dir, model_dir, model_type, label_list, eval_label, eval_asr)
     for score_type in ["standard", "label"]:
         if eval_asr:
             res_fn = "-".join(
