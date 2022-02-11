@@ -274,13 +274,27 @@ class Eval():
 	def reduce(self, entity_name):
 		return entity_name.split("-")[-1]
 
+	def handling_apostrophe(self, entity_info):
+		"""
+		Handling trailing "'s" and separating it from the entity phrase
+		in accordance with the vox populi NER post processing step.
+		This avoids over-penalizing the model just because the LM used
+		for ASR decoding might not be trained on the text that is similarly
+		post-processed.
+		"""
+		entity_phrase = " ".join(entity_info).replace("'s", " 's").replace("  ", " ")
+		if entity_phrase[-3:] == " 's":
+			entity_phrase = entity_phrase[:-3]
+		return entity_phrase
+
 	def update_entity_lst(self, lst, entity_name, score_type, entity_info):
 		"""
 		entity_info: word segment when eval_asr is True and word location otherwise
 		"""
 		if self.eval_asr:
 			if score_type == "standard":
-				lst.append((self.reduce(entity_name), " ".join(entity_info)))
+				entity_phrase = self.handling_apostrophe(entity_info)
+				lst.append((self.reduce(entity_name), entity_phrase))
 			elif score_type == "label":
 				lst.append((self.reduce(entity_name), "word"))
 		else:
