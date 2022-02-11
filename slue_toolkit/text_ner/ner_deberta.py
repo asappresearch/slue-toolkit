@@ -27,12 +27,14 @@ def eval(
     model_type,
     eval_asr=False,
     eval_subset="dev",
+    train_label="raw",
     eval_label="combined",
     lm="nolm",
     asr_model_type="w2v2-base",
     save_results=False,
 ):
     log_dir = os.path.join(model_dir, "metrics")
+    label_list = read_lst(os.path.join(data_dir, f"{train_label}_tag_lst_ordered"))
     if save_results:
         ner_results_dir = os.path.join(log_dir, "error_analysis")
     os.makedirs(log_dir, exist_ok=True)
@@ -46,14 +48,13 @@ def eval(
         "fine-tune", "combined", get_map_files=True
     )  # prepare tag-id mapping files
 
-    tag2id = load_pkl(os.path.join(data_dir, "raw_tag2id.pkl"))
     if "combined" in eval_label:
         tag_lst = read_lst(os.path.join(data_dir, "combined_tag_lst_ordered"))
 
-    val_texts, val_tags, _, _, _, _ = data_obj.prep_data(eval_subset, tag2id=tag2id)
+    val_texts, val_tags, _, _, _, _ = data_obj.prep_data(eval_subset, "raw")
     if eval_asr:
         asr_val_texts, _, _, _, asr_val_dataset = data_obj.prep_data(
-            f"{eval_subset}-{asr_model_type}-asr-{lm}", tag2id
+            f"{eval_subset}-{asr_model_type}-asr-{lm}", "raw"
         )
     else:
         asr_val_texts, asr_val_dataset = None, None
