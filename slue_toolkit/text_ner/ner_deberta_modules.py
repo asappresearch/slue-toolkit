@@ -1,3 +1,4 @@
+from curses import raw
 import logging,os,re
 logger = logging.getLogger(__name__)
 import numpy as np
@@ -16,7 +17,8 @@ from transformers import (
 	DebertaForTokenClassification
 )
 from transformers.trainer_utils import get_last_checkpoint
-from slue_toolkit.generic_utils import read_lst, write_to_file, load_pkl, save_pkl
+from slue_toolkit.generic_utils import write_to_file, load_pkl, save_pkl
+from slue_toolkit.eval import eval_utils
 
 class VPDataset(torch.utils.data.Dataset):
 	def __init__(self, encodings, labels):
@@ -40,6 +42,10 @@ class DataSetup():
 		file_path = Path(os.path.join(self.data_dir, file_path))
 
 		raw_text = file_path.read_text().strip()
+		# Space separating trailing "'s" in accordance with the slue voxpopuli NER post processing step.
+		# This avoids over-penalizing the model just because the LM used for ASR decoding might not 
+		# be trained on the text that is similarly post-processed.
+		raw_text = [line.replace("'s", " 's").replace("  ", " ") for line in raw_text]
 		raw_docs = re.split(r'\n\t?\n', raw_text)
 		token_docs = []
 		tag_docs = []
@@ -445,11 +451,13 @@ class Eval():
 	def get_scores(self, score_type, eval_dataset_pred, eval_texts_gt, eval_tags_gt=None, eval_texts_pred=None):
 		all_gt, all_predictions = self.run_inference(score_type, eval_dataset_pred, eval_texts_gt, eval_tags_gt, eval_texts_pred)
 
-		metrics_dct = eval_utils.get_scores(all_gt, all_predictions)
-		print("[%s, micro-averaged %s] Precision: %.2f, recall: %.2f, fscore = %.2f" % (
-			tag_name, res_dct["precision"], res_dct["recall"], res_dct["fscore"]))
+		metrics_dct = eval_utils.get_ner_scores(all_gt, all_predictions)
+		print("[micro-averaged F1] Precision: %.2f, recall: %.2f, fscore = %.2f" % (
+			metrics_dct["overall_micro"]["precision"], 
+			metrics_dct["overall_micro"]["recall"], 
+			metrics_dct["overall_micro"]["fscore"]))
 
 		if score_type == "standard": # with standard evaluation only
-			analysis_examples_dct = eval_utils.error_analysis(all_labels, all_predictions, eval_texts_gt)
+			analysis_examples_dct = eval_utils.ner_error_analysis(all_gt, all_predictions, eval_texts_gt)
 
 		return metrics_dct, analysis_examples_dct
