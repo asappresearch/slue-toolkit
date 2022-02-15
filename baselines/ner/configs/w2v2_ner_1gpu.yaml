@@ -21,7 +21,7 @@ task:
   _name: audio_finetuning
   data: ???
   normalize: false  # must be consistent with pre-training
-  labels: ltr
+  labels: raw.ltr
 
 dataset:
   num_workers: 0

@@ -1,4 +1,5 @@
 import pickle as pkl
+from slue_toolkit.generic_utils import raw_to_combined_tag_map
 
 
 def load_pkl(fname, encdng=None):
@@ -28,7 +29,7 @@ def get_label_lst(label_str, label_type):
     """
     if label_str == "None" or label_str == "[]":
         return []
-    tag_map = load_pkl("slue_toolkit/label_map_files/raw_to_combined_tags.pkl")
+    tag_map = raw_to_combined_tag_map
     label_lst = []
     ner_labels_lst = label_str.strip("[[").strip("]]").split("], [")
     for item in ner_labels_lst:

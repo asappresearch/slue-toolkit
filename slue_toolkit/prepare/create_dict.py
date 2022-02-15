@@ -2,7 +2,7 @@ from collections import Counter
 import fire
 
 
-def main(input, output, thres=0):
+def create_dict(input, output, thres=0):
     counter = Counter()
     with open(input) as f:
         for line in f:
@@ -15,4 +15,4 @@ def main(input, output, thres=0):
 
 
 if __name__ == "__main__":
-    fire.Fire(main)
+    fire.Fire(create_dict)

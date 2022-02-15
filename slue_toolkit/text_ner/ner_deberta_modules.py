@@ -5,6 +5,9 @@ logger = logging.getLogger(__name__)
 import numpy as np
 from pathlib import Path
 
+import os
+import re
+from pathlib import Path
 import torch
 from torch.utils.data import DataLoader
 
@@ -18,7 +21,12 @@ from transformers import (
     DebertaForTokenClassification,
 )
 from transformers.trainer_utils import get_last_checkpoint
-from slue_toolkit.generic_utils import write_to_file, load_pkl, save_pkl
+from slue_toolkit.generic_utils import (
+    write_to_file,
+    load_pkl,
+    save_pkl,
+    raw_to_combined_tag_map,
+)
 from slue_toolkit.eval import eval_utils
 
 
@@ -413,9 +421,6 @@ class Eval:
         """
         assert indices or tag_names
         assert not (indices and tag_names)
-        raw_to_combined_tag_map = load_pkl(
-            os.path.join("slue_toolkit/label_map_files", "raw_to_combined_tags.pkl")
-        )
         if indices:
             id2tag_raw = load_pkl(os.path.join(self.data_dir, "raw_id2tag.pkl"))
             tag2id_raw = load_pkl(os.path.join(self.data_dir, "raw_tag2id.pkl"))

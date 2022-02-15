@@ -22,11 +22,8 @@ pretrained_ckpt=`realpath $pretrained_ckpt`
 
 config_dir=baselines/ner/configs
 config=w2v2_ner_1gpu
-label_type=raw
-train_subset=fine-tune_$label_type
-valid_subset=dev_$label_type
-python slue_toolkit/prepare/create_dict.py manifest/slue-voxpopuli/e2e_ner/fine-tune_$label_type.ltr manifest/slue-voxpopuli/e2e_ner/dict.ltr.txt
-python slue_toolkit/prepare/create_dict.py manifest/slue-voxpopuli/e2e_ner/fine-tune_$label_type.wrd manifest/slue-voxpopuli/e2e_ner/dict.wrd.txt
+train_subset=fine-tune
+valid_subset=dev
 
 normalize=true
 lr=1e-5
@@ -38,6 +35,7 @@ fairseq-hydra-train \
     hydra.output_subdir=$save \
     common.tensorboard_logdir=$tb_save \
     task.data=$data \
+    task.labels="raw.ltr" \
     dataset.train_subset=$train_subset \
     dataset.valid_subset=$valid_subset \
     distributed_training.distributed_world_size=$ngpu \
