@@ -8,8 +8,8 @@ def prep_data(
     model_type, asr_data_dir, asr_model_dir, out_data_dir, eval_set, lm="nolm"
 ):
     """
-	Create tsv files for pipeline evaluation from the decoded ASR transcripts
-	"""
+    Create tsv files for pipeline evaluation from the decoded ASR transcripts
+    """
     if "nolm" not in lm:
         lm = "t3-b500-lw2-ws-1"
     manifest_data_fn = os.path.join(asr_data_dir, eval_set + ".wrd")
@@ -29,8 +29,8 @@ def prep_data(
 
 def get_correct_order(self, decoded_data_dir, manifest_data_fn):
     """
-	Reorder decoded sentenced to match the original order
-	"""
+    Reorder decoded sentenced to match the original order
+    """
     if not os.path.exists(decoded_data_dir):
         print("Decoded data %s not found" % (decoded_data_dir))
         sys.exit()

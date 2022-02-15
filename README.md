@@ -141,3 +141,8 @@ To evaluate the fine-tuned wav2vec 2.0 sentiment model, run following commands o
 python3 slue_toolkit/eval/eval_w2v_sentiment.py --save-dir save/sentiment/w2v2-base --data manifest/slue-voxceleb --subset dev
 ```
 More detail baseline experiment described [here](baselines/sentiment/README.md)
+
+# How-to-submit for your test set evaluation
+
+See here https://asappresearch.github.io/slue-toolkit/how-to-submit.html
+

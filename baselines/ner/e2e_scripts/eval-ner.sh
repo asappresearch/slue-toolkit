@@ -5,13 +5,13 @@ lm=$4 # nolm or vp_ner/4
 
 beam=500
 lm_wt=2
-ws=1 
+ws=1
 
 # This saves the decoded text at save/e2e_ner/${pretrain_model}/decode
 python slue_toolkit/eval/eval_w2v.py eval \
 --model save/e2e_ner/${pretrain_model} \
 --data manifest/slue-voxpopuli/e2e_ner \
---subset ${subset}_raw_e2e_ner \
+--subset ${subset}_raw \
 --lm $lm \
 --beam_size $beam \
 --lm_weight $lm_wt \
@@ -24,5 +24,3 @@ python slue_toolkit/eval/eval_e2e_ner.py eval_ner \
 --eval_label ${eval_label} \
 --lm ${lm} \
 --lm_sfx b${beam}-lw${lm_wt}-ws${ws}
-
-
