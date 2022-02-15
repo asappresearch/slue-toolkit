@@ -53,11 +53,11 @@ def eval(
 
     val_texts, val_tags, _, _, _, _ = data_obj.prep_data(eval_subset, "raw")
     if eval_asr:
-        asr_val_texts, _, _, _, asr_val_dataset = data_obj.prep_data(
+        asr_val_texts, _, _, _, val_dataset = data_obj.prep_data(
             f"{eval_subset}-{asr_model_type}-asr-{lm}", "raw"
         )
     else:
-        asr_val_texts, asr_val_dataset = None, None
+        asr_val_texts = None
     eval_obj = NDM.Eval(model_dir, model_type, label_list, eval_label, eval_asr)
     for score_type in ["standard", "label"]:
         if eval_asr:
@@ -67,7 +67,7 @@ def eval(
         else:
             res_fn = "-".join([eval_subset, "gt-text", eval_label, score_type])
         metrics_dct, analysis_examples_dct = eval_obj.get_scores(
-            score_type, asr_val_dataset, val_texts, val_tags, asr_val_texts
+            score_type, val_dataset, val_texts, val_tags, asr_val_texts
         )
         save_pkl(os.path.join(log_dir, res_fn + ".pkl"), metrics_dct)
         if save_results:

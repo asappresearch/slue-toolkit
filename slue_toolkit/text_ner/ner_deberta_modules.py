@@ -377,7 +377,7 @@ class Eval():
 			raw_to_combined_id = {}
 			for key, value in raw_to_combined_tag_map.items():
 				for pfx in ["B-", "I-"]:
-					raw_id = tag2id_raw[pfx+tag]
+					raw_id = tag2id_raw[pfx+key]
 					if value != "DISCARD":
 						combined_id = tag2id_combined[pfx+value]
 					else:
@@ -389,7 +389,7 @@ class Eval():
 			return raw_to_combined_id
 		elif tag_names:
 			tag_map_dct = {"O": "O"}
-			for key, value in combined_tag_dct.items():
+			for key, value in raw_to_combined_tag_map.items():
 				for item in value:
 					for pfx in ["B-", "I-"]:
 						if key != "DISCARD":
