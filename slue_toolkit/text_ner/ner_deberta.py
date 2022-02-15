@@ -1,4 +1,5 @@
 import os
+import fire
 
 import slue_toolkit.text_ner.ner_deberta_modules as NDM
 from slue_toolkit.generic_utils import read_lst, load_pkl, save_pkl
@@ -9,7 +10,7 @@ def train(
     model_dir,
     model_type,
     label_type="raw",
-    train_subset="finetune",
+    train_subset="fine-tune",
     valid_subset="dev",
 ):
     data_obj = NDM.DataSetup(data_dir, model_type)

@@ -1,0 +1,1 @@
+bash scripts/create_ngram.sh $1 manifest/slue-voxpopuli/fine-tune.wrd save/kenlm/vp_ner 4
