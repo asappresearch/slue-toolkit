@@ -1,4 +1,4 @@
-import os,fire
+import os, fire
 
 import slue_toolkit.text_ner.ner_deberta_modules as NDM
 from slue_toolkit.generic_utils import read_lst, load_pkl, save_pkl
