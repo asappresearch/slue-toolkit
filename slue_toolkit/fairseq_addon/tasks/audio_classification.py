@@ -18,7 +18,7 @@ from fairseq.dataclass import FairseqDataclass
 from fairseq.dataclass.configs import GenerationConfig
 
 from fairseq.tasks import register_task
-from slue_toolkit.fairseq_addon.data.add_label_dataset import AddLabelDataset
+from ..data.add_label_dataset import AddLabelDataset
 
 
 logger = logging.getLogger(__name__)

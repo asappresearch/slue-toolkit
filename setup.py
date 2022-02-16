@@ -23,6 +23,7 @@ setup(
         "fire",
         "editdistance",
         "soundfile",
+        "sklearn"
     ],
     entry_points={},
     include_package_data=True,
