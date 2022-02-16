@@ -1,1 +1,1 @@
-from .criterions import sequence_classification_criterion
+from . import criterions
