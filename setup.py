@@ -23,7 +23,7 @@ setup(
         "fire",
         "editdistance",
         "soundfile",
-        "sklearn"
+        "sklearn",
         "transformers",
         "datasets",
         "seqeval",
