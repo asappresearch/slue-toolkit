@@ -1,5 +1,7 @@
 import fire
+import glob
 import os
+import sys
 
 from slue_toolkit.generic_utils import read_lst, write_to_file
 
@@ -15,16 +17,22 @@ def prep_data(
     manifest_data_fn = os.path.join(asr_data_dir, eval_set + ".wrd")
     decoded_data_dir = os.path.join(asr_model_dir, "decode", eval_set, lm)
 
-    out_fn = f"{eval_subset}-{model_type}-asr-{lm}"
+    out_fn = f"{eval_set}-{model_type}-asr-{lm}"
     out_fn = os.path.join(out_data_dir, out_fn)
     sent_lst = get_correct_order(decoded_data_dir, manifest_data_fn)
+
+    # Space separating trailing "'s" in accordance with the slue voxpopuli NER post processing step.
+    # This avoids over-penalizing the model just because the LM used for ASR decoding might not 
+    # be trained on the text that is similarly post-processed.
+    sent_lst = [line.replace("'s", " 's").replace("  ", " ") for line in sent_lst]
+
     out_str = ""
     for sent in sent_lst:
         for wrd in sent.split(" "):
             out_str += wrd + "\tO\n"
         out_str += "\n"
     write_to_file(out_str, out_fn)
-    print("Data prepared for model %s and lm %s" % (model_name, lm))
+    print("Data prepared for model %s and lm %s" % (model_type, lm))
 
 
 def get_correct_order(self, decoded_data_dir, manifest_data_fn):
