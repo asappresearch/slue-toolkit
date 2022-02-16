@@ -31,6 +31,6 @@ To evaluate the fine-tuned nlp model, run following command or run `baselines/se
 
 First, ASR transcription need to be prepared in manifest dir, and then evalution can be done using the same evaluation script with nlp topline.
 ```sh
-python slue_toolkit/prepare/prepare_voxceleb_asr_pred.py --data manifest/slue-voxceleb --pred-data datasets/slue-voxceleb/preds/vc1/w2v2-large-lv60k-ft-slue-vc1-12h-lr1e-5-s1-mt800000-8gpu-update280000
+python slue_toolkit/prepare/prepare_voxceleb_asr_pred.py --data manifest/slue-voxceleb --pred-data dataset/slue-voxceleb/preds/vc1/w2v2-large-lv60k-ft-slue-vc1-12h-lr1e-5-s1-mt800000-8gpu-update280000
 python slue_toolkit/eval/eval_nlp_sentiment.py --save-dir save/sentiment/nlp_topline_bert-base-cased --data manifest/slue-voxceleb --subset test.asr-pred
 ```

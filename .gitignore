@@ -1,7 +1,8 @@
-datasets/
+# general
+dataset/
 manifest/
 save/
-.DS_Store
 
-__pycache__/
+.DS_Store
 *.egg-info/
+__pycache__/

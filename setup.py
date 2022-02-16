@@ -24,6 +24,9 @@ setup(
         "editdistance",
         "soundfile",
         "sklearn"
+        "transformers",
+        "datasets",
+        "seqeval",
     ],
     entry_points={},
     include_package_data=True,
