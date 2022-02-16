@@ -31,12 +31,13 @@ def create_split(
 
 
 def create_manifest(
-    data_dir="dataset/slue-voxpopuli",
+    data_dir="data/slue-voxpopuli",
     manifest_dir="manifest/slue-voxpopuli",
     is_blind=True,
 ):
     os.makedirs(manifest_dir, exist_ok=True)
     for split in splits:
+        print(f"Processing slue-voxpopuli {split} set")
         if (split == "test") and is_blind:
             df = pd.read_csv(
                 os.path.join(data_dir, f"slue-voxpopuli_{split}_blind.tsv"), sep="\t"

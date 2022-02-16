@@ -47,7 +47,7 @@ def eval_asr(
         # eval_log_file = os.path.join(ckpt, 'eval.log')
         eval_log_file = None
         if save_results:
-            results_path = os.path.join(model, "decode", lm.replace('/', '_'))
+            results_path = os.path.join(model, "decode", lm.replace("/", "_"))
         else:
             results_path = None
         emission_path = (

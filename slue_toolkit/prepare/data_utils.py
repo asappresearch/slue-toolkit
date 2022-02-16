@@ -158,9 +158,18 @@ def prep_e2e_ner_files(entity_pair_str, label_type):
     """
     Prepare files for finetuning using CTC loss (fairseq codebase)
     """
-    entity_to_spl_char = load_pkl(
-        f"slue_toolkit/label_map_files/{label_type}_entity_to_spl_char.pkl"
-    )
+    if label_type == "raw":
+        from slue_toolkit.generic_utils import (
+            raw_entity_to_spl_char as entity_to_spl_char,
+        )
+    elif label_type == "combined":
+        from slue_toolkit.generic_utils import (
+            combined_entity_to_spl_char as entity_to_spl_char,
+        )
+    else:
+        raise ValueError(
+            f'label_type={label_type} which should be either "raw" or "combined'
+        )
     end_char = "]"
     entity = False
     out_sent = []
