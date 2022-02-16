@@ -108,7 +108,7 @@ class DataSetup:
         return encoded_labels
 
     def prep_data(self, split_name, label_type="raw", get_map_files=False):
-        texts, tags = self.read_data(f"{split_name}_{label_type}.tsv")
+        texts, tags = self.read_data(f"{split_name}.{label_type}.tsv")
 
         tag_id_fn = os.path.join(self.data_dir, f"{label_type}_tag2id.pkl")
         if not os.path.exists(tag_id_fn):
