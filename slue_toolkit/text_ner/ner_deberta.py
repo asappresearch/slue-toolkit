@@ -51,7 +51,9 @@ def eval(
         )
     else:
         asr_val_texts = None
-    eval_obj = NDM.Eval(data_dir, model_dir, model_type, label_list, eval_label, eval_asr)
+    eval_obj = NDM.Eval(
+        data_dir, model_dir, model_type, label_list, eval_label, eval_asr
+    )
     for score_type in ["standard", "label"]:
         if eval_asr:
             res_fn = "-".join(

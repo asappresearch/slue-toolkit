@@ -106,7 +106,9 @@ def create_split(
 
 
 def create_manifest(
-    data_dir="data/slue-voxceleb", manifest_dir="manifest/slue-voxceleb", is_blind=True,
+    data_dir="data/slue-voxceleb",
+    manifest_dir="manifest/slue-voxceleb",
+    is_blind=True,
 ):
     os.makedirs(manifest_dir, exist_ok=True)
 

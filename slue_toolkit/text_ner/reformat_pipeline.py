@@ -22,7 +22,7 @@ def prep_data(
     sent_lst = get_correct_order(decoded_data_dir, manifest_data_fn)
 
     # Space separating trailing "'s" in accordance with the slue voxpopuli NER post processing step.
-    # This avoids over-penalizing the model just because the LM used for ASR decoding might not 
+    # This avoids over-penalizing the model just because the LM used for ASR decoding might not
     # be trained on the text that is similarly post-processed.
     sent_lst = [line.replace("'s", " 's").replace("  ", " ") for line in sent_lst]
 

@@ -106,9 +106,16 @@ def create_manifest(
 
     for label_type in ["raw", "combined"]:
         tag2id, id2tag, tag_lst_ordered = data_utils.prepare_tag_id_mapping(label_type)
-        save_pkl(os.path.join(manifest_dir, "nlp_ner", f"{label_type}_tag2id.pkl"), tag2id)
-        save_pkl(os.path.join(manifest_dir, "nlp_ner", f"{label_type}_id2tag.pkl"), id2tag)
-        write_to_file("\n".join(tag_lst_ordered), os.path.join(manifest_dir, "nlp_ner", f"{label_type}_tag_lst_ordered"))
+        save_pkl(
+            os.path.join(manifest_dir, "nlp_ner", f"{label_type}_tag2id.pkl"), tag2id
+        )
+        save_pkl(
+            os.path.join(manifest_dir, "nlp_ner", f"{label_type}_id2tag.pkl"), id2tag
+        )
+        write_to_file(
+            "\n".join(tag_lst_ordered),
+            os.path.join(manifest_dir, "nlp_ner", f"{label_type}_tag_lst_ordered"),
+        )
         for token_type in ["wrd", "ltr"]:
             create_dict(
                 os.path.join(

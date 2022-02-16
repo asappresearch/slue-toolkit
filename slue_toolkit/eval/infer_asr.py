@@ -89,7 +89,10 @@ output units",
         help="temperature scaling of the logits",
     )
     parser.add_argument(
-        "--eval-upsample", type=float, default=1.0, help="upsample factor",
+        "--eval-upsample",
+        type=float,
+        default=1.0,
+        help="upsample factor",
     )
     return parser
 
