@@ -1,2 +1,8 @@
+# general
+data/
+manifest/
+save/
 
 .DS_Store
+*.egg-info/
+__pycache__/

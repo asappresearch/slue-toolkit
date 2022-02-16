@@ -22,7 +22,6 @@ task:
   normalize: true  # must be consistent with pre-training
   labels: sent
   data: ???
-  label_dir: ???
 
 dataset:
   num_workers: 0
