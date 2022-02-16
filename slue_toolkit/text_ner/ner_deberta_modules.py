@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-import logging, os, re, sys
-=======
 from curses import raw
 import logging, os, re
->>>>>>> upstream/main
 
 logger = logging.getLogger(__name__)
 import numpy as np
