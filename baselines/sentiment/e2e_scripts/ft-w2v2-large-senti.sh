@@ -34,7 +34,6 @@ fairseq-hydra-train \
   hydra.output_subdir=$save \
   common.tensorboard_logdir=$tb_save \
   task.data=$data \
-  task.label_dir=$data \
   task.normalize=true \
   dataset.train_subset=$train_subset \
   dataset.valid_subset=$valid_subset \

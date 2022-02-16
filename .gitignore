@@ -1,7 +1,8 @@
 # general
-.DS_Store
 dataset/
 manifest/
 save/
-slue_toolkit.egg-info/
+
+.DS_Store
+*.egg-info/
 __pycache__/
