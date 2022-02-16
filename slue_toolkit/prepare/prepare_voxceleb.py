@@ -141,7 +141,7 @@ def create_manifest(
                 frames = int(16000 * (end - start))
                 print(f"{id}.flac\t{frames}", file=f)
 
-        if not (split == "test") and is_blind:
+        if split != "test" or not is_blind:
             with open(os.path.join(manifest_dir, f"{split}.wrd"), "w") as f:
                 for text in df["normalized_text"].array:
                     print(text, file=f)

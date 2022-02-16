@@ -19,10 +19,3 @@ for label in ltr wrd; do
     python slue_toolkit/prepare/create_dict.py manifest/slue-${split}/fine-tune.${label} manifest/slue-${split}/dict.${label}.txt
 done
 done
-
-#5. copy files
-for session in dev fine-tune; do
-for label in raw combined; do
-    cp ./manifest/slue-voxpopuli/${session}.tsv ./manifest/slue-voxpopuli/e2e_ner/${session}_${label}.tsv
-done
-done
