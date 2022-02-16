@@ -1,21 +1,30 @@
 #!/bin/bash
 
-#1. Download
-wget https://papers-slue.awsdev.asapp.com/slue-voxceleb_blind.tar.gz -P datasets/
-wget https://papers-slue.awsdev.asapp.com/slue-voxpopuli_blind.tar.gz -P datasets/
+for split in voxceleb voxpopuli; do
 
-#2. Extract
-tar -xzvf datasets/slue-voxceleb_blind.tar.gz -C datasets/
-tar -xzvf datasets/slue-voxpopuli_blind.tar.gz -C datasets/
+if [ -d data/slue-${split} ]; then
+    echo "data/slue-${split} exists. Skip download & extract."
+else
+    #1. Download
+    tar_file="data/slue-${split}_blind.tar.gz"
+    if [ -f $tar_file ]; then
+        echo "$tar_file exists. Skip download."
+    else
+        tar_file_url="https://papers-slue.awsdev.asapp.com/slue-${split}_blind.tar.gz"
+        wget $tar_file_url -P data/
+    fi
+
+    #2. Extract
+    tar -xzvf $tar_file -C data/
+fi
 
 #3. preprocess
 
-python slue_toolkit/prepare/prepare_voxceleb.py create_manifest
-python slue_toolkit/prepare/prepare_voxpopuli.py create_manifest
+python slue_toolkit/prepare/prepare_${split}.py create_manifest
 
 #4. create dict
-for split in voxceleb voxpopuli; do
 for label in ltr wrd; do
     python slue_toolkit/prepare/create_dict.py manifest/slue-${split}/fine-tune.${label} manifest/slue-${split}/dict.${label}.txt
 done
+
 done

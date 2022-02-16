@@ -106,9 +106,7 @@ def create_split(
 
 
 def create_manifest(
-    data_dir="datasets/slue-voxceleb",
-    manifest_dir="manifest/slue-voxceleb",
-    is_blind=True,
+    data_dir="data/slue-voxceleb", manifest_dir="manifest/slue-voxceleb", is_blind=True,
 ):
     os.makedirs(manifest_dir, exist_ok=True)
 
@@ -118,6 +116,7 @@ def create_manifest(
             print(l, file=f)
 
     for split in splits:
+        print(f"Processing slue-voxceleb {split} set")
         target_sentiments = ["Negative", "Neutral", "Positive"]
         if (split == "test") and is_blind:
             df = pd.read_csv(

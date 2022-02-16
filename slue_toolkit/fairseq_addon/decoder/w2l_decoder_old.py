@@ -69,7 +69,7 @@ class W2lDecoder(object):
             self.blank = -1
             self.asg_transitions = args.asg_transitions
             self.max_replabel = args.max_replabel
-            assert len(self.asg_transitions) == self.vocab_size**2
+            assert len(self.asg_transitions) == self.vocab_size ** 2
         else:
             raise RuntimeError(f"unknown criterion: {args.criterion}")
 

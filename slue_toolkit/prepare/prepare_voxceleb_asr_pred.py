@@ -18,7 +18,7 @@ def main():
         "--pred-data",
         type=str,
         required=True,
-        default="datasets/slue-voxceleb/preds/vc1/w2v2-large-lv60k-ft-slue-vc1-12h-lr1e-5-s1-mt800000-8gpu-update280000",
+        default="data/slue-voxceleb/preds/vc1/w2v2-large-lv60k-ft-slue-vc1-12h-lr1e-5-s1-mt800000-8gpu-update280000",
         help="Root directory containing voxceleb1_slue data files,"
         "This dir should contain audio/ voxceleb1_slue_{finetune,dev,test} folders ",
     )
