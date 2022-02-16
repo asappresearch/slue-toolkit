@@ -1,6 +1,5 @@
 import pickle as pkl
-from slue_toolkit.generic_utils import raw_to_combined_tag_map
-
+from slue_toolkit.generic_utils import raw_to_combined_tag_map, save_pkl, write_to_file
 
 def load_pkl(fname, encdng=None):
     if encdng is None:
@@ -203,3 +202,28 @@ def prep_e2e_ner_files(entity_pair_str, label_type):
     wrd_str = " ".join(out_sent)
     ltr_str = " ".join(list(" ".join(out_sent).replace(" ", "|"))) + " |"
     return wrd_str, ltr_str
+
+
+def prepare_tag_id_mapping(label_type):
+    """
+    Prepare tag2id and id2tag mappings for the text NER model
+    """
+    tag2id = {}
+    tag_lst_ordered = []
+
+    if label_type == "raw":
+        all_tag_lst = raw_to_combined_tag_map.keys()
+    elif label_type == "combined":
+        all_tag_lst = list(set(raw_to_combined_tag_map.values()))
+        all_tag_lst.remove("DISCARD")
+
+    for idx, tag in enumerate(all_tag_lst):
+        tag2id[f"B-{tag}"] = 2*idx
+        tag2id[f"I-{tag}"] = 2*idx+1
+        tag_lst_ordered.extend([f"B-{tag}", f"I-{tag}"])
+    tag2id["O"] = 2*len(all_tag_lst)
+    tag_lst_ordered.append("O")
+
+    id2tag = {v: k for k, v in tag2id.items()}
+
+    return tag2id, id2tag, tag_lst_ordered
