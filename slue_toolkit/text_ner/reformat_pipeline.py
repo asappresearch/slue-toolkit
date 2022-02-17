@@ -1,5 +1,7 @@
 import fire
+import glob
 import os
+import sys
 
 from slue_toolkit.generic_utils import read_lst, write_to_file
 
@@ -13,21 +15,27 @@ def prep_data(
     if "nolm" not in lm:
         lm = "t3-b500-lw2-ws-1"
     manifest_data_fn = os.path.join(asr_data_dir, eval_set + ".wrd")
-    decoded_data_dir = os.path.join(asr_model_dir, "decode", eval_set, lm)
+    decoded_data_dir = os.path.join(asr_model_dir, "decode", lm)
 
-    out_fn = f"{eval_subset}-{model_type}-asr-{lm}"
+    out_fn = f"{eval_set}-{model_type}-asr-{lm}.tsv"
     out_fn = os.path.join(out_data_dir, out_fn)
-    sent_lst = get_correct_order(decoded_data_dir, manifest_data_fn)
+    sent_lst = get_correct_order(decoded_data_dir, manifest_data_fn, eval_set)
+
+    # Space separating trailing "'s" in accordance with the slue voxpopuli NER post processing step.
+    # This avoids over-penalizing the model just because the LM used for ASR decoding might not
+    # be trained on the text that is similarly post-processed.
+    sent_lst = [line.replace("'s", " 's").replace("  ", " ") for line in sent_lst]
+
     out_str = ""
     for sent in sent_lst:
         for wrd in sent.split(" "):
             out_str += wrd + "\tO\n"
         out_str += "\n"
     write_to_file(out_str, out_fn)
-    print("Data prepared for model %s and lm %s" % (model_name, lm))
+    print("Data prepared for model %s and lm %s" % (model_type, lm))
 
 
-def get_correct_order(self, decoded_data_dir, manifest_data_fn):
+def get_correct_order(decoded_data_dir, manifest_data_fn, eval_set):
     """
     Reorder decoded sentenced to match the original order
     """
@@ -35,13 +43,17 @@ def get_correct_order(self, decoded_data_dir, manifest_data_fn):
         print("Decoded data %s not found" % (decoded_data_dir))
         sys.exit()
     else:
-        fname = glob.glob(decoded_data_dir + "/ref.word*")
-        assert len(fname) == 1
-        decoded_sent_lst_gt = read_lst(fname[0])
+        decoded_sent_lst_gt = read_lst(
+            os.path.join(
+                decoded_data_dir, f"ref.word-checkpoint_best.pt-{eval_set}.txt"
+            )
+        )
 
-        fname = glob.glob(decoded_data_dir + "/hypo.word*")
-        assert len(fname) == 1
-        decoded_sent_lst_hyp = read_lst(fname[0])
+        decoded_sent_lst_hyp = read_lst(
+            os.path.join(
+                decoded_data_dir, f"hypo.word-checkpoint_best.pt-{eval_set}.txt"
+            )
+        )
 
         manifest_sent_lst = read_lst(manifest_data_fn)
 

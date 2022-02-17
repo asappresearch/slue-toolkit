@@ -48,5 +48,5 @@ The text NER module is trained using the scripts mentioned [here](https://github
 #### Evaluating the Pipeline model
 The following command evalutes the pipeline model that uses w2v2-base as ASR backbone and deberta-base as text NER backbone, with the former decoded using the T3 language model as mentioned [here](https://github.asapp.dev/ASAPPinc/slue-toolkit/blob/master/README.md#evaluation-1).
 ```sh
-bash baselines/ner/pipeline/eval.sh w2v2-base deberta-base dev combined t3/3
+bash baselines/ner/pipeline_scripts/eval.sh w2v2-base deberta-base dev combined t3/3
 ```

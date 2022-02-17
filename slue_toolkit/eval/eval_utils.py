@@ -105,7 +105,7 @@ def ner_error_analysis(all_gt, all_predictions, gt_text):
     for idx, text in enumerate(gt_text):
         if isinstance(text, list):
             text = " ".join(text)
-        gt = all_labels[idx]
+        gt = all_gt[idx]
         pred = all_predictions[idx]
         entities_true = defaultdict(set)
         entities_pred = defaultdict(set)
