@@ -34,15 +34,13 @@ def eval(
     save_results=False,
 ):
     log_dir = os.path.join(model_dir, "metrics")
-    label_list = read_lst(os.path.join(data_dir, f"{train_label}_tag_lst_ordered"))
     if save_results:
         ner_results_dir = os.path.join(log_dir, "error_analysis")
     os.makedirs(log_dir, exist_ok=True)
     os.makedirs(ner_results_dir, exist_ok=True)
 
     data_obj = NDM.DataSetup(data_dir, model_type)
-    if "combined" in eval_label:
-        tag_lst = read_lst(os.path.join(data_dir, "combined_tag_lst_ordered"))
+    label_list = read_lst(os.path.join(data_dir, f"{eval_label}_tag_lst_ordered"))
 
     val_texts, val_tags, _, _, val_dataset = data_obj.prep_data(eval_subset, "raw")
     if eval_asr:
