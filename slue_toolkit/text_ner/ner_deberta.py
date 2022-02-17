@@ -36,22 +36,20 @@ def eval(
     log_dir = os.path.join(model_dir, "metrics")
     if save_results:
         ner_results_dir = os.path.join(log_dir, "error_analysis")
+        os.makedirs(ner_results_dir, exist_ok=True)
     os.makedirs(log_dir, exist_ok=True)
-    os.makedirs(ner_results_dir, exist_ok=True)
 
     data_obj = NDM.DataSetup(data_dir, model_type)
     label_list = read_lst(os.path.join(data_dir, f"{eval_label}_tag_lst_ordered"))
 
-    val_texts, val_tags, _, _, val_dataset = data_obj.prep_data(eval_subset, "raw")
+    val_texts, val_tags, _, _, val_dataset = data_obj.prep_data(eval_subset, train_label)
     if eval_asr:
         asr_val_texts, _, _, _, val_dataset = data_obj.prep_data(
-            f"{eval_subset}-{asr_model_type}-asr-{lm}", "raw"
+            f"{eval_subset}-{asr_model_type}-asr-{lm}", train_label, eval_asr=True
         )
     else:
         asr_val_texts = None
-    eval_obj = NDM.Eval(
-        data_dir, model_dir, model_type, label_list, eval_label, eval_asr
-    )
+    eval_obj = NDM.Eval(data_dir, model_dir, model_type, label_list, eval_label, eval_asr)
     for score_type in ["standard", "label"]:
         if eval_asr:
             res_fn = "-".join(
