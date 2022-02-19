@@ -19,7 +19,7 @@ from transformers import (
 )
 from transformers.trainer_utils import get_last_checkpoint
 from slue_toolkit.eval import eval_utils
-from slue_toolkit.generic_utils import raw_to_combined_tag_map, load_pkl
+from slue_toolkit.generic_utils import raw_to_combined_tag_map, load_pkl, read_lst
 
 
 class VPDataset(torch.utils.data.Dataset):
@@ -280,9 +280,7 @@ def train_module(
 
 
 class Eval:
-    def __init__(
-        self, data_dir, model_dir, model_type, label_list, eval_label, eval_asr=False
-    ):
+    def __init__(self, data_dir, model_dir, train_label, eval_label, eval_asr=False):
         """
         Inference with batch size = 1
         """
@@ -299,8 +297,11 @@ class Eval:
         self.model.eval()
 
         self.eval_asr = eval_asr
-        self.label_list = label_list
         self.eval_label = eval_label
+        self.train_label = train_label
+        self.label_list = read_lst(
+            os.path.join(self.data_dir, f"{self.eval_label}_tag_lst_ordered")
+        )
 
     def reduce(self, entity_name):
         return entity_name.split("-")[-1]
@@ -448,7 +449,7 @@ class Eval:
         gt_tags=None,
         pred_text=None,
     ):
-        if "combined" in self.eval_label:
+        if "combined" in self.eval_label and "raw" in self.train_label:
             tag_map_dct = self.get_tag_map(indices=True)
             predictions = [
                 [tag_map_dct[item] for item in prediction] for prediction in predictions
