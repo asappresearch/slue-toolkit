@@ -38,7 +38,7 @@ The above command can also be used to train `deberta-large` model and also accep
 #### Evaluation of NLP Topline
 The following command evaluates the trained deberta-base model on dev set with combined labels
 ```sh
-bash baselines/ner/nlp_scripts/eval-deberta.sh deberta-base dev combined
+bash baselines/ner/nlp_scripts/eval-deberta.sh deberta-base dev raw combined
 ```
 
 #### Training the Pipeline model
