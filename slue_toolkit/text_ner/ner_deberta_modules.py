@@ -533,8 +533,9 @@ class Eval:
 
         metrics_dct = eval_utils.get_ner_scores(all_gt, all_predictions)
         print(
-            "[micro-averaged F1] Precision: %.2f, recall: %.2f, fscore = %.2f"
+            "[micro-averaged F1-%s] Precision: %.2f, recall: %.2f, fscore = %.2f"
             % (
+                score_type,
                 metrics_dct["overall_micro"]["precision"],
                 metrics_dct["overall_micro"]["recall"],
                 metrics_dct["overall_micro"]["fscore"],
