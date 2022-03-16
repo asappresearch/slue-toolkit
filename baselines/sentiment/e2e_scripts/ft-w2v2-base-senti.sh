@@ -31,7 +31,7 @@ max_tokens=1400000
 
 fairseq-hydra-train \
   hydra.run.dir=$save \
-  hydra.output_subdir=$save \
+  hydra.output_subdir=. \
   common.tensorboard_logdir=$tb_save \
   task.data=$data \
   task.normalize=false \
