@@ -70,7 +70,7 @@ def create_manifest(
                     print(" ".join(text.replace(" ", "|")), file=f)
 
             # prepare NER files (for Fairseq and HuggingFace)
-            for sub_dir_name in ["e2e_ner", "nlp_ner"]:
+            for sub_dir_name in ["e2e_ner", "text_ner"]:
                 os.makedirs(os.path.join(manifest_dir, sub_dir_name), exist_ok=True)
             for label_type in ["raw", "combined"]:
                 wrd_fn = os.path.join(
@@ -80,7 +80,7 @@ def create_manifest(
                     manifest_dir, "e2e_ner", f"{split}.{label_type}.ltr"
                 )
                 tsv_fn = os.path.join(
-                    manifest_dir, "nlp_ner", f"{split}.{label_type}.tsv"
+                    manifest_dir, "text_ner", f"{split}.{label_type}.tsv"
                 )
                 with open(wrd_fn, "w") as f_wrd, open(ltr_fn, "w") as f_ltr, open(
                     tsv_fn, "w"
@@ -104,14 +104,14 @@ def create_manifest(
     for label_type in ["raw", "combined"]:
         tag2id, id2tag, tag_lst_ordered = data_utils.prepare_tag_id_mapping(label_type)
         save_pkl(
-            os.path.join(manifest_dir, "nlp_ner", f"{label_type}_tag2id.pkl"), tag2id
+            os.path.join(manifest_dir, "text_ner", f"{label_type}_tag2id.pkl"), tag2id
         )
         save_pkl(
-            os.path.join(manifest_dir, "nlp_ner", f"{label_type}_id2tag.pkl"), id2tag
+            os.path.join(manifest_dir, "text_ner", f"{label_type}_id2tag.pkl"), id2tag
         )
         write_to_file(
             "\n".join(tag_lst_ordered),
-            os.path.join(manifest_dir, "nlp_ner", f"{label_type}_tag_lst_ordered"),
+            os.path.join(manifest_dir, "text_ner", f"{label_type}_tag_lst_ordered"),
         )
         for token_type in ["wrd", "ltr"]:
             create_dict(
