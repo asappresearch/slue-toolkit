@@ -131,8 +131,15 @@ def eval_ner(
         save_dct(os.path.join(log_dir, res_fn + ".json"), metrics)
         print(
             "[%s, %s, %s label set, micro-averaged %s]: %.1f"
-            % (os.path.basename(model_dir), eval_set, eval_label, score_type, 100 * metrics["overall_micro"]["fscore"])
+            % (
+                os.path.basename(model_dir),
+                eval_set,
+                eval_label,
+                score_type,
+                100 * metrics["overall_micro"]["fscore"],
+            )
         )
+
 
 if __name__ == "__main__":
     fire.Fire()

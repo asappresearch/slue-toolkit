@@ -1,5 +1,6 @@
 from slue_toolkit.generic_utils import raw_to_combined_tag_map
 
+
 def remove_punc(sent):
     """
     Filter out punctuations

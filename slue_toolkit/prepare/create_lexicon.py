@@ -4,9 +4,30 @@ import fire
 def get_valid_char(input_file):
     valid_char = "ABCDEFGHIJKLMNOPQRSTUVWXYZ'".lower()
     if "ner" in input_file:
-        spl_char_lst = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "~", "`", "{", "}", "[", "<", ">", "?", "]"]
+        spl_char_lst = [
+            "!",
+            "@",
+            "#",
+            "$",
+            "%",
+            "^",
+            "&",
+            "*",
+            "(",
+            ")",
+            "~",
+            "`",
+            "{",
+            "}",
+            "[",
+            "<",
+            ">",
+            "?",
+            "]",
+        ]
         valid_char += "".join(spl_char_lst)
     return valid_char
+
 
 def is_valid(w, valid_char):
     for c in w:
