@@ -101,14 +101,14 @@ def eval_ner(
     eval_set="dev",
     eval_label="combined",
     lm="nolm",
-    lm_sfx=None,
     save_results=False,
 ):
     if "nolm" in lm:
         decoded_data_dir = os.path.join(model_dir, "decode", "nolm")
     else:
-        assert lm_sfx is not None
-        decoded_data_dir = os.path.join(model_dir, "decode", f"{lm}-{lm_sfx}")
+        lm = lm.replace("/", "_")
+        decoded_data_dir = os.path.join(model_dir, "decode", lm)
+        lm += "gram"
     log_dir = os.path.join(model_dir, "metrics")
     os.makedirs(log_dir, exist_ok=True)
     if save_results:
@@ -121,20 +121,18 @@ def eval_ner(
             score_type, eval_label, eval_set, decoded_data_dir
         )
         if save_results and score_type == "standard":
-            analysis_examples_dct = eval_utils.error_analysis(
+            analysis_examples_dct = eval_utils.ner_error_analysis(
                 labels_dct["ref"], labels_dct["hypo"], text_dct["ref"]
             )
             save_dct(
                 os.path.join(ner_results_dir, res_fn + ".json"), analysis_examples_dct
             )
-
         metrics = eval_utils.get_ner_scores(labels_dct["ref"], labels_dct["hypo"])
         save_dct(os.path.join(log_dir, res_fn + ".json"), metrics)
         print(
             "[%s, %s, %s label set, micro-averaged %s]: %.1f"
             % (os.path.basename(model_dir), eval_set, eval_label, score_type, 100 * metrics["overall_micro"]["fscore"])
         )
-
 
 if __name__ == "__main__":
     fire.Fire()

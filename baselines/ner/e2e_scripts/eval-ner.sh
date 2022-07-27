@@ -22,5 +22,4 @@ python slue_toolkit/eval/eval_w2v_ner.py eval_ner \
 --model_dir save/e2e_ner/${pretrain_model} \
 --eval_set ${subset} \
 --eval_label ${eval_label} \
---lm ${lm} \
---lm_sfx b${beam}-lw${lm_wt}-ws${ws}
+--lm ${lm} 
