@@ -24,17 +24,17 @@ Last checked with fairseq commit `8e804cb`.
 
 3. Additional dependencies required:
 
-3a. wav2letter: For decoding ASR and E2E NER models
-This version of wav2letter python bindings does not require flashlight installation.
-```
-git clone --recursive https://github.com/facebookresearch/wav2letter.git
-cd wav2letter
-git checkout 96f5f9d
-cd bindings/python
-pip install -e .
-```
+    3a. [wav2letter](https://github.com/flashlight/wav2letter): For decoding ASR and E2E NER models
+    This version of wav2letter python bindings does not require flashlight installation.
+    ```
+    git clone --recursive https://github.com/facebookresearch/wav2letter.git
+    cd wav2letter
+    git checkout 96f5f9d
+    cd bindings/python
+    pip install -e .
+    ```
 
-3b. [kenlm](https://github.com/kpu/kenlm): For training language models  
+    3b. [kenlm](https://github.com/kpu/kenlm): For training language models  
 
 ## SLUE Tasks
 ### Automatic Speech Recognition (ASR)
