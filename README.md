@@ -11,6 +11,7 @@ We introduce Spoken Language Understanding Evaluation (SLUE) benchmark. This too
 1. git clone this repository and install slue-toolkit (development mode)
 ```sh
 git clone https://github.com/asappresearch/slue-toolkit.git
+cd slue-toolkit/
 pip install -e .
 ```
 or install directly from Github
@@ -18,6 +19,22 @@ or install directly from Github
 pip install git+https://github.com/asappresearch/slue-toolkit.git
 ```
 2. Install additional dependency based on your choice (e.g. you need `fairseq` and ``transformers`` for baselines)
+
+Last checked with fairseq commit `8e804cb`.
+
+3. Additional dependencies required:
+
+3a. wav2letter: For decoding ASR and E2E NER models
+This version of wav2letter python bindings does not require flashlight installation.
+```
+git clone --recursive https://github.com/facebookresearch/wav2letter.git
+cd wav2letter
+git checkout 96f5f9d
+cd bindings/python
+pip install -e .
+```
+
+3b. [kenlm](https://github.com/kpu/kenlm): For training language models  
 
 ## SLUE Tasks
 ### Automatic Speech Recognition (ASR)
@@ -105,8 +122,8 @@ bash baselines/asr/ft-w2v2-base.sh manifest/slue-voxpopuli save/asr/w2v2-base-vp
 #### Evaluation
 To evaluate the fine-tuned wav2vec 2.0 ASR models on the dev set, please run the following commands.
 ```sh
-python slue_toolkit/eval/eval_w2v.py eval_asr save/asr/w2v2-base-vc --data manifest/slue-voxceleb --subset dev
-python slue_toolkit/eval/eval_w2v.py eval_asr save/asr/w2v2-base-vp --data manifest/slue-voxpopuli --subset dev
+python slue_toolkit/eval/eval_w2v.py eval_ctc_model save/asr/w2v2-base-vc --data manifest/slue-voxceleb --subset dev
+python slue_toolkit/eval/eval_w2v.py eval_ctc_model save/asr/w2v2-base-vp --data manifest/slue-voxpopuli --subset dev
 ```
 The WER will be printed directly.
 The predictions are saved in `save/asr/w2v2-base-vc/pred-dev.wrd` and `save/asr/w2v2-base-vp/pred-dev.wrd` and can be used for pipeline models.
