@@ -19,7 +19,7 @@ from transformers import (
 )
 from transformers.trainer_utils import get_last_checkpoint
 from slue_toolkit.eval import eval_utils
-from slue_toolkit.generic_utils import raw_to_combined_tag_map, load_pkl, read_lst
+from slue_toolkit.generic_utils import raw_to_combined_tag_map, load_dct, read_lst
 
 
 class VPDataset(torch.utils.data.Dataset):
@@ -98,8 +98,8 @@ class DataSetup:
         else:
             texts, tags = self.read_data(f"{split_name}.{label_type}.tsv")
 
-        tag_id_fn = os.path.join(self.data_dir, f"{label_type}_tag2id.pkl")
-        tag2id = load_pkl(tag_id_fn)
+        tag_id_fn = os.path.join(self.data_dir, f"{label_type}_tag2id.json")
+        tag2id = load_dct(tag_id_fn)
 
         # Tokenize data
         encodings = self.tokenizer(
@@ -409,13 +409,13 @@ class Eval:
         assert indices or tag_names
         assert not (indices and tag_names)
         if indices:
-            id2tag_raw = load_pkl(os.path.join(self.data_dir, "raw_id2tag.pkl"))
-            tag2id_raw = load_pkl(os.path.join(self.data_dir, "raw_tag2id.pkl"))
-            id2tag_combined = load_pkl(
-                os.path.join(self.data_dir, "combined_id2tag.pkl")
+            id2tag_raw = load_dct(os.path.join(self.data_dir, "raw_id2tag.json"))
+            tag2id_raw = load_dct(os.path.join(self.data_dir, "raw_tag2id.json"))
+            id2tag_combined = load_dct(
+                os.path.join(self.data_dir, "combined_id2tag.json")
             )
-            tag2id_combined = load_pkl(
-                os.path.join(self.data_dir, "combined_tag2id.pkl")
+            tag2id_combined = load_dct(
+                os.path.join(self.data_dir, "combined_tag2id.json")
             )
             raw_to_combined_id = {}
             for key, value in raw_to_combined_tag_map.items():

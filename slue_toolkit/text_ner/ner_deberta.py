@@ -1,7 +1,7 @@
 import os, fire
 
 import slue_toolkit.text_ner.ner_deberta_modules as NDM
-from slue_toolkit.generic_utils import read_lst, load_pkl, save_pkl
+from slue_toolkit.generic_utils import read_lst, save_dct
 
 
 def train(
@@ -61,10 +61,10 @@ def eval(
         metrics_dct, analysis_examples_dct = eval_obj.get_scores(
             score_type, val_dataset, val_texts, val_tags, asr_val_texts
         )
-        save_pkl(os.path.join(log_dir, res_fn + ".pkl"), metrics_dct)
+        save_dct(os.path.join(log_dir, res_fn + ".json"), metrics_dct)
         if save_results and score_type == "standard":
-            save_pkl(
-                os.path.join(ner_results_dir, res_fn + ".pkl"), analysis_examples_dct
+            save_dct(
+                os.path.join(ner_results_dir, res_fn + ".json"), analysis_examples_dct
             )
 
 
