@@ -2,6 +2,7 @@
 Compilation of commonly used functions
 """
 
+import json
 import pickle as pkl
 
 raw_entity_to_spl_char = {
@@ -57,11 +58,30 @@ combined_entity_to_spl_char = {
     "WHEN": "&",
 }
 
+def save_dct(fname, dict_name):
+    if ".pkl" in fname:
+        save_pkl(fname, dict_name)
+    elif ".json" in fname:
+        save_json(fname, dict_name)
 
 def save_pkl(fname, dict_name):
     with open(fname, "wb") as f:
         pkl.dump(dict_name, f)
 
+def save_json(fname, dict_name):
+    with open(fname, "w") as f:
+        f.write(json.dumps(dict_name, indent=4))
+
+def load_dct(fname):
+    if ".pkl" in fname:
+        data = load_pkl(fname)
+    elif ".json" in fname:
+        data = load_json(fname)
+    return data
+
+def load_json(fname):
+    data = json.loads(open(fname).read())
+    return data
 
 def load_pkl(fname, encdng=None):
     if encdng is None:
@@ -72,12 +92,10 @@ def load_pkl(fname, encdng=None):
             data = pkl.load(f, encoding=encdng)
     return data
 
-
 def read_lst(fname):
     with open(fname, "r") as f:
         lst_from_file = [line.strip() for line in f.readlines()]
     return lst_from_file
-
 
 def write_to_file(write_str, fname):
     with open(fname, "w") as f:
