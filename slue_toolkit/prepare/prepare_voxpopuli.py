@@ -97,12 +97,9 @@ def create_manifest(
                         )
                         print(wrd_str, file=f_wrd)
                         print(ltr_str, file=f_ltr)
-        try:
-            os.symlink(
-                f"../{split}.tsv", os.path.join(manifest_dir, f"e2e_ner/{split}.tsv")
-            )
-        except:
-            pass
+        e2e_ner_tsv_fn = os.path.join(manifest_dir, f"e2e_ner/{split}.tsv")
+        if not os.path.exists(e2e_ner_tsv_fn):
+            os.symlink(f"../{split}.tsv", e2e_ner_tsv_fn)
 
     for label_type in ["raw", "combined"]:
         tag2id, id2tag, tag_lst_ordered = data_utils.prepare_tag_id_mapping(label_type)
