@@ -5,7 +5,7 @@ eval_label=$4
 lm=$5
 
 # model_ckpt=`realpath save/asr/${asr_model_type}-vp`
-# python slue_toolkit/eval/eval_w2v.py eval_asr \
+# python slue_toolkit/eval/eval_w2v.py eval_ctc_model \
 # --model $model_ckpt \
 # --data manifest/slue-voxpopuli \
 # --subset ${eval_set} \
