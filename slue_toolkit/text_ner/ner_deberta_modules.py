@@ -19,7 +19,7 @@ from transformers import (
 )
 from transformers.trainer_utils import get_last_checkpoint
 from slue_toolkit.eval import eval_utils
-from slue_toolkit.generic_utils import raw_to_combined_tag_map, load_pkl, read_lst
+from slue_toolkit.generic_utils import raw_to_combined_tag_map, load_dct, read_lst
 
 
 class VPDataset(torch.utils.data.Dataset):
@@ -98,8 +98,8 @@ class DataSetup:
         else:
             texts, tags = self.read_data(f"{split_name}.{label_type}.tsv")
 
-        tag_id_fn = os.path.join(self.data_dir, f"{label_type}_tag2id.pkl")
-        tag2id = load_pkl(tag_id_fn)
+        tag_id_fn = os.path.join(self.data_dir, f"{label_type}_tag2id.json")
+        tag2id = load_dct(tag_id_fn)
 
         # Tokenize data
         encodings = self.tokenizer(
@@ -116,7 +116,7 @@ class DataSetup:
 
 
 def train_module(
-    data_dir, model_dir, train_dataset, eval_dataset, label_list, model_type
+    model_dir, train_dataset, eval_dataset, label_list, model_type
 ):
     def compute_metrics(p, return_entity_level_metrics=True):
         predictions, labels = p
@@ -265,7 +265,7 @@ def train_module(
         trainer.save_metrics("train", metrics)
         trainer.save_state()
 
-        # Saving the best checkpoint in ./best-checkpoint directory
+        # Moving the best checkpoint in ./best-checkpoint directory
         best_model_ckpt_dir = trainer.state.best_model_checkpoint
         save_dir = Path(best_model_ckpt_dir).parent / "best-checkpoint"
         os.rename(best_model_ckpt_dir, save_dir.as_posix())
@@ -409,13 +409,13 @@ class Eval:
         assert indices or tag_names
         assert not (indices and tag_names)
         if indices:
-            id2tag_raw = load_pkl(os.path.join(self.data_dir, "raw_id2tag.pkl"))
-            tag2id_raw = load_pkl(os.path.join(self.data_dir, "raw_tag2id.pkl"))
-            id2tag_combined = load_pkl(
-                os.path.join(self.data_dir, "combined_id2tag.pkl")
+            id2tag_raw = load_dct(os.path.join(self.data_dir, "raw_id2tag.json"))
+            tag2id_raw = load_dct(os.path.join(self.data_dir, "raw_tag2id.json"))
+            id2tag_combined = load_dct(
+                os.path.join(self.data_dir, "combined_id2tag.json")
             )
-            tag2id_combined = load_pkl(
-                os.path.join(self.data_dir, "combined_tag2id.pkl")
+            tag2id_combined = load_dct(
+                os.path.join(self.data_dir, "combined_tag2id.json")
             )
             raw_to_combined_id = {}
             for key, value in raw_to_combined_tag_map.items():
@@ -524,6 +524,7 @@ class Eval:
         score_type,
         eval_dataset_pred,
         eval_texts_gt,
+        eval_subset,
         eval_tags_gt=None,
         eval_texts_pred=None,
     ):
@@ -533,8 +534,10 @@ class Eval:
 
         metrics_dct = eval_utils.get_ner_scores(all_gt, all_predictions)
         print(
-            "[micro-averaged F1-%s] Precision: %.2f, recall: %.2f, fscore = %.2f"
+            "[%s (%s tag set), micro-averaged F1-%s] Precision: %.2f, recall: %.2f, fscore = %.2f"
             % (
+                eval_subset,
+                self.eval_label,
                 score_type,
                 metrics_dct["overall_micro"]["precision"],
                 metrics_dct["overall_micro"]["recall"],

@@ -27,6 +27,7 @@ setup(
         "transformers",
         "datasets",
         "seqeval",
+        "einops",
     ],
     entry_points={},
     include_package_data=True,

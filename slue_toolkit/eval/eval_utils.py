@@ -117,11 +117,6 @@ def ner_error_analysis(all_gt, all_predictions, gt_text):
         analysis_examples_dct["all"].append("\t".join([text, str(gt), str(pred)]))
         for tag_name in target_names:
             _ = analysis_examples_dct.setdefault(tag_name, [])
-            entities_true_type = entities_true.get(tag_name, set())
-            entities_pred_type = entities_pred.get(tag_name, set())
-            num_gt = len(entities_true_type)
-            num_correct = len(entities_true_type & entities_pred_type)
-
             new_gt = [(item1, item2) for item1, item2, _ in gt]
             new_pred = [(item1, item2) for item1, item2, _ in pred]
             analysis_examples_dct[tag_name].append(

@@ -15,8 +15,8 @@ bash baselines/asr/ft-w2v2-large.sh manifest/slue-voxpopuli save/asr/w2v2-large-
 #### Evaluation
 To evaluate the fine-tuned wav2vec 2.0 ASR models on the dev set, please run the following commands.
 ```sh
-python slue_toolkit/eval/eval_w2v.py eval_asr save/asr/w2v2-base-vc --data manifest/slue-voxceleb --subset dev
-python slue_toolkit/eval/eval_w2v.py eval_asr save/asr/w2v2-base-vp --data manifest/slue-voxpopuli --subset dev
+python slue_toolkit/eval/eval_w2v.py eval_ctc_model save/asr/w2v2-base-vc --data manifest/slue-voxceleb --subset dev
+python slue_toolkit/eval/eval_w2v.py eval_ctc_model save/asr/w2v2-base-vp --data manifest/slue-voxpopuli --subset dev
 ```
 The WER will be printed directly.
 The predictions are saved in `save/asr/w2v2-base-vc/pred-dev.wrd` and `save/asr/w2v2-base-vp/pred-dev.wrd` and can be used for pipeline models.
@@ -34,6 +34,6 @@ bash scripts/build_t3_lm.sh $kenlm_build_bin
 where `$kenlm_build_bin` is the path of your kenlm build folder (e.g., `/home/user/kenlm/build/bin`).
 After the tri-gram LM is trained, we can decode with it using these commands
 ```sh
-python slue_toolkit/eval/eval_w2v.py eval_asr save/asr/w2v2-base-vc --data manifest/slue-voxceleb --subset dev --lm t3/3
-python slue_toolkit/eval/eval_w2v.py eval_asr save/asr/w2v2-base-vp --data manifest/slue-voxpopuli --subset dev --lm t3/3
+python slue_toolkit/eval/eval_w2v.py eval_ctc_model save/asr/w2v2-base-vc --data manifest/slue-voxceleb --subset dev --lm t3/3
+python slue_toolkit/eval/eval_w2v.py eval_ctc_model save/asr/w2v2-base-vp --data manifest/slue-voxpopuli --subset dev --lm t3/3
 ```
