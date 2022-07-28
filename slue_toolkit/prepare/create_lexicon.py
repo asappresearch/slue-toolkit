@@ -11,7 +11,7 @@ def is_valid(w):
     return True
 
 
-def main(input_file, output_file):
+def main(input_file, output_file, check=False):
     print(len(valid_char))
 
     words = set()
@@ -20,7 +20,8 @@ def main(input_file, output_file):
             for word in line.split():
                 words.add(word.lower())
 
-    words = [w for w in words if is_valid(w)]
+    if check:
+        words = [w for w in words if is_valid(w)]
 
     with open(output_file, "w") as f:
         for word in sorted(words):

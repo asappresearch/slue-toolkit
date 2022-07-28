@@ -9,13 +9,15 @@ import shlex
 import subprocess
 
 lm_dict = {
-    "vc": "lower-t3/3",
-    "vp": "lower-t3/3",
+    "vc": "t3/3",
+    "vp": "t3/3",
+    "vp-ner": "vp_ner/4",
 }
 
 data_dict = {
     "vc": "manifest/slue-voxceleb",
     "vp": "manifest/slue-voxpopuli",
+    "vp-ner": "manifest/slue-voxpopuli/e2e_ner",
 }
 
 
@@ -81,6 +83,7 @@ def eval_asr(
     )
 
     if results_path is not None:
+        os.makedirs(results_path, exist_ok=True)
         cmd += f" --results-path {results_path}"
     if emission_path is not None:
         cmd += f" --dump-emissions {emission_path}"
@@ -194,6 +197,7 @@ def dump_asr_preds(
     lm_weight=2.0,
     word_score=-1.0,
     use_lm=False,
+    user_dir="slue_toolkit/fairseq_addon",
 ):
     if use_lm:
         dump_folder = os.path.join("preds", task + "+lm", os.path.basename(model))
@@ -223,7 +227,9 @@ def dump_asr_preds(
             csv_log_file="dump-pred.csv",
             fp16=True,
             dry_run=True,
+            user_dir=user_dir,
         )
+        os.makedirs(results_path, exist_ok=True)
         pred_file = os.path.join(
             results_path, f"hypo.word-checkpoint_best.pt-{split}.txt"
         )
