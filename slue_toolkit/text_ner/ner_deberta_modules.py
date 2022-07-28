@@ -116,7 +116,7 @@ class DataSetup:
 
 
 def train_module(
-    data_dir, model_dir, train_dataset, eval_dataset, label_list, model_type
+    model_dir, train_dataset, eval_dataset, label_list, model_type
 ):
     def compute_metrics(p, return_entity_level_metrics=True):
         predictions, labels = p
@@ -265,7 +265,7 @@ def train_module(
         trainer.save_metrics("train", metrics)
         trainer.save_state()
 
-        # Saving the best checkpoint in ./best-checkpoint directory
+        # Moving the best checkpoint in ./best-checkpoint directory
         best_model_ckpt_dir = trainer.state.best_model_checkpoint
         save_dir = Path(best_model_ckpt_dir).parent / "best-checkpoint"
         os.rename(best_model_ckpt_dir, save_dir.as_posix())
@@ -524,6 +524,7 @@ class Eval:
         score_type,
         eval_dataset_pred,
         eval_texts_gt,
+        eval_subset,
         eval_tags_gt=None,
         eval_texts_pred=None,
     ):
@@ -533,8 +534,10 @@ class Eval:
 
         metrics_dct = eval_utils.get_ner_scores(all_gt, all_predictions)
         print(
-            "[micro-averaged F1-%s] Precision: %.2f, recall: %.2f, fscore = %.2f"
+            "[%s (%s tag set), micro-averaged F1-%s] Precision: %.2f, recall: %.2f, fscore = %.2f"
             % (
+                eval_subset,
+                self.eval_label,
                 score_type,
                 metrics_dct["overall_micro"]["precision"],
                 metrics_dct["overall_micro"]["recall"],
