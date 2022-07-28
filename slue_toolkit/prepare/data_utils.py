@@ -1,15 +1,4 @@
-import pickle as pkl
-from slue_toolkit.generic_utils import raw_to_combined_tag_map, save_pkl, write_to_file
-
-
-def load_pkl(fname, encdng=None):
-    if encdng is None:
-        with open(fname, "rb") as f:
-            data = pkl.load(f)
-    else:
-        with open(fname, "rb") as f:
-            data = pkl.load(f, encoding=encdng)
-    return data
+from slue_toolkit.generic_utils import raw_to_combined_tag_map
 
 
 def remove_punc(sent):

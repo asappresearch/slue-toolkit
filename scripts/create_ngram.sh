@@ -9,7 +9,11 @@ arpa=${output}/${n}gram.arpa
 bin=${output}/${n}gram.bin
 
 
-cat $input | tr '[A-Z]' '[a-z'] | ${kenlm}/lmplz --skip_symbols -o ${n} > $arpa
+if [[ $input == *"ner"* ]]; then
+    cat $input | ${kenlm}/lmplz --skip_symbols -o ${n} > $arpa
+else
+    cat $input | tr '[A-Z]' '[a-z'] | ${kenlm}/lmplz --skip_symbols -o ${n} > $arpa
+fi
 ${kenlm}/build_binary $arpa $bin
 
 echo 'create lexicon'

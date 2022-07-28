@@ -19,7 +19,7 @@ data_dict = {
 }
 
 
-def eval_asr(
+def eval_ctc_model(
     model="save/asr/w2v2-base-vc",
     lm="nolm-argmax",
     beam_size=500,
@@ -211,7 +211,7 @@ def dump_asr_preds(
         if os.path.exists(dump_file):
             print(f"{dump_file} exists")
             continue
-        cmd, results_path = eval_asr(
+        cmd, results_path = eval_ctc_model(
             model=model,
             lm=lm_model,
             beam_size=beam_size,

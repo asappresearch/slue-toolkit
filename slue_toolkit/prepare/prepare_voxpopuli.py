@@ -8,7 +8,7 @@ import re
 
 from slue_toolkit.prepare import data_utils
 from slue_toolkit.prepare.create_dict import create_dict
-from slue_toolkit.generic_utils import save_pkl, write_to_file
+from slue_toolkit.generic_utils import save_dct, write_to_file
 
 splits = {"fine-tune", "dev", "test"}
 
@@ -70,7 +70,7 @@ def create_manifest(
                     print(" ".join(text.replace(" ", "|")), file=f)
 
             # prepare NER files (for Fairseq and HuggingFace)
-            for sub_dir_name in ["e2e_ner", "nlp_ner"]:
+            for sub_dir_name in ["e2e_ner", "text_ner"]:
                 os.makedirs(os.path.join(manifest_dir, sub_dir_name), exist_ok=True)
             for label_type in ["raw", "combined"]:
                 wrd_fn = os.path.join(
@@ -80,7 +80,7 @@ def create_manifest(
                     manifest_dir, "e2e_ner", f"{split}.{label_type}.ltr"
                 )
                 tsv_fn = os.path.join(
-                    manifest_dir, "nlp_ner", f"{split}.{label_type}.tsv"
+                    manifest_dir, "text_ner", f"{split}.{label_type}.tsv"
                 )
                 with open(wrd_fn, "w") as f_wrd, open(ltr_fn, "w") as f_ltr, open(
                     tsv_fn, "w"
@@ -97,24 +97,21 @@ def create_manifest(
                         )
                         print(wrd_str, file=f_wrd)
                         print(ltr_str, file=f_ltr)
-        try:
-            os.symlink(
-                f"../{split}.tsv", os.path.join(manifest_dir, f"e2e_ner/{split}.tsv")
-            )
-        except:
-            pass
+        e2e_ner_tsv_fn = os.path.join(manifest_dir, f"e2e_ner/{split}.tsv")
+        if not os.path.exists(e2e_ner_tsv_fn):
+            os.symlink(f"../{split}.tsv", e2e_ner_tsv_fn)
 
     for label_type in ["raw", "combined"]:
         tag2id, id2tag, tag_lst_ordered = data_utils.prepare_tag_id_mapping(label_type)
-        save_pkl(
-            os.path.join(manifest_dir, "nlp_ner", f"{label_type}_tag2id.pkl"), tag2id
+        save_dct(
+            os.path.join(manifest_dir, "text_ner", f"{label_type}_tag2id.json"), tag2id
         )
-        save_pkl(
-            os.path.join(manifest_dir, "nlp_ner", f"{label_type}_id2tag.pkl"), id2tag
+        save_dct(
+            os.path.join(manifest_dir, "text_ner", f"{label_type}_id2tag.json"), id2tag
         )
         write_to_file(
             "\n".join(tag_lst_ordered),
-            os.path.join(manifest_dir, "nlp_ner", f"{label_type}_tag_lst_ordered"),
+            os.path.join(manifest_dir, "text_ner", f"{label_type}_tag_lst_ordered"),
         )
         for token_type in ["wrd", "ltr"]:
             create_dict(

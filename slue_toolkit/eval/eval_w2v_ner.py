@@ -12,7 +12,7 @@ sys.path.insert(0, "../")
 from slue_toolkit.eval import eval_utils
 from slue_toolkit.generic_utils import (
     read_lst,
-    save_pkl,
+    save_dct,
     spl_char_to_entity,
     raw_to_combined_tag_map,
 )
@@ -57,7 +57,7 @@ def get_gt_pred(score_type, eval_label, eval_set, decoded_data_dir):
         all_text = read_lst(
             os.path.join(
                 decoded_data_dir,
-                f"{pfx}.word-checkpoint_best.pt-{eval_set}_raw_e2e_ner.txt",
+                f"{pfx}.word-checkpoint_best.pt-{eval_set}.txt",
             )
         )
         all_text = [line.split(" (None")[0] for line in all_text]
@@ -101,37 +101,43 @@ def eval_ner(
     eval_set="dev",
     eval_label="combined",
     lm="nolm",
-    lm_sfx=None,
     save_results=False,
 ):
     if "nolm" in lm:
-        decoded_data_dir = os.path.join(model_dir, "decode", eval_set, "nolm")
+        decoded_data_dir = os.path.join(model_dir, "decode", "nolm")
     else:
-        decoded_data_dir = os.path.join(model_dir, "decode", eval_set, f"{lm}-{lm_sfx}")
+        lm = lm.replace("/", "_")
+        decoded_data_dir = os.path.join(model_dir, "decode", lm)
+        lm += "gram"
     log_dir = os.path.join(model_dir, "metrics")
+    os.makedirs(log_dir, exist_ok=True)
     if save_results:
         ner_results_dir = os.path.join(log_dir, "error_analysis")
-    os.makedirs(log_dir, exist_ok=True)
-    os.makedirs(ner_results_dir, exist_ok=True)
+        os.makedirs(ner_results_dir, exist_ok=True)
 
     for score_type in ["standard", "label"]:
         res_fn = "-".join([eval_set, lm, eval_label, score_type])
         labels_dct, text_dct = get_gt_pred(
             score_type, eval_label, eval_set, decoded_data_dir
         )
-        if cfg.save_results and score_type == "standard":
-            analysis_examples_dct = eval_utils.error_analysis(
+        if save_results and score_type == "standard":
+            analysis_examples_dct = eval_utils.ner_error_analysis(
                 labels_dct["ref"], labels_dct["hypo"], text_dct["ref"]
             )
-            save_pkl(
-                os.path.join(ner_results_dir, res_fn + ".pkl"), analysis_examples_dct
+            save_dct(
+                os.path.join(ner_results_dir, res_fn + ".json"), analysis_examples_dct
             )
-
         metrics = eval_utils.get_ner_scores(labels_dct["ref"], labels_dct["hypo"])
-        save_pkl(os.path.join(log_dir, res_fn + ".pkl"), metrics)
+        save_dct(os.path.join(log_dir, res_fn + ".json"), metrics)
         print(
-            "[%s, micro-averaged %s]: %.1f"
-            % (model_name, score_type, 100 * res_dct["overall_micro"]["fscore"])
+            "[%s, %s, %s label set, micro-averaged %s]: %.1f"
+            % (
+                os.path.basename(model_dir),
+                eval_set,
+                eval_label,
+                score_type,
+                100 * metrics["overall_micro"]["fscore"],
+            )
         )
 
 
