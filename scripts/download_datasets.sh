@@ -10,7 +10,7 @@ else
     if [ -f $tar_file ]; then
         echo "$tar_file exists. Skip download."
     else
-        tar_file_url="https://papers-slue.awsdev.asapp.com/slue-${split}_blind.tar.gz"
+        tar_file_url="https://public-dataset-model-store.awsdev.asapp.com/users/sshon/public/slue/slue-${split}_v0.2_blind.tar.gz"
         wget $tar_file_url -P data/
     fi
 
