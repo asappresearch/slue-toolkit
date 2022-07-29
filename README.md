@@ -83,8 +83,8 @@ Sentiment analysis refers to classifying a given speech segment as having negati
   <tr>
     <td>SLUE-VoxCeleb</td>
     <td>5,777 (12.8)</td>
-    <td>955 (2.1)</td>
-    <td>4,052 (9.0)</td>
+    <td>1,454 (3.2)</td>
+    <td>3,553 (7.8)</td>
     <td>ASR, SA</td>
     <td>CC-BY 4.0 (check complete license <a href="https://papers-slue.awsdev.asapp.com/slue-voxceleb_LICENSE">here</a>)</td>
 <!--     <td>CC-BY 4.0</td>
