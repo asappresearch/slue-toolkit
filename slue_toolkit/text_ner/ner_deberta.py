@@ -34,6 +34,7 @@ def eval(
     asr_model_type="w2v2-base",
     save_results=False,
 ):
+    lm = lm.replace("/", "_")
     log_dir = os.path.join(model_dir, "metrics")
     if save_results:
         ner_results_dir = os.path.join(log_dir, "error_analysis")
