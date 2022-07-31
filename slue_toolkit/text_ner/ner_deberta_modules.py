@@ -115,7 +115,7 @@ class DataSetup:
         return texts, tags, encodings, labels, dataset
 
 
-def train_module(model_dir, train_dataset, eval_dataset, label_list, model_type):
+def train_module(model_dir, train_dataset, eval_dataset, label_list, model_type, cfg_file):
     def compute_metrics(p, return_entity_level_metrics=True):
         predictions, labels = p
         predictions = np.argmax(predictions, axis=2)
@@ -155,15 +155,13 @@ def train_module(model_dir, train_dataset, eval_dataset, label_list, model_type)
         f"microsoft/{model_type}", num_labels=len(label_list)
     )
 
-    logging_steps = 50
-    saving_steps = 500
-    eval_steps = 50
-    accum_steps = 1
-    warmup_steps = 50
-    if "large" in model_type:
-        num_epochs = 50
-    elif "base" in model_type:
-        num_epochs = 10
+    cfg_dct = load_dct(cfg_file)
+    logging_steps = cfg_dct["logging_steps"]
+    saving_steps = cfg_dct["saving_steps"]
+    eval_steps = cfg_dct["eval_steps"]
+    accum_steps = cfg_dct["accum_steps"]
+    warmup_steps = cfg_dct["warmup_steps"]
+    num_epochs = cfg_dct["num_epochs"]
 
     # Training
     training_args = TrainingArguments(

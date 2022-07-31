@@ -5,4 +5,5 @@ python slue_toolkit/text_ner/ner_deberta.py train \
 --data_dir manifest/slue-voxpopuli/text_ner \
 --model_dir save/text_ner/${model_type}_${label_type} \
 --model_type $model_type \
---label_type $label_type
+--label_type $label_type \
+--cfg_file baselines/ner/configs/${model_type}.json

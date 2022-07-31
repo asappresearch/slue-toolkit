@@ -8,6 +8,7 @@ def train(
     data_dir,
     model_dir,
     model_type,
+    cfg_file,
     label_type="raw",
     train_subset="fine-tune",
     valid_subset="dev",
@@ -16,7 +17,7 @@ def train(
     _, _, _, _, train_dataset = data_obj.prep_data(train_subset, label_type)
     _, _, _, _, val_dataset = data_obj.prep_data(valid_subset, label_type)
     label_list = read_lst(os.path.join(data_dir, f"{label_type}_tag_lst_ordered"))
-    NDM.train_module(model_dir, train_dataset, val_dataset, label_list, model_type)
+    NDM.train_module(model_dir, train_dataset, val_dataset, label_list, model_type, cfg_file)
 
 
 def eval(
