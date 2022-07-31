@@ -115,7 +115,9 @@ class DataSetup:
         return texts, tags, encodings, labels, dataset
 
 
-def train_module(model_dir, train_dataset, eval_dataset, label_list, model_type, cfg_file):
+def train_module(
+    model_dir, train_dataset, eval_dataset, label_list, model_type, cfg_file
+):
     def compute_metrics(p, return_entity_level_metrics=True):
         predictions, labels = p
         predictions = np.argmax(predictions, axis=2)
