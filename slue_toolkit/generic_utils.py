@@ -5,6 +5,8 @@ Compilation of commonly used functions
 import json
 import pickle as pkl
 
+end_char = "]"
+
 raw_entity_to_spl_char = {
     "CARDINAL": "!",
     "DATE": "@",

@@ -1,0 +1,8 @@
+{
+    "logging_steps": 50,
+    "saving_steps": 500,
+    "eval_steps": 50,
+    "accum_steps": 1,
+    "warmup_steps": 50,
+    "num_epochs": 10
+}

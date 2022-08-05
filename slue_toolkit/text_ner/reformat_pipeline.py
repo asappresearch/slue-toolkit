@@ -12,8 +12,7 @@ def prep_data(
     """
     Create tsv files for pipeline evaluation from the decoded ASR transcripts
     """
-    if "nolm" not in lm:
-        lm = "t3-b500-lw2-ws-1"
+    lm = lm.replace("/", "_")
     manifest_data_fn = os.path.join(asr_data_dir, eval_set + ".wrd")
     decoded_data_dir = os.path.join(asr_model_dir, "decode", lm)
 
