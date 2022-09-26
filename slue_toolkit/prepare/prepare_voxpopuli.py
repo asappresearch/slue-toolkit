@@ -56,6 +56,8 @@ def create_manifest(
                 ).frames
                 print(f"{uid}.ogg\t{frames}", file=f)
 
+        for sub_dir_name in ["e2e_ner", "text_ner"]:
+            os.makedirs(os.path.join(manifest_dir, sub_dir_name), exist_ok=True)
         if split != "test" or not is_blind:
             with open(os.path.join(manifest_dir, f"{split}.wrd"), "w") as f:
                 for text in df["normalized_text"].array:
@@ -70,8 +72,6 @@ def create_manifest(
                     print(" ".join(text.replace(" ", "|")), file=f)
 
             # prepare NER files (for Fairseq and HuggingFace)
-            for sub_dir_name in ["e2e_ner", "text_ner"]:
-                os.makedirs(os.path.join(manifest_dir, sub_dir_name), exist_ok=True)
             for label_type in ["raw", "combined"]:
                 wrd_fn = os.path.join(
                     manifest_dir, "e2e_ner", f"{split}.{label_type}.wrd"
@@ -99,7 +99,7 @@ def create_manifest(
                         print(ltr_str, file=f_ltr)
         e2e_ner_tsv_fn = os.path.join(manifest_dir, f"e2e_ner/{split}.tsv")
         if not os.path.exists(e2e_ner_tsv_fn):
-            os.symlink(f"{manifest_dir}/{split}.tsv", e2e_ner_tsv_fn)
+            os.symlink(f"../{split}.tsv", e2e_ner_tsv_fn)
 
     for label_type in ["raw", "combined"]:
         tag2id, id2tag, tag_lst_ordered = data_utils.prepare_tag_id_mapping(label_type)
