@@ -6,7 +6,7 @@ if [ -d data/slue-${split} ]; then
     echo "data/slue-${split} exists. Skip download & extract."
 else
     #1. Download
-    tar_file="data/slue-${split}_blind.tar.gz"
+    tar_file="data/slue-${split}_v0.2_blind.tar.gz"
     if [ -f $tar_file ]; then
         echo "$tar_file exists. Skip download."
     else
