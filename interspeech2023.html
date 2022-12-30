@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>How-to-submit &#8212; SLUE Benchmark</title>
+    <title>“The 2nd Special Session on Low-Resource Spoken Language Understanding” &#8212; SLUE Benchmark</title>
     
   <link href="_static/css/theme.css" rel="stylesheet" />
   <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -51,8 +51,8 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Leaderboard" href="leaderboard_v0.2.html" />
-    <link rel="prev" title="SLUE Tasks" href="slue-tasks.html" />
+    <link rel="next" title="SLUE 2022 Challange" href="interspeech2023_task_track.html" />
+    <link rel="prev" title="Leaderboard" href="leaderboard_v0.2.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -98,14 +98,14 @@
   SLUE Benchmark
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="slue-tasks.html">
    SLUE Tasks
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="how-to-submit.html">
    How-to-submit
   </a>
  </li>
@@ -130,9 +130,9 @@
   Special Session @ Interspeech 2023
  </span>
 </p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="interspeech2023.html">
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    “The 2nd Special Session on Low-Resource Spoken Language Understanding”
   </a>
  </li>
@@ -209,7 +209,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/how-to-submit.md"><button type="button"
+        <a class="dropdown-buttons" href="_sources/interspeech2023.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -229,7 +229,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/asappresearch/slue-toolkit/issues/new?title=Issue%20on%20page%20%2Fhow-to-submit.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/asappresearch/slue-toolkit/issues/new?title=Issue%20on%20page%20%2Finterspeech2023.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -250,29 +250,6 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
-            </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#submission-format">
-   Submission format
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#missing-tasks">
-   Missing Tasks
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#submission">
-   Submission
-  </a>
- </li>
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -281,28 +258,68 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="how-to-submit">
-<h1>How-to-submit<a class="headerlink" href="#how-to-submit" title="Permalink to this headline">¶</a></h1>
-<p>SLUE test set evaluation is not publicly available for a fair evaluation. If you submit your test set evaluation following the desired form, we will evaluate your system.</p>
-<div class="section" id="submission-format">
-<h2>Submission format<a class="headerlink" href="#submission-format" title="Permalink to this headline">¶</a></h2>
-<p>in .tsv format, prepare 4 columns as in the below example. Please specify none, if the prediction does not exist (for example, Voxpopuli is for ASR and NER, it needs <code class="docutils literal notranslate"><span class="pre">id</span></code>, <code class="docutils literal notranslate"><span class="pre">pred_text</span></code>, <code class="docutils literal notranslate"><span class="pre">pred_ner</span></code> columns, and all entities in <code class="docutils literal notranslate"><span class="pre">pred_sentiment</span></code> should be <code class="docutils literal notranslate"><span class="pre">None</span></code>. If no NE found, <code class="docutils literal notranslate"><span class="pre">pred_ner</span></code> should be <code class="docutils literal notranslate"><span class="pre">None</span></code></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">id</span>	<span class="n">pred_text</span>	<span class="n">pred_ner</span>	<span class="n">pred_sentiment</span>
-<span class="n">id10012_0AXjxNXiEzo_00001</span>	<span class="n">like</span> <span class="n">i</span> <span class="n">said</span> <span class="n">less</span> <span class="n">manicured</span> <span class="ow">in</span> <span class="n">a</span> <span class="n">good</span> <span class="n">way</span> <span class="n">i</span> <span class="n">think</span> <span class="n">i</span> <span class="n">think</span> <span class="n">that</span> <span class="n">what</span> <span class="n">you</span> <span class="n">know</span> <span class="n">people</span>	<span class="kc">None</span>	<span class="n">Positive</span>
-<span class="mi">20150518</span><span class="o">-</span><span class="mi">0900</span><span class="o">-</span><span class="n">PLENARY</span><span class="o">-</span><span class="mi">15</span><span class="o">-</span><span class="n">en_20150518</span><span class="o">-</span><span class="mi">18</span><span class="p">:</span><span class="mi">48</span><span class="p">:</span><span class="mi">27_2</span>	<span class="n">we</span> <span class="nb">all</span> <span class="n">agreed</span> <span class="n">at</span> <span class="n">the</span> <span class="n">last</span> <span class="n">session</span> <span class="ow">in</span> <span class="n">strasbourg</span> <span class="n">that</span> <span class="n">development</span> <span class="ow">is</span> <span class="n">important</span> <span class="n">but</span> <span class="n">we</span> <span class="n">need</span> <span class="n">to</span> <span class="n">remember</span> <span class="n">it</span> <span class="n">now</span> <span class="n">when</span> <span class="n">we</span> <span class="n">are</span> <span class="n">talking</span> <span class="n">about</span> <span class="n">the</span> <span class="n">financial</span> <span class="n">contributions</span>	<span class="p">[[</span><span class="s1">&#39;GPE&#39;</span><span class="p">,</span> <span class="s1">&#39;strasbourg&#39;</span><span class="p">]]</span>	<span class="kc">None</span>
-<span class="mi">20180530</span><span class="o">-</span><span class="mi">0900</span><span class="o">-</span><span class="n">PLENARY</span><span class="o">-</span><span class="mi">26</span><span class="o">-</span><span class="n">en_20180530</span><span class="o">-</span><span class="mi">20</span><span class="p">:</span><span class="mi">01</span><span class="p">:</span><span class="mi">52_0</span>	<span class="n">madam</span> <span class="n">president</span> <span class="n">first</span> <span class="n">of</span> <span class="nb">all</span> <span class="n">i</span> <span class="n">would</span> <span class="n">like</span> <span class="n">to</span> <span class="n">thank</span> <span class="nb">all</span> <span class="n">the</span> <span class="n">members</span> <span class="n">who</span> <span class="n">have</span> <span class="n">participated</span> <span class="ow">in</span> <span class="n">this</span> <span class="n">important</span> <span class="n">debate</span> <span class="k">for</span> <span class="n">their</span> <span class="n">different</span> <span class="n">contributions</span><span class="o">.</span> <span class="kc">None</span> <span class="kc">None</span>
-
-</pre></div>
-</div>
-</div>
-<div class="section" id="missing-tasks">
-<h2>Missing Tasks<a class="headerlink" href="#missing-tasks" title="Permalink to this headline">¶</a></h2>
-<p>If you miss some tasks, for example, if you only want to evaluate the sentiment analysis system, you can submit only the prediction result of the sentiment analysis system (<code class="docutils literal notranslate"><span class="pre">pred_sentiment</span></code>). However, your submission should contain at least one of the SLU tasks other than ASR. Thus, we still accept submission with or without <code class="docutils literal notranslate"><span class="pre">pred_text</span></code> if one of <code class="docutils literal notranslate"><span class="pre">pred_ner</span></code> or <code class="docutils literal notranslate"><span class="pre">pred_sentiment</span></code> exists, but we will not evaluate if you only submit <code class="docutils literal notranslate"><span class="pre">pred_text</span></code>. Additionally, in any case, we will not rank if you miss at least one of the columns, since we cannot calculate the SLUE score.</p>
-</div>
-<div class="section" id="submission">
-<h2>Submission<a class="headerlink" href="#submission" title="Permalink to this headline">¶</a></h2>
-<p>Send tsv file to slue-committee “AT” googlegroups.com</p>
-</div>
+  <p style="font: 16px Monaco; margin-left:0em; color:#eb6e6e;">
+<b>Interspeech 2023 Special Session</b></p>
+<div class="tex2jax_ignore mathjax_ignore section" id="the-2nd-special-session-on-low-resource-spoken-language-understanding">
+<h1>“The 2nd Special Session on Low-Resource Spoken Language Understanding”<a class="headerlink" href="#the-2nd-special-session-on-low-resource-spoken-language-understanding" title="Permalink to this headline">¶</a></h1>
+<p>Progress in speech processing has been facilitated by shared datasets and benchmarks. Historically these have focused on automatic speech recognition (ASR), speaker identification, or other lower level tasks. Interest has been growing in higher-level spoken language understanding (SLU) tasks, including using end-to-end models, but there are fewer annotated datasets for such tasks, and the existing datasets tend to be relatively small or synthetic. At the same time, recent work shows the possibility of pre-training generic representations and then fine-tuning for several tasks using relatively little labeled data.</p>
+<p>For this special session, we will provide a Spoken Language Understanding Evaluation (SLUE) benchmark suite. SLUE phase 1 includes annotation for ASR, named entity recognition (NER) and sentiment analysis with the toolkit to pre-process and fine-tune scripts for baseline models.</p>
+<p>While we invite general submissions about this topic, the 2nd special session of the low-resource SLU series incorporates the challenge - <a class="reference internal" href="interspeech2023_task_track.html"><span class="doc std std-doc"><b>SLUE 2022</b></span></a>. SLUE 2022 will focus on Named entity recognition using SLUE-Voxpopuli dataset with resource constraints as follows in <a class="reference internal" href="interspeech2023_task_track.html"><span class="doc std std-doc"><b>here</b></span></a>.</p>
+<p>We also invite contributions for any relevant work in low-resource SLU problems, which include (but are not limited to):</p>
+<ul class="simple">
+<li><p>Training/fine-tuning approach using self/semi-supervised model for SLU tasks</p></li>
+<li><p>Comparison between pipeline and end-to-end SLU systems</p></li>
+<li><p>Self/semi-supervised learning approach focusing on SLU</p></li>
+<li><p>Multi-task/transfer/student-teacher learning focusing on SLU tasks</p></li>
+<li><p>Theoretical or empirical study on low-resource SLU problems</p></li>
+</ul>
+<p style="font: 16px Monaco; margin-left:0em; color:#eb6e6e;">
+<b> SLUE 2022 Challenge Resources
+</b></p>
+<p>
+<p>Please check <a class="reference internal" href="interspeech2023_task_track.html"><span class="doc std std-doc">here</span></a></p>
+</p>
+<p style="font: 16px Monaco; margin-left:0em; color:#eb6e6e;">
+<b>General Resources
+</b></p>
+<p>For this special session, we will provide support for several benchmark tasks using the new Spoken Language Understanding Evaluation (SLUE) benchmark suite (https://arxiv.org/abs/2111.10367). SLUE includes annotation for ASR, NER and sentiment analysis. We also provide a toolkit to pre-process and fine-tune scripts for baseline models. It is not mandatory for submissions to use SLUE, but we offer it as a well-defined experiment setting for low-resource SLU.</p>
+<ul class="simple">
+<li><p>SLUE Dataset: \</p>
+<ul>
+<li><p><a class="reference external" href="https://papers-slue.awsdev.asapp.com/slue-voxceleb_blind.tar.gz">slue-voxceleb</a></p></li>
+<li><p><a class="reference external" href="https://papers-slue.awsdev.asapp.com/slue-voxpopuli_blind.tar.gz">slue-voxpopuli</a></p></li>
+</ul>
+</li>
+<li><p>SLUE Toolkit: <a class="reference external" href="https://github.com/asappresearch/slue-toolkit">Github repo</a></p></li>
+<li><p>SLUE Website: <a class="reference external" href="https://asappresearch.github.io/slue-toolkit">https://asappresearch.github.io/slue-toolkit</a></p></li>
+</ul>
+<p>Note that there is <strong>no limitation</strong> on use of datasets/benchmarks for the special session. The other datasets/benchmarks we recommend are (alphabetical order)</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://arxiv.org/abs/2108.13048">ASR-GLUE</a></p></li>
+<li><p><a class="reference external" href="https://arxiv.org/pdf/2111.14706.pdf">ESPnet-SLU</a></p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2011.13205">SLURP</a></p></li>
+<li><p><a class="reference external" href="http://superbbenchmark.org">SUPERB</a> (limited to SLU-related tasks)</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2104.01604">Timers and Such</a></p></li>
+</ul>
+<p style="font: 16px Monaco; margin-left:0em; color:#eb6e6e;">
+<b>Paper submission
+</b></p>
+<p>Papers for Interspeech Special Session have to be submitted following the same schedule and procedure as regular papers of INTERSPEECH 2022. The submitted papers will undergo the same review process by anonymous and independent reviewers.</p>
+<p>Submission URL : (TBA)</p>
+<p style="font: 16px Monaco; margin-left:0em; color:#eb6e6e;">
+<b>Important dates
+</b></p>
+<p style="font: 14px Monaco; margin-left:0em; color:black;line-height:1.4">
+(SLUE-Voxpopuli v0.2 dataset has been released through SLUE-Toolkit since 2022) <br><br>
+Participants registration start &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : Jan. 01, 2023<br>
+Result submission deadline &emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: Feb. 20, 2023<br>
+Result announcement (rankings) &emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : Feb. 22, 2023<br>
+Test set label release to participants &emsp;&nbsp;&nbsp;&nbsp;&nbsp;: Feb. 22, 2023<br>
+Interspeech 2023 paper submission deadline &emsp;: Mar. 01, 2023<br>
+Interspeech 2023 paper update deadline &emsp;&emsp;&emsp;&emsp;&emsp;: Mar. 08, 2023<br>
+Interspeech 2023 @ Dublin, Ireland &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;: Aug. 20-24, 2023
+</p>
+<p><br><br><br><br><br><br></p>
 </div>
 
     <script type="text/x-thebe-config">
@@ -335,19 +352,19 @@
 <div class='prev-next-bottom'>
     
     <div id="prev">
-        <a class="left-prev" href="slue-tasks.html" title="previous page">
+        <a class="left-prev" href="leaderboard_v0.2.html" title="previous page">
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">SLUE Tasks</p>
+                <p class="prevnext-title">Leaderboard</p>
             </div>
         </a>
     </div>
      <div id="next">
-        <a class="right-next" href="leaderboard_v0.2.html" title="next page">
+        <a class="right-next" href="interspeech2023_task_track.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Leaderboard</p>
+                <p class="prevnext-title">SLUE 2022 Challange</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>
