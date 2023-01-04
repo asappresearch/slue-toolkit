@@ -8,7 +8,7 @@ Progress in speech processing has been facilitated by shared datasets and benchm
 
 For this special session, we will provide a Spoken Language Understanding Evaluation (SLUE) benchmark suite. SLUE phase 1 includes annotation for ASR, named entity recognition (NER) and sentiment analysis with the toolkit to pre-process and fine-tune scripts for baseline models.
 
-While we invite general submissions about this topic, the 2nd special session of the low-resource SLU series incorporates the challenge - [<b>SLUE 2022</b>](./interspeech2023_task_track.md). SLUE 2022 will focus on Named entity recognition using SLUE-Voxpopuli dataset with resource constraints as follows in [<b>here</b>](./interspeech2023_task_track.md).
+While we invite general submissions about this topic, the 2nd special session of the low-resource SLU series incorporates the challenge - [<b>SLUE 2023</b>](./interspeech2023_task_track.md). SLUE 2023 will focus on Named entity recognition using SLUE-Voxpopuli dataset with resource constraints as follows in [<b>here</b>](./interspeech2023_task_track.md).
 
 We also invite contributions for any relevant work in low-resource SLU problems, which include (but are not limited to):
 
@@ -20,7 +20,7 @@ We also invite contributions for any relevant work in low-resource SLU problems,
 
 
 <p style="font: 16px Monaco; margin-left:0em; color:#eb6e6e;">
-<b> SLUE 2022 Challenge Resources
+<b> SLUE 2023 Challenge Resources
 </b></p>
 <p>
 
@@ -55,7 +55,7 @@ Note that there is **no limitation** on use of datasets/benchmarks for the speci
 <b>Paper submission
 </b></p>
 
-Papers for Interspeech Special Session have to be submitted following the same schedule and procedure as regular papers of INTERSPEECH 2022. The submitted papers will undergo the same review process by anonymous and independent reviewers.
+Papers for Interspeech Special Session have to be submitted following the same schedule and procedure as regular papers of INTERSPEECH 2023. The submitted papers will undergo the same review process by anonymous and independent reviewers.
 
 Submission URL : (TBA)
 
