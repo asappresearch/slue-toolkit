@@ -50,7 +50,7 @@ optimizer:
 
 lr_scheduler:
   _name: tri_stage
-  phase_ratio: [0.1, 0.0, 0.9]
+  phase_ratio: [0.1, 0.4, 0.5]
   final_lr_scale: 0.05
 
 model:
@@ -71,4 +71,3 @@ model:
   attention_dropout: 0.0
   feature_grad_mult: 0.0
   freeze_finetune_updates: 10000
-
