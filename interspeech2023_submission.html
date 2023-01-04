@@ -256,6 +256,11 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#system-description-template">
+   System description template
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#submission-format-for-pipeline-track">
    Submission format for pipeline track
   </a>
@@ -283,8 +288,11 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="submissions">
 <h1>Submissions<a class="headerlink" href="#submissions" title="Permalink to this headline">¶</a></h1>
-<p>All participants should upload their system description (template link) and output TSV files. Participants are allowed to submit total 3 results (3 TSV files) per track.
-Please follow the submission format to be evaluated correctly. The formats are extactly the same that you use for the SLUE-Toolkit.</p>
+<p>All participants should upload their system description briefly and output TSV files. Participants are allowed to submit total 3 results (3 TSV files) per track. Please follow the submission format to be evaluated correctly. The formats are extactly the same that you use for the SLUE-Toolkit.</p>
+<div class="section" id="system-description-template">
+<h2>System description template<a class="headerlink" href="#system-description-template" title="Permalink to this headline">¶</a></h2>
+<p>Overleaf link : TBA</p>
+</div>
 <div class="section" id="submission-format-for-pipeline-track">
 <h2>Submission format for pipeline track<a class="headerlink" href="#submission-format-for-pipeline-track" title="Permalink to this headline">¶</a></h2>
 <p>in .tsv format, prepare 3 columns (<code class="docutils literal notranslate"><span class="pre">id</span></code>, <code class="docutils literal notranslate"><span class="pre">pred_text</span></code>, <code class="docutils literal notranslate"><span class="pre">pred_ner</span></code>) as in the below example. Please specify none, if the prediction does not exist.</p>
@@ -297,7 +305,7 @@ Please follow the submission format to be evaluated correctly. The formats are e
 </div>
 <div class="section" id="submission-format-for-e2e-track">
 <h2>Submission format for E2E track<a class="headerlink" href="#submission-format-for-e2e-track" title="Permalink to this headline">¶</a></h2>
-<p>in .tsv format, prepare 2 columns (<code class="docutils literal notranslate"><span class="pre">id</span></code>, <code class="docutils literal notranslate"><span class="pre">pred_ner</span></code>) as in the below example. Please specify none, if the prediction does not exist.</p>
+<p>in .tsv format, prepare 2 columns (<code class="docutils literal notranslate"><span class="pre">id</span></code>, <code class="docutils literal notranslate"><span class="pre">pred_ner</span></code>) as in the below example. <code class="docutils literal notranslate"><span class="pre">pred_text</span></code> column is <i>optional</i> depending on your system could generate ASR transcription. Please specify none, if the prediction does not exist.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">id</span>	<span class="n">pred_ner</span>
 <span class="mi">20150518</span><span class="o">-</span><span class="mi">0900</span><span class="o">-</span><span class="n">PLENARY</span><span class="o">-</span><span class="mi">15</span><span class="o">-</span><span class="n">en_20150518</span><span class="o">-</span><span class="mi">18</span><span class="p">:</span><span class="mi">48</span><span class="p">:</span><span class="mi">27_2</span>	<span class="p">[[</span><span class="s1">&#39;GPE&#39;</span><span class="p">,</span> <span class="s1">&#39;strasbourg&#39;</span><span class="p">]]</span>
 <span class="mi">20180530</span><span class="o">-</span><span class="mi">0900</span><span class="o">-</span><span class="n">PLENARY</span><span class="o">-</span><span class="mi">26</span><span class="o">-</span><span class="n">en_20180530</span><span class="o">-</span><span class="mi">20</span><span class="p">:</span><span class="mi">01</span><span class="p">:</span><span class="mi">52_0</span>	 <span class="kc">None</span>
