@@ -25,9 +25,10 @@ Refer to [Toolkit](https://github.com/asappresearch/slue-toolkit) and [Paper](ht
 <br>
 <br>
 
-<img src="images/asapp_logo.jpeg" alt="ASAPP" height="50px"> &nbsp; &nbsp;
-<img src="https://www.ttic.edu/img/logo.png" height="50px"> &nbsp; &nbsp;
-<img src="https://brand.cornell.edu/assets/images/downloads/logos/bold_cornell_logo/bold_cornell_logo.svg" height="50px">
+<img src="images/asapp_logo.jpeg" alt="ASAPP" height="45px"> &nbsp; &nbsp;
+<img src="https://www.ttic.edu/img/logo.png" height="45px"> &nbsp; &nbsp;
+<img src="images/ntu-logo.png" height="60px"> &nbsp; &nbsp;
+<img src="images/cmu-logo.png" height="60px"> &nbsp; &nbsp;
 
 <br>
 
