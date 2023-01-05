@@ -52,7 +52,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Contact" href="interspeech2023_contact.html" />
-    <link rel="prev" title="SLUE 2023 Challange" href="interspeech2023_task_track.html" />
+    <link rel="prev" title="SLUE 2023 Challange Rule" href="interspeech2023_challenge.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -124,6 +124,11 @@
    SLUE Toolkit
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="committees.html">
+   Committees
+  </a>
+ </li>
 </ul>
 <p class="caption" role="heading">
  <span class="caption-text">
@@ -133,12 +138,12 @@
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="interspeech2023.html">
-   “The 2nd Special Session on Low-Resource Spoken Language Understanding”
+   “SLUE 2023: Low-resource Spoken Language Understanding Evaluation Challenge”
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="interspeech2023_task_track.html">
-   SLUE 2023 Challange
+  <a class="reference internal" href="interspeech2023_challenge.html">
+   SLUE 2023 Challange Rule
   </a>
  </li>
  <li class="toctree-l1">
@@ -288,14 +293,14 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="submissions">
 <h1>Submissions<a class="headerlink" href="#submissions" title="Permalink to this headline">¶</a></h1>
-<p>All participants should upload their system description briefly and output TSV files. Participants are allowed to submit total 3 results (3 TSV files) per track. Please follow the submission format to be evaluated correctly. The formats are extactly the same that you use for the SLUE-Toolkit.</p>
+<p>All participants should upload their system description and output the TSV files. Participants are allowed to submit a total of 3 results (3 TSV files) per track. Please follow the submission format to be evaluated correctly. The formats are exactly the same as the ones used for the SLUE-Toolkit.</p>
 <div class="section" id="system-description-template">
 <h2>System description template<a class="headerlink" href="#system-description-template" title="Permalink to this headline">¶</a></h2>
 <p>Overleaf link : TBA</p>
 </div>
 <div class="section" id="submission-format-for-pipeline-track">
 <h2>Submission format for pipeline track<a class="headerlink" href="#submission-format-for-pipeline-track" title="Permalink to this headline">¶</a></h2>
-<p>in .tsv format, prepare 3 columns (<code class="docutils literal notranslate"><span class="pre">id</span></code>, <code class="docutils literal notranslate"><span class="pre">pred_text</span></code>, <code class="docutils literal notranslate"><span class="pre">pred_ner</span></code>) as in the below example. Please specify none, if the prediction does not exist.</p>
+<p>In .tsv format, prepare 3 columns (<code class="docutils literal notranslate"><span class="pre">id</span></code>, <code class="docutils literal notranslate"><span class="pre">pred_text</span></code>, <code class="docutils literal notranslate"><span class="pre">pred_ner</span></code>) as in the below example. Please specify none, if the prediction does not exist.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">id</span>	<span class="n">pred_text</span>	<span class="n">pred_ner</span>
 <span class="mi">20150518</span><span class="o">-</span><span class="mi">0900</span><span class="o">-</span><span class="n">PLENARY</span><span class="o">-</span><span class="mi">15</span><span class="o">-</span><span class="n">en_20150518</span><span class="o">-</span><span class="mi">18</span><span class="p">:</span><span class="mi">48</span><span class="p">:</span><span class="mi">27_2</span>	<span class="n">we</span> <span class="nb">all</span> <span class="n">agreed</span> <span class="n">at</span> <span class="n">the</span> <span class="n">last</span> <span class="n">session</span> <span class="ow">in</span> <span class="n">strasbourg</span> <span class="n">that</span> <span class="n">development</span> <span class="ow">is</span> <span class="n">important</span> <span class="n">but</span> <span class="n">we</span> <span class="n">need</span> <span class="n">to</span> <span class="n">remember</span> <span class="n">it</span> <span class="n">now</span> <span class="n">when</span> <span class="n">we</span> <span class="n">are</span> <span class="n">talking</span> <span class="n">about</span> <span class="n">the</span> <span class="n">financial</span> <span class="n">contributions</span>	<span class="p">[[</span><span class="s1">&#39;GPE&#39;</span><span class="p">,</span> <span class="s1">&#39;strasbourg&#39;</span><span class="p">]]</span>
 <span class="mi">20180530</span><span class="o">-</span><span class="mi">0900</span><span class="o">-</span><span class="n">PLENARY</span><span class="o">-</span><span class="mi">26</span><span class="o">-</span><span class="n">en_20180530</span><span class="o">-</span><span class="mi">20</span><span class="p">:</span><span class="mi">01</span><span class="p">:</span><span class="mi">52_0</span>	<span class="n">madam</span> <span class="n">president</span> <span class="n">first</span> <span class="n">of</span> <span class="nb">all</span> <span class="n">i</span> <span class="n">would</span> <span class="n">like</span> <span class="n">to</span> <span class="n">thank</span> <span class="nb">all</span> <span class="n">the</span> <span class="n">members</span> <span class="n">who</span> <span class="n">have</span> <span class="n">participated</span> <span class="ow">in</span> <span class="n">this</span> <span class="n">important</span> <span class="n">debate</span> <span class="k">for</span> <span class="n">their</span> <span class="n">different</span> <span class="n">contributions</span><span class="o">.</span> <span class="kc">None</span>
@@ -349,11 +354,11 @@
 <div class='prev-next-bottom'>
     
     <div id="prev">
-        <a class="left-prev" href="interspeech2023_task_track.html" title="previous page">
+        <a class="left-prev" href="interspeech2023_challenge.html" title="previous page">
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">SLUE 2023 Challange</p>
+                <p class="prevnext-title">SLUE 2023 Challange Rule</p>
             </div>
         </a>
     </div>

@@ -1,5 +1,5 @@
 # Submissions
-All participants should upload their system description briefly and output TSV files. Participants are allowed to submit total 3 results (3 TSV files) per track. Please follow the submission format to be evaluated correctly. The formats are extactly the same that you use for the SLUE-Toolkit.
+All participants should upload their system description and output the TSV files. Participants are allowed to submit a total of 3 results (3 TSV files) per track. Please follow the submission format to be evaluated correctly. The formats are exactly the same as the ones used for the SLUE-Toolkit.
 
 ## System description template
 
@@ -7,7 +7,7 @@ Overleaf link : TBA
 
 ## Submission format for pipeline track
 
-in .tsv format, prepare 3 columns (`id`, `pred_text`, `pred_ner`) as in the below example. Please specify none, if the prediction does not exist.
+In .tsv format, prepare 3 columns (`id`, `pred_text`, `pred_ner`) as in the below example. Please specify none, if the prediction does not exist.
 
 ````
 id	pred_text	pred_ner
@@ -18,6 +18,7 @@ id	pred_text	pred_ner
 
 ## Submission format for E2E track
 in .tsv format, prepare 2 columns (`id`, `pred_ner`) as in the below example. `pred_text` column is <i>optional</i> depending on your system could generate ASR transcription. Please specify none, if the prediction does not exist.
+
 
 ````
 id	pred_ner

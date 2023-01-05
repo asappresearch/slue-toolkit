@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>How-to-submit &#8212; SLUE Benchmark</title>
+    <title>SLUE 2023 Challange Rule &#8212; SLUE Benchmark</title>
     
   <link href="_static/css/theme.css" rel="stylesheet" />
   <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -51,8 +51,8 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Leaderboard" href="leaderboard_v0.2.html" />
-    <link rel="prev" title="SLUE Tasks" href="slue-tasks.html" />
+    <link rel="next" title="Submissions" href="interspeech2023_submission.html" />
+    <link rel="prev" title="“SLUE 2023: Low-resource Spoken Language Understanding Evaluation Challenge”" href="interspeech2023.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -98,14 +98,14 @@
   SLUE Benchmark
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="slue-tasks.html">
    SLUE Tasks
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="how-to-submit.html">
    How-to-submit
   </a>
  </li>
@@ -135,14 +135,14 @@
   Special Session @ Interspeech 2023
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="interspeech2023.html">
    “SLUE 2023: Low-resource Spoken Language Understanding Evaluation Challenge”
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="interspeech2023_challenge.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    SLUE 2023 Challange Rule
   </a>
  </li>
@@ -214,7 +214,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/how-to-submit.md"><button type="button"
+        <a class="dropdown-buttons" href="_sources/interspeech2023_challenge.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -234,7 +234,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/asappresearch/slue-toolkit/issues/new?title=Issue%20on%20page%20%2Fhow-to-submit.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/asappresearch/slue-toolkit/issues/new?title=Issue%20on%20page%20%2Finterspeech2023_challenge.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -261,18 +261,40 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#submission-format">
-   Submission format
+  <a class="reference internal nav-link" href="#ner-task-definition">
+   NER Task definition
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#missing-tasks">
-   Missing Tasks
+  <a class="reference internal nav-link" href="#challenge-tracks-and-rules">
+   Challenge tracks and rules
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#general-rules">
+     General rules
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pipeline-track">
+     pipeline track
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#e2e-track">
+     E2E track
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#slue-voxpopuli-dataset">
+   SLUE-Voxpopuli dataset
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#submission">
-   Submission
+  <a class="reference internal nav-link" href="#toolkit-and-baseline">
+   Toolkit and baseline
   </a>
  </li>
 </ul>
@@ -286,29 +308,36 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="how-to-submit">
-<h1>How-to-submit<a class="headerlink" href="#how-to-submit" title="Permalink to this headline">¶</a></h1>
-<p>SLUE test set evaluation isn’t publicly available to ensure a fair evaluation. Kindly submit the form, and our team will review it. Your submission will remain confidential.</p>
-<div class="section" id="submission-format">
-<h2>Submission format<a class="headerlink" href="#submission-format" title="Permalink to this headline">¶</a></h2>
-<p>Prepare a .tsv file with 4 columns as demonstrated in the illustration below. Please specify none, if the prediction does not exist. For example, Voxpopuli is for ASR and NER, it needs <code class="docutils literal notranslate"><span class="pre">id</span></code>, <code class="docutils literal notranslate"><span class="pre">pred_text</span></code>, <code class="docutils literal notranslate"><span class="pre">pred_ner</span></code> columns, and all entities in <code class="docutils literal notranslate"><span class="pre">pred_sentiment</span></code> should be <code class="docutils literal notranslate"><span class="pre">None</span></code>. If no NE found, <code class="docutils literal notranslate"><span class="pre">pred_ner</span></code> should be <code class="docutils literal notranslate"><span class="pre">None</span></code></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">id</span>	<span class="n">pred_text</span>	<span class="n">pred_ner</span>	<span class="n">pred_sentiment</span>
-<span class="n">id10012_0AXjxNXiEzo_00001</span>	<span class="n">like</span> <span class="n">i</span> <span class="n">said</span> <span class="n">less</span> <span class="n">manicured</span> <span class="ow">in</span> <span class="n">a</span> <span class="n">good</span> <span class="n">way</span> <span class="n">i</span> <span class="n">think</span> <span class="n">i</span> <span class="n">think</span> <span class="n">that</span> <span class="n">what</span> <span class="n">you</span> <span class="n">know</span> <span class="n">people</span>	<span class="kc">None</span>	<span class="n">Positive</span>
-<span class="mi">20150518</span><span class="o">-</span><span class="mi">0900</span><span class="o">-</span><span class="n">PLENARY</span><span class="o">-</span><span class="mi">15</span><span class="o">-</span><span class="n">en_20150518</span><span class="o">-</span><span class="mi">18</span><span class="p">:</span><span class="mi">48</span><span class="p">:</span><span class="mi">27_2</span>	<span class="n">we</span> <span class="nb">all</span> <span class="n">agreed</span> <span class="n">at</span> <span class="n">the</span> <span class="n">last</span> <span class="n">session</span> <span class="ow">in</span> <span class="n">strasbourg</span> <span class="n">that</span> <span class="n">development</span> <span class="ow">is</span> <span class="n">important</span> <span class="n">but</span> <span class="n">we</span> <span class="n">need</span> <span class="n">to</span> <span class="n">remember</span> <span class="n">it</span> <span class="n">now</span> <span class="n">when</span> <span class="n">we</span> <span class="n">are</span> <span class="n">talking</span> <span class="n">about</span> <span class="n">the</span> <span class="n">financial</span> <span class="n">contributions</span>	<span class="p">[[</span><span class="s1">&#39;GPE&#39;</span><span class="p">,</span> <span class="s1">&#39;strasbourg&#39;</span><span class="p">]]</span>	<span class="kc">None</span>
-<span class="mi">20180530</span><span class="o">-</span><span class="mi">0900</span><span class="o">-</span><span class="n">PLENARY</span><span class="o">-</span><span class="mi">26</span><span class="o">-</span><span class="n">en_20180530</span><span class="o">-</span><span class="mi">20</span><span class="p">:</span><span class="mi">01</span><span class="p">:</span><span class="mi">52_0</span>	<span class="n">madam</span> <span class="n">president</span> <span class="n">first</span> <span class="n">of</span> <span class="nb">all</span> <span class="n">i</span> <span class="n">would</span> <span class="n">like</span> <span class="n">to</span> <span class="n">thank</span> <span class="nb">all</span> <span class="n">the</span> <span class="n">members</span> <span class="n">who</span> <span class="n">have</span> <span class="n">participated</span> <span class="ow">in</span> <span class="n">this</span> <span class="n">important</span> <span class="n">debate</span> <span class="k">for</span> <span class="n">their</span> <span class="n">different</span> <span class="n">contributions</span><span class="o">.</span> <span class="kc">None</span> <span class="kc">None</span>
-
-</pre></div>
+  <div class="tex2jax_ignore mathjax_ignore section" id="slue-2023-challange-rule">
+<h1>SLUE 2023 Challange Rule<a class="headerlink" href="#slue-2023-challange-rule" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="ner-task-definition">
+<h2>NER Task definition<a class="headerlink" href="#ner-task-definition" title="Permalink to this headline">¶</a></h2>
+<p>Named entity recognition involves detecting the named entities and their tags (types) in a given sentence. Named entities are phrases, often (but not always) consisting of proper nouns, that refer to distinct entities such as a person, location, organization, numerical value, etc.</p>
+<p>For NER labels, we use <code class="docutils literal notranslate"><span class="pre">combined</span> <span class="pre">label</span></code> set as defined in <a class="reference external" href="https://arxiv.org/abs/2111.10367">SLUE</a> phase-1 paper. We evaluate performance using micro-averaged F1 score of the output. The F1 score evaluates an unordered list of named entity phrase and tag pairs predicted for each sentence.</p>
+</div>
+<div class="section" id="challenge-tracks-and-rules">
+<h2>Challenge tracks and rules<a class="headerlink" href="#challenge-tracks-and-rules" title="Permalink to this headline">¶</a></h2>
+<p>A participant must report at least one of the system’s output, either pipeline or E2E. Pipeline models generate transcription from speech using an ASR system, and then apply an NLP model on the generated ASR transcription. End-to-end (E2E) models directly map from the input speech to output task labels. Participants can use the audio, transcription and NER labels in <code class="docutils literal notranslate"><span class="pre">fine-tune</span></code> and <code class="docutils literal notranslate"><span class="pre">dev</span></code> set of SLUE-voxpopuli dataset for any purpose, such as training, fine-tuning, validation, or calibration. Participants should not use the <code class="docutils literal notranslate"><span class="pre">test</span></code> set for any kind of purpose. No label will be provided for the test dataset. All performance measurements will be made on the test set. Test set labels will be available after result submission to help participants analyze their result and report their findings.</p>
+<div class="section" id="general-rules">
+<h3>General rules<a class="headerlink" href="#general-rules" title="Permalink to this headline">¶</a></h3>
+<p>Note that SLUE-Voxpopuli is a subset of the Voxpopuli dataset and participants have the freedom to use the entire Voxpopuli dataset. However, it is not allowed an additional human annotation for the named entity on the Voxpopuli dataset. Participants are only allowed to use human annotation already provided in SLUE-Voxpopuli.</p>
+</div>
+<div class="section" id="pipeline-track">
+<h3>pipeline track<a class="headerlink" href="#pipeline-track" title="Permalink to this headline">¶</a></h3>
+<p>Participants are free to use any kind of open-sourced pre-trained model for the pipeline system. The acoustic pre-trained model can be a supervised model for ASR or unsupervised pre-trained model to be fine-tuned using any kind of speech data with or without ground truth transcription, including SLUE-Voxpopuli. The NLP pre-trained model can be any kind of model that’s trained, unsupervised or supervised for any kind of NLP tasks.</p>
+</div>
+<div class="section" id="e2e-track">
+<h3>E2E track<a class="headerlink" href="#e2e-track" title="Permalink to this headline">¶</a></h3>
+<p>Participants are free to use any kind of open-sourced pre-trained model. Here, E2E system means that the model can directly map the audio to the NER output using an acoustic model. However, participants could still use the NLP model or other models to train the E2E system, for example, distillation or transfer learning tasks.</p>
 </div>
 </div>
-<div class="section" id="missing-tasks">
-<h2>Missing Tasks<a class="headerlink" href="#missing-tasks" title="Permalink to this headline">¶</a></h2>
-<p>Your submission must contain at least one of the SLU tasks other than ASR to be evaluated. We’ll still accept submissions with or without <code class="docutils literal notranslate"><span class="pre">pred_text</span></code> if one of <code class="docutils literal notranslate"><span class="pre">pred_ner</span></code> or <code class="docutils literal notranslate"><span class="pre">pred_sentiment</span></code> exists, but we will not evaluate your submission if you only submit <code class="docutils literal notranslate"><span class="pre">pred_text</span></code>.</p>
-<p>However, for example, if you only want to evaluate the sentiment analysis system, you could submit only the prediction result of the sentiment analysis system (<code class="docutils literal notranslate"><span class="pre">pred_sentiment</span></code>).</p>
-<p>Most importantly, if you fail to include any of the columns in your submission, we won’t be able to calculate your SLUE score and thus cannot rank it.</p>
+<div class="section" id="slue-voxpopuli-dataset">
+<h2>SLUE-Voxpopuli dataset<a class="headerlink" href="#slue-voxpopuli-dataset" title="Permalink to this headline">¶</a></h2>
+<p>Please find <a class="reference external" href="https://arxiv.org/abs/2111.10367">SLUE</a> phase-1 paper for the SLUE-Voxpopuli dataset detail. You can download the dataset using <a class="reference external" href="https://github.com/asappresearch/slue-toolkit">SLUE-Toolkit</a></p>
 </div>
-<div class="section" id="submission">
-<h2>Submission<a class="headerlink" href="#submission" title="Permalink to this headline">¶</a></h2>
-<p>Send tsv file to slue-committee “AT” googlegroups.com</p>
+<div class="section" id="toolkit-and-baseline">
+<h2>Toolkit and baseline<a class="headerlink" href="#toolkit-and-baseline" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://github.com/asappresearch/slue-toolkit">SLUE-Toolkit</a> provides all related scripts: the downloadable dataset, pre-processing dataset, preparing combined label, and baseline recipes. A detailed baseline for NER can be found <a class="reference external" href="https://github.com/asappresearch/slue-toolkit/tree/main/baselines/ner">here</a>.</p>
 </div>
 </div>
 
@@ -342,19 +371,19 @@
 <div class='prev-next-bottom'>
     
     <div id="prev">
-        <a class="left-prev" href="slue-tasks.html" title="previous page">
+        <a class="left-prev" href="interspeech2023.html" title="previous page">
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">SLUE Tasks</p>
+                <p class="prevnext-title">“SLUE 2023: Low-resource Spoken Language Understanding Evaluation Challenge”</p>
             </div>
         </a>
     </div>
      <div id="next">
-        <a class="right-next" href="leaderboard_v0.2.html" title="next page">
+        <a class="right-next" href="interspeech2023_submission.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Leaderboard</p>
+                <p class="prevnext-title">Submissions</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>

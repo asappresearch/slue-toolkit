@@ -1,10 +1,12 @@
 # How-to-submit
 
-SLUE test set evaluation is not publicly available for a fair evaluation. If you submit your test set evaluation following the desired form, we will evaluate your system.
+SLUE test set evaluation isn't publicly available to ensure a fair evaluation. Kindly submit the form, and our team will review it. Your submission will remain confidential.
+
 
 ## Submission format
 
-in .tsv format, prepare 4 columns as in the below example. Please specify none, if the prediction does not exist (for example, Voxpopuli is for ASR and NER, it needs `id`, `pred_text`, `pred_ner` columns, and all entities in `pred_sentiment` should be `None`. If no NE found, `pred_ner` should be `None`
+Prepare a .tsv file with 4 columns as demonstrated in the illustration below. Please specify none, if the prediction does not exist. For example, Voxpopuli is for ASR and NER, it needs `id`, `pred_text`, `pred_ner` columns, and all entities in `pred_sentiment` should be `None`. If no NE found, `pred_ner` should be `None`
+
 
 ````
 id	pred_text	pred_ner	pred_sentiment
@@ -17,7 +19,11 @@ id10012_0AXjxNXiEzo_00001	like i said less manicured in a good way i think i thi
 
 ## Missing Tasks
 
-If you miss some tasks, for example, if you only want to evaluate the sentiment analysis system, you can submit only the prediction result of the sentiment analysis system (`pred_sentiment`). However, your submission should contain at least one of the SLU tasks other than ASR. Thus, we still accept submission with or without `pred_text` if one of `pred_ner` or `pred_sentiment` exists, but we will not evaluate if you only submit `pred_text`. Additionally, in any case, we will not rank if you miss at least one of the columns, since we cannot calculate the SLUE score.
+Your submission must contain at least one of the SLU tasks other than ASR to be evaluated. We'll still accept submissions with or without `pred_text` if one of `pred_ner` or `pred_sentiment` exists, but we will not evaluate your submission if you only submit `pred_text`.
+
+However, for example, if you only want to evaluate the sentiment analysis system, you could submit only the prediction result of the sentiment analysis system (`pred_sentiment`).
+
+Most importantly, if you fail to include any of the columns in your submission, we won't be able to calculate your SLUE score and thus cannot rank it.
 
 ## Submission
 

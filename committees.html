@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SLUE 2023 Challange &#8212; SLUE Benchmark</title>
+    <title>Committees &#8212; SLUE Benchmark</title>
     
   <link href="_static/css/theme.css" rel="stylesheet" />
   <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -51,8 +51,8 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Submissions" href="interspeech2023_submission.html" />
-    <link rel="prev" title="“The 2nd Special Session on Low-Resource Spoken Language Understanding”" href="interspeech2023.html" />
+    <link rel="next" title="“SLUE 2023: Low-resource Spoken Language Understanding Evaluation Challenge”" href="interspeech2023.html" />
+    <link rel="prev" title="Leaderboard" href="leaderboard_v0.2.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -98,7 +98,7 @@
   SLUE Benchmark
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="slue-tasks.html">
    SLUE Tasks
@@ -124,21 +124,26 @@
    SLUE Toolkit
   </a>
  </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Committees
+  </a>
+ </li>
 </ul>
 <p class="caption" role="heading">
  <span class="caption-text">
   Special Session @ Interspeech 2023
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="interspeech2023.html">
-   “The 2nd Special Session on Low-Resource Spoken Language Understanding”
+   “SLUE 2023: Low-resource Spoken Language Understanding Evaluation Challenge”
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   SLUE 2023 Challange
+ <li class="toctree-l1">
+  <a class="reference internal" href="interspeech2023_challenge.html">
+   SLUE 2023 Challange Rule
   </a>
  </li>
  <li class="toctree-l1">
@@ -209,7 +214,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/interspeech2023_task_track.md"><button type="button"
+        <a class="dropdown-buttons" href="_sources/committees.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -229,7 +234,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/asappresearch/slue-toolkit/issues/new?title=Issue%20on%20page%20%2Finterspeech2023_task_track.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/asappresearch/slue-toolkit/issues/new?title=Issue%20on%20page%20%2Fcommittees.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -256,40 +261,13 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ner-task-definition">
-   NER Task definition
+  <a class="reference internal nav-link" href="#slue-phase-1-committees">
+   SLUE phase-1 committees
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#challenge-tracks-and-rules">
-   Challenge tracks and rules
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#general-rules">
-     General rules
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#pipeline-track">
-     pipeline track
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#e2e-track">
-     E2E track
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#slue-voxpopuli-dataset">
-   SLUE-Voxpopuli dataset
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#toolkit-and-baseline">
-   Toolkit and baseline
+  <a class="reference internal nav-link" href="#slue-phase-2-committees">
+   SLUE phase-2 committees
   </a>
  </li>
 </ul>
@@ -303,36 +281,30 @@
         
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="slue-2023-challange">
-<h1>SLUE 2023 Challange<a class="headerlink" href="#slue-2023-challange" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="ner-task-definition">
-<h2>NER Task definition<a class="headerlink" href="#ner-task-definition" title="Permalink to this headline">¶</a></h2>
-<p>Named entity recognition involves detecting the named entities and their tags (types) in a given sentence. Named entities are phrases, often (but not always) consisting of proper nouns, that refer to distinct entities such as a person, location, organization, numerical value, etc.</p>
-<p>For NER labels, we use <code class="docutils literal notranslate"><span class="pre">combined</span> <span class="pre">label</span></code> set as defined in <a class="reference external" href="https://arxiv.org/abs/2111.10367">SLUE</a> phase-1 paper. We evaluate performance using micro-averaged F1 score of the output. The F1 score evaluates an unordered list of named entity phrase and tag pairs predicted for each sentence.</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="committees">
+<h1>Committees<a class="headerlink" href="#committees" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="slue-phase-1-committees">
+<h2>SLUE phase-1 committees<a class="headerlink" href="#slue-phase-1-committees" title="Permalink to this headline">¶</a></h2>
+<p>Suwon Shon - ASAPP
+<br>Felix Wu - ASAPP
+<br>Pablo Brusco - ASAPP
+<br>Kyu J. Han - ASAPP
+<br>Karen Livescu - TTI at Chicago
+<br>Ankita Pasad - TTI at Chicago
+<br>Yoav Artzi - Cornell University</p>
 </div>
-<div class="section" id="challenge-tracks-and-rules">
-<h2>Challenge tracks and rules<a class="headerlink" href="#challenge-tracks-and-rules" title="Permalink to this headline">¶</a></h2>
-<p>A participant must report at least one of the system’s output either pipeline or E2E. Pipeline models generate transcription from speech using an ASR system, and then apply an NLP model on the generated ASR transcription. End-to-end (E2E) models directly map from the input speech to output task labels. Participants can use the audio, transcription and NER labels in <code class="docutils literal notranslate"><span class="pre">fine-tune</span></code> and <code class="docutils literal notranslate"><span class="pre">dev</span></code> set of SLUE-voxpopuli dataset for any purpose, such as training, fine-tuning, validation or calibration. Participants should not use the <code class="docutils literal notranslate"><span class="pre">test</span></code> set for any kind of purpose. No label will be provided for the test dataset. All performance measurements will be finally made on the test set. Test set label will be available after result submission to help participants analyze their result and report their findings.</p>
-<div class="section" id="general-rules">
-<h3>General rules<a class="headerlink" href="#general-rules" title="Permalink to this headline">¶</a></h3>
-<p>Note that SLUE-Voxpopuli is a subset of the Voxpopuli dataset and participants have the freedom to use the entire Voxpopuli dataset. However, it is not allowed an additional human annotation for the named entity on the Voxpopuli dataset. Participants are only allowed to use human annotation already provided in SLUE-Voxpopuli.</p>
-</div>
-<div class="section" id="pipeline-track">
-<h3>pipeline track<a class="headerlink" href="#pipeline-track" title="Permalink to this headline">¶</a></h3>
-<p>Participants are free to use any kind open-sourced pre-trained model for pipeline system. The acoustic pre-trained model can be supervised model for ASR or unsupervised pre-trained model to be fine-tuned using any kind of speech data with or without ground truth transcription including SLUE-Voxpopuli. The NLP pre-trained model is also can be any kind of model that trained unsupervisedly or supervised way for any kind of NLP tasks.</p>
-</div>
-<div class="section" id="e2e-track">
-<h3>E2E track<a class="headerlink" href="#e2e-track" title="Permalink to this headline">¶</a></h3>
-<p>Participants are free to use any kind of open-sourced pre-trained model. Here, E2E system means that the model can directly map the audio to NER output using acoustic model. However, participants could still use NLP model or another models to train E2E system for example, distillation or transfer learning task.</p>
-</div>
-</div>
-<div class="section" id="slue-voxpopuli-dataset">
-<h2>SLUE-Voxpopuli dataset<a class="headerlink" href="#slue-voxpopuli-dataset" title="Permalink to this headline">¶</a></h2>
-<p>Please find <a class="reference external" href="https://arxiv.org/abs/2111.10367">SLUE</a> phase-1 paper for SLUE-Voxpopuli dataset detail. You can download dataset using <a class="reference external" href="https://github.com/asappresearch/slue-toolkit">SLUE-Toolkit</a></p>
-</div>
-<div class="section" id="toolkit-and-baseline">
-<h2>Toolkit and baseline<a class="headerlink" href="#toolkit-and-baseline" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="https://github.com/asappresearch/slue-toolkit">SLUE-Toolkit</a> provide all related scripts such as downloading dataset, pre-processing dataset, preparing combined label, and baseline reciepes. A detail baseline for NER is <a class="reference external" href="https://github.com/asappresearch/slue-toolkit/tree/main/baselines/ner">here</a>.</p>
+<div class="section" id="slue-phase-2-committees">
+<h2>SLUE phase-2 committees<a class="headerlink" href="#slue-phase-2-committees" title="Permalink to this headline">¶</a></h2>
+<p>Suwon Shon - ASAPP
+<br>Felix Wu - ASAPP
+<br>Ankita Pasad - TTIC
+<br>Chyi-Jiunn Lin - NTU
+<br>Siddhant Arora - CMU
+<br>Roshan Sharma - CMU
+<br>Wei-Lun Wu - NTU
+<br>Hung-Yi Lee - NTU
+<br>Karen Livescu - TTIC
+<br>Shinji Watanabe - CMU</p>
 </div>
 </div>
 
@@ -366,19 +338,19 @@
 <div class='prev-next-bottom'>
     
     <div id="prev">
-        <a class="left-prev" href="interspeech2023.html" title="previous page">
+        <a class="left-prev" href="leaderboard_v0.2.html" title="previous page">
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">“The 2nd Special Session on Low-Resource Spoken Language Understanding”</p>
+                <p class="prevnext-title">Leaderboard</p>
             </div>
         </a>
     </div>
      <div id="next">
-        <a class="right-next" href="interspeech2023_submission.html" title="next page">
+        <a class="right-next" href="interspeech2023.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Submissions</p>
+                <p class="prevnext-title">“SLUE 2023: Low-resource Spoken Language Understanding Evaluation Challenge”</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>

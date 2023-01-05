@@ -9,13 +9,18 @@
 <br>
 <br>
 
-We introduce the Spoken Language Understanding Evaluation (SLUE) benchmark. The goals of our work are to
+We are pleased to present the Spoken Language Understanding Evaluation (SLUE) benchmark, aimed at accomplishing the following objectives:
 
  - Track research progress on multiple SLU tasks
  - Facilitate the development of pre-trained representations by providing fine-tuning and eval sets for a variety of SLU tasks
- - Foster the open exchange of research by focusing on freely available datasets that all academic and industrial groups can easily use.
+ - Foster the open exchange of research by focusing on freely available datasets that all academic and industrial groups can easily use
 
-For this benchmark, we provide new annotation of publicly available, natural speech data for training and evaluation. We also provide a benchmark suite including code to download and pre-process the SLUE datasets, train the baseline models, and evaluate performance on SLUE tasks. Refer to [Toolkit](https://github.com/asappresearch/slue-toolkit) and [Paper](https://arxiv.org/pdf/2111.10367.pdf) for more details.
+For this benchmark, we provide:
+
+ - New annotation of publicly available, natural speech data for training and evaluation
+ - A benchmark suite including code to download and pre-process the SLUE datasets, train the baseline models, and evaluate performance on SLUE tasks
+
+Refer to [Toolkit](https://github.com/asappresearch/slue-toolkit) and [Paper](https://arxiv.org/pdf/2111.10367.pdf) for more details.
 
 <br>
 <br>
@@ -30,18 +35,20 @@ For this benchmark, we provide new annotation of publicly available, natural spe
 
 Suwon Shon - ASAPP
 <br>Felix Wu - ASAPP
-<br>Pablo Brusco - ASAPP
-<br>Kyu J. Han - ASAPP
-<br>Karen Livescu - TTI at Chicago
-<br>Ankita Pasad - TTI at Chicago
-<br>Yoav Artzi - Cornell University
+<br>Ankita Pasad - TTIC
+<br>Chyi-Jiunn Lin - NTU
+<br>Siddhant Arora - CMU
+<br>Roshan Sharma - CMU
+<br>Wei-Lun Wu - NTU
+<br>Hung-Yi Lee - NTU
+<br>Karen Livescu - TTIC
+<br>Shinji Watanabe - CMU
 
 ## Questions and issues
 
 For open discussion, we will use GitHub [issue](https://github.com/asappresearch/slue-toolkit/issues) page as our official Q&A boards.
 <br>
-For other general questions, please email us slue-committee "AT" googlegroups.com
 
 ## Logo of the SLUE
 
-Note that the logo of SLUE is not a snake, but a audio waveform in time-domain drawn with ascii character. We believe this text-drawn waveform represent the SLUE project properly. We use this [generator](https://asciiart.club/) to generate the waveform and sligltly modified.
+It is important to note that the SLUE logo does not depict a snake; rather, it is an audio waveform in time-domain drawn with ASCII characters. We believe this text-drawn waveform appropriately represents what SLUE stands for, and so we used a [generator](https://asciiart.club/) to create the image and tweaked it slightly.

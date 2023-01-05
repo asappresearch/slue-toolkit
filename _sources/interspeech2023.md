@@ -2,21 +2,22 @@
 <p style="font: 16px Monaco; margin-left:0em; color:#eb6e6e;">
 <b>Interspeech 2023 Special Session</b></p>
 
-# "The 2nd Special Session on Low-Resource Spoken Language Understanding"
+# "SLUE 2023: Low-resource Spoken Language Understanding Evaluation Challenge"
 
-Progress in speech processing has been facilitated by shared datasets and benchmarks. Historically these have focused on automatic speech recognition (ASR), speaker identification, or other lower level tasks. Interest has been growing in higher-level spoken language understanding (SLU) tasks, including using end-to-end models, but there are fewer annotated datasets for such tasks, and the existing datasets tend to be relatively small or synthetic. At the same time, recent work shows the possibility of pre-training generic representations and then fine-tuning for several tasks using relatively little labeled data.
+Thanks to shared datasets and benchmarks, impressive advancements have been made in the field of speech processing. Historically, these tasks have been centered around automatic speech recognition (ASR), speaker identification, and other key activities at the lower level tasks.
 
-For this special session, we will provide a Spoken Language Understanding Evaluation (SLUE) benchmark suite. SLUE phase 1 includes annotation for ASR, named entity recognition (NER) and sentiment analysis with the toolkit to pre-process and fine-tune scripts for baseline models.
+There is an increasing demand for advanced spoken language understanding (SLU) tasks, including using end-to-end models, but there are not many labeled datasets available to tackle them. What's more, the few existing datasets tend to be relatively limited in size and comprise synthetic data. Recent research reveals that it is possible to pre-train generic representations and then refine them for various tasks with only a small amount of labeled data.
 
-While we invite general submissions about this topic, the 2nd special session of the low-resource SLU series incorporates the challenge - [<b>SLUE 2023</b>](./interspeech2023_task_track.md). SLUE 2023 will focus on Named entity recognition using SLUE-Voxpopuli dataset with resource constraints as follows in [<b>here</b>](./interspeech2023_task_track.md).
+For this special session, we will provide a Spoken Language Understanding Evaluation (SLUE) benchmark suite. SLUE (Phase 1) includes annotation for ASR, named entity recognition (NER), and sentiment analysis with the toolkit to pre-process and fine-tune scripts for baseline models.
 
-We also invite contributions for any relevant work in low-resource SLU problems, which include (but are not limited to):
+While we invite general submissions about this topic, the 2nd special session of the low-resource SLU series incorporates a unique challenge - [<b>SLUE 2023</b>](./interspeech2023_challenge.md) - which will focus on named entity recognition using the SLUE-Vox Populi dataset with resource constraints that can be found [<b>here</b>](./interspeech2023_challenge.md).
 
-- Training/fine-tuning approach using self/semi-supervised model for SLU tasks
-- Comparison between pipeline and end-to-end SLU systems
-- Self/semi-supervised learning approach focusing on SLU
-- Multi-task/transfer/student-teacher learning focusing on SLU tasks
-- Theoretical or empirical study on low-resource SLU problems
+We also invite contributions for any relevant work in low-resource SLU problems, which include, but are not limited to:
+ - Training/fine-tuning approach using self/semi-supervised model for SLU tasks
+ - Comparison between pipeline and end-to-end SLU systems
+ - Self/semi-supervised learning approach focusing on SLU
+ - Multi-task/transfer/student-teacher learning focusing on SLU tasks
+ - Theoretical or empirical study on low-resource SLU problems
 
 
 <p style="font: 16px Monaco; margin-left:0em; color:#eb6e6e;">
@@ -24,7 +25,7 @@ We also invite contributions for any relevant work in low-resource SLU problems,
 </b></p>
 <p>
 
-Please check [here](./interspeech2023_task_track.md)
+Please check [here](./interspeech2023_challenge.md)
 
 </p>
 
@@ -43,7 +44,7 @@ For this special session, we will provide support for several benchmark tasks us
 - SLUE Toolkit: [Github repo](https://github.com/asappresearch/slue-toolkit)
 - SLUE Website: [https://asappresearch.github.io/slue-toolkit](https://asappresearch.github.io/slue-toolkit)
 
-Note that there is **no limitation** on use of datasets/benchmarks for the special session. The other datasets/benchmarks we recommend are (alphabetical order)
+Note that there is **no limitation** on use of datasets/benchmarks for the special session. The other datasets/benchmarks we recommend are:
 
 - [ASR-GLUE](https://arxiv.org/abs/2108.13048)
 - [ESPnet-SLU](https://arxiv.org/pdf/2111.14706.pdf)
@@ -55,7 +56,7 @@ Note that there is **no limitation** on use of datasets/benchmarks for the speci
 <b>Paper submission
 </b></p>
 
-Papers for Interspeech Special Session have to be submitted following the same schedule and procedure as regular papers of INTERSPEECH 2023. The submitted papers will undergo the same review process by anonymous and independent reviewers.
+Papers for Interspeech Special Session must be submitted following the same schedule and procedure as regular papers of INTERSPEECH 2023. The submitted papers will undergo the same review process by anonymous and independent reviewers.
 
 Submission URL : (TBA)
 
