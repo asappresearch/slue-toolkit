@@ -69,7 +69,6 @@ Submission URL : (TBA)
 Participants registration start &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : Jan. 01, 2023<br>
 Result submission deadline &emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: Feb. 20, 2023<br>
 Result announcement (rankings) &emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : Feb. 22, 2023<br>
-Test set label release to participants &emsp;&nbsp;&nbsp;&nbsp;&nbsp;: Feb. 22, 2023<br>
 Interspeech 2023 paper submission deadline &emsp;: Mar. 01, 2023<br>
 Interspeech 2023 paper update deadline &emsp;&emsp;&emsp;&emsp;&emsp;: Mar. 08, 2023<br>
 Interspeech 2023 @ Dublin, Ireland &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;: Aug. 20-24, 2023
