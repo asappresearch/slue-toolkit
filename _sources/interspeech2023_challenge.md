@@ -1,4 +1,4 @@
-# SLUE 2023 Challange Rule
+# SLUE 2023 Challenge Rule
 
 ## NER Task definition
 Named entity recognition involves detecting the named entities and their tags (types) in a given sentence. Named entities are phrases, often (but not always) consisting of proper nouns, that refer to distinct entities such as a person, location, organization, numerical value, etc.
