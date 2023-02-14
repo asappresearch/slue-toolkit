@@ -3,7 +3,7 @@ All participants should upload their system description and output the TSV files
 
 ## System description template
 
-Overleaf link : TBA
+Overleaf link : [https://www.overleaf.com/read/bksxvtdvzgtr](https://www.overleaf.com/read/bksxvtdvzgtr)
 
 ## Submission format for pipeline track
 
@@ -29,4 +29,4 @@ id	pred_ner
 
 ## Submission
 
-Submission URL : TBA
+Submission URL : [https://www.dropbox.com/request/pvZ09pvAwc0u5b2i2UuM](https://www.dropbox.com/request/pvZ09pvAwc0u5b2i2UuM)
