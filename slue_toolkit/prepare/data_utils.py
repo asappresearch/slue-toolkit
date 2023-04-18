@@ -1,5 +1,5 @@
 from slue_toolkit.generic_utils import raw_to_combined_tag_map
-
+import ast
 
 def remove_punc(sent):
     """
@@ -20,12 +20,9 @@ def get_label_lst(label_str, label_type):
         return []
     tag_map = raw_to_combined_tag_map
     label_lst = []
-    ner_labels_lst = label_str.strip("[[").strip("]]").split("], [")
+    ner_labels_lst = ast.literal_eval(label_str)
     for item in ner_labels_lst:
-        label, start_id, length = item.split(", ")
-        label = label[1:-1]
-        start_id = int(start_id)
-        length = int(length)
+        label, start_id, length = item
         if label_type == "combined":
             if tag_map[label] != "DISCARD":
                 label_lst.append((tag_map[label], start_id, length))
