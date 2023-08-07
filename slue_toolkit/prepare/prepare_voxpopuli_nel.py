@@ -123,6 +123,8 @@ def modify_word_alignments(dataset_obj, manifest_dir, data_split, extract_gt=Fal
             end_sec = wrd_durs["end_sec"][wrd_idx]
             all_word_alignments[utt_id].append((word, start_sec, end_sec))
         update_alignment_dct(all_word_alignments, utt_id, gt_labels)
+    if data_split == "validation":
+        data_split = "dev" # to match NER data
     save_dct(
         os.path.join(manifest_dir, f"{data_split}_tagged_word_alignments.json"),
         all_word_alignments,
@@ -136,7 +138,7 @@ def modify_word_alignments(dataset_obj, manifest_dir, data_split, extract_gt=Fal
             writer.writerows(entity_csv)
 
 
-def main(manifest_dir="manifest/slue-voxpopuli/nel_test", is_blind=True):
+def main(manifest_dir="manifest/slue-voxpopuli/nel", is_blind=True):
     dataset = load_dataset("asapp/slue-phase-2", "vp_nel")
     split_lst = ["validation", "test"]
     os.makedirs(manifest_dir, exist_ok=True)
