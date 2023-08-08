@@ -18,7 +18,7 @@ from transformers import (
     DebertaForTokenClassification,
 )
 from transformers.trainer_utils import get_last_checkpoint
-from slue_toolkit.eval import eval_utils
+from slue_toolkit.eval import eval_utils_ner
 from slue_toolkit.generic_utils import raw_to_combined_tag_map, load_dct, read_lst
 
 
@@ -530,7 +530,7 @@ class Eval:
             score_type, eval_dataset_pred, eval_texts_gt, eval_tags_gt, eval_texts_pred
         )
 
-        metrics_dct = eval_utils.get_ner_scores(all_gt, all_predictions)
+        metrics_dct = eval_utils_ner.get_ner_scores(all_gt, all_predictions)
         print(
             "[%s (%s tag set), micro-averaged F1-%s] Precision: %.2f, recall: %.2f, fscore = %.2f"
             % (
@@ -544,7 +544,7 @@ class Eval:
         )
 
         if score_type == "standard":  # with standard evaluation only
-            analysis_examples_dct = eval_utils.ner_error_analysis(
+            analysis_examples_dct = eval_utils_ner.ner_error_analysis(
                 all_gt, all_predictions, eval_texts_gt
             )
         else:
