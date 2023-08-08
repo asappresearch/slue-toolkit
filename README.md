@@ -50,6 +50,10 @@ Named entity recognition involves detecting the named entities and their tags (t
 
 Sentiment analysis refers to classifying a given speech segment as having negative, neutral, or positive sentiment. We evaluate SA using  macro-averaged (unweighted) recall and F1 scores.
 
+### Named Entity Recognition (NEL)
+
+Named entity localization involves detecting time stamps of named entities in a given utterance. An NEL algorithm returns a list of time stamps and we evaluate the performance using two measure: frame-F1 and word-F1 scores. For the F1 score computation we measure the number of frames (or words) that are missed (false negative) or are detected correctly (true positives) or are detected incorrectly (false positives) within the detected time stamp boundaries. 
+
 ### Datasets
 
 <table>
@@ -101,6 +105,10 @@ For SLUE, you need [VoxCeleb](https://www.robots.ox.ac.uk/~vgg/data/voxceleb/) a
 bash scripts/download_datasets.sh
 ```
 
+Note, for NEL, the dataset is hosted on [HuggingFace](https://huggingface.co/datasets/asapp/slue-phase-2/viewer/vp_nel), so run the following command to prepare the manifest files.
+```
+python slue_toolkit/prepare/prepare_voxpopuli_nel.py create_manifest
+```
 
 ## SLUE score evaluation
 The test set data and annotation will be used for the official SLUE score evaluation, however we will not release the test set annotation. Thus, the SLUE score can be evaluated by submitting your prediction result in tsv format. We will prepare the website to accept your submission. Please stay tuned for this.
@@ -159,6 +167,20 @@ To evaluate the fine-tuned wav2vec 2.0 sentiment model, run following commands o
 python3 slue_toolkit/eval/eval_w2v_sentiment.py --save-dir save/sentiment/w2v2-base --data manifest/slue-voxceleb --subset dev
 ```
 More detail baseline experiment described [here](baselines/sentiment/README.md)
+
+### NEL
+Assuming that the preprocessed manifest files are in `manifest/slue-voxpopuli/nel` for SLUE-VoxPopuli.
+#### Fine-tuning End-to-end model
+NEL does not have a train split and no separate fine-tuning is done for NEL. The baseline NEL algorithm uses fine-tuned NER models, so follow the instructions for [fine-tuning an E2E NER model](https://github.com/asappresearch/slue-toolkit/tree/main#fine-tuning-end-to-end-model).
+
+#### Evaluating End-to-End model
+
+To evaluate the fine-tuned wav2vec 2.0 E2E NER model on the dev set, please run the following commands. (decoding without language model)
+```sh
+bash baselines/nel/decode.sh e2e_ner dev
+bash baselines/nel/eval_nel.sh e2e
+```
+More detail baseline experiment described [here](baselines/nel/README.md)
 
 # How-to-submit for your test set evaluation
 
