@@ -9,7 +9,7 @@ import sys
 
 sys.path.insert(0, "../")
 
-from slue_toolkit.eval import eval_utils
+from slue_toolkit.eval import eval_utils_ner
 from slue_toolkit.generic_utils import (
     read_lst,
     save_dct,
@@ -121,13 +121,13 @@ def eval_ner(
             score_type, eval_label, eval_set, decoded_data_dir
         )
         if save_results and score_type == "standard":
-            analysis_examples_dct = eval_utils.ner_error_analysis(
+            analysis_examples_dct = eval_utils_ner.ner_error_analysis(
                 labels_dct["ref"], labels_dct["hypo"], text_dct["ref"]
             )
             save_dct(
                 os.path.join(ner_results_dir, res_fn + ".json"), analysis_examples_dct
             )
-        metrics = eval_utils.get_ner_scores(labels_dct["ref"], labels_dct["hypo"])
+        metrics = eval_utils_ner.get_ner_scores(labels_dct["ref"], labels_dct["hypo"])
         save_dct(os.path.join(log_dir, res_fn + ".json"), metrics)
         print(
             "[%s, %s, %s label set, micro-averaged %s]: %.1f"

@@ -3,6 +3,7 @@ Compilation of commonly used functions
 """
 
 import json
+import os
 import pickle as pkl
 
 end_char = "]"
@@ -110,3 +111,20 @@ def read_lst(fname):
 def write_to_file(write_str, fname):
     with open(fname, "w") as f:
         f.write(write_str)
+
+
+def get_file_identifiers(
+    split="dev",
+    data_dir="data/slue-voxpopuli"
+    ):
+    """
+    Specific to NEL task
+    """
+    if split == "test":
+        split = "test_blind"
+    lines = read_lst(os.path.join(data_dir, f"slue-voxpopuli_{split}.tsv"))[1:]
+    utt_lst = [line.split("\t")[0] for line in lines]
+    spk_lst = [line.split("\t")[3] for line in lines]
+    lines = read_lst(os.path.join(data_dir, "../slue-voxpopuli_nel", f"slue-voxpopuli_nel_{split}.tsv"))[1:]
+    nel_utt_lst = [line.split("\t")[0] for line in lines]
+    return utt_lst, spk_lst, nel_utt_lst
