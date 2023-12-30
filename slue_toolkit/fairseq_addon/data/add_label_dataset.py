@@ -30,8 +30,11 @@ class AddLabelDataset(BaseWrapperDataset):
         if len(collated) == 0:
             return collated
         indices = set(collated["id"].tolist())
-        target = torch.LongTensor([s["label"] for s in samples if s["id"] in indices])
-
+        target = [s["label"] for s in samples if s["id"] in indices]
+        if type(target[0]) == int:
+            target = torch.LongTensor(target)
+        elif type(target[0]) == list:
+            target = torch.FloatTensor(target)
         collated["target"] = target
 
         return collated
