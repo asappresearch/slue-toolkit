@@ -10,7 +10,7 @@ import logging
 import os
 import torch
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 from fairseq.data import encoders
 from fairseq.tasks.audio_pretraining import AudioPretrainingTask, AudioPretrainingConfig
@@ -26,7 +26,8 @@ logger = logging.getLogger(__name__)
 
 @dataclass
 class AudioClassificationConfig(AudioPretrainingConfig):
-    pass
+    multilabel: bool = field(default=False, metadata={"help": "for multilabel"})
+
 
 
 # add slue_ as prefix of the registerred name in case there are conflicts in future
@@ -64,12 +65,25 @@ class AudioClassificationTask(AudioPretrainingTask):
         label_path = os.path.join(data_path, f"{split}.{task_cfg.labels}")
         skipped_indices = getattr(self.datasets[split], "skipped_indices", set())
         logger.info(f"label2id: {self.label2id}")
-        with open(label_path, "r") as f:
-            labels = [
-                self.label2id[l.strip()]
-                for i, l in enumerate(f)
-                if i not in skipped_indices
-            ]
+
+        if not task_cfg.multilabel:
+            with open(label_path, "r") as f:
+                labels = [
+                    self.label2id[l.strip()]
+                    for i, l in enumerate(f)
+                    if i not in skipped_indices
+                ]
+        else:
+            with open(label_path, "r") as f:
+                labels = [
+                    [ self.label2id[lab] for lab in l.strip().split(",") ]
+                    for i, l in enumerate(f)
+                    if i not in skipped_indices
+                ]
+                labels_onehot = []
+                for label in labels:
+                    labels_onehot.append([ 1 if i in label else 0 for i in range(len(self.label2id))])
+                labels = labels_onehot
 
         assert len(labels) == len(self.datasets[split]), (
             f"labels length ({len(labels)}) and dataset length "
