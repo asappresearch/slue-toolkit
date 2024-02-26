@@ -5,6 +5,9 @@
 We introduce Spoken Language Understanding Evaluation (SLUE) benchmark. This toolkit provides codes to download and pre-process the SLUE datasets, train the baseline models, and evaluate SLUE tasks. Refer [https://arxiv.org/abs/2111.10367](https://arxiv.org/abs/2111.10367) for more details.
 
 ## News
+ - Jan. 8. 2024: All test set labels were released in Huggingface dataset. You can find slue and slue-phase-2 dataset audio and labels here. Please use the label to evaluate and don't submit your result via email to us. 
+   - SLUE dataset: https://huggingface.co/datasets/asapp/slue
+   - SLUE Phase-2 dataset: https://huggingface.co/datasets/asapp/slue-phase-2
  - Jul. 28, 2022: We update the data to v0.2 where the dev set of slue-voxceleb has a similar sentiment distribution as the test set. All statstics and evaluation result in arxiv paper and leaderboard was updated accordingly.
  - Nov. 22, 2021: We release the SLUE paper on arXiv along with the slue-toolkit repository. The repository contains data processing and evaluation scripts. We will publish the scripts for training the baseline models soon.
 
